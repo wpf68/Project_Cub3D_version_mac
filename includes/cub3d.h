@@ -6,12 +6,39 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 13:00:33 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/09/26 11:14:15 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/09/26 14:58:52 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
+
+# ifdef MAC
+#  define TOUCH_A 0
+#  define TOUCH_W 13
+#  define TOUCH_S 1
+#  define TOUCH_D 2
+#  define TOUCH_RIGHT 124
+#  define TOUCH_LEFT 123
+#  define TOUCH_UP 126
+#  define TOUCH_DOWN 125
+#  define TOUCH_ESC 53
+# else   // LINUX
+#  define TOUCH_A 113  // Q
+#  define TOUCH_W 122  // Z
+#  define TOUCH_S 115  // S
+#  define TOUCH_D 100  // D
+#  define TOUCH_RIGHT 65363 
+#  define TOUCH_LEFT 65361 
+#  define TOUCH_UP 65362
+#  define TOUCH_DOWN 65364
+#  define TOUCH_ESC 65307
+# endif
+
+
+
+
+
 
 //LIBRAIRIES
 
@@ -60,7 +87,7 @@
 # define EAST_COLOR 0x000000FF
 # define WEST_COLOR 0x00FFFF00
 
-# define SPEED_MOVIE 200
+# define SPEED_MOVIE 2000
 
 
 //STRUCTURES 

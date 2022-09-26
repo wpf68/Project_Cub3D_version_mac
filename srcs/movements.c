@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 08:57:43 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/09/26 11:16:50 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/09/26 14:40:27 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,15 @@ void    update(t_game *game, int key)
 
     
     
-    if (key == 124 || key == 124)     //  123  rotation droite
+    if (key == TOUCH_RIGHT)     //  rotation droite
         game->map.p.apos += game->map.p.rotspeed;
-    if (key == 123 || key == 123)     // 124   rotation gauche
+    if (key == TOUCH_LEFT)     // rotation gauche
         game->map.p.apos -= game->map.p.rotspeed;
-    if (key == 125 || key == 1)     // 13     avancer
-        move_player(game, 1.0);
-    if (key == 126 || key == 13)      // 1    reculer
+    if (key == TOUCH_W || key == TOUCH_UP)     // 13     avancer
         move_player(game, -1.0);
-    if (key == 53)       //
+    if (key == TOUCH_S || key == TOUCH_DOWN)      // 1    reculer
+        move_player(game, 1.0);
+    if (key == TOUCH_ESC)       //
     {
         mlx_destroy_window(game->mlx_ptr, game->win_ptr);       // segment fautl !!!
         game->win_ptr = NULL;  // ok plus de segment fault mais le prg ne sort pas

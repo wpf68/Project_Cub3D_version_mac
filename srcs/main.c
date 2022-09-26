@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 13:37:22 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/09/26 11:04:42 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/09/26 15:06:12 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ int main (int argc, char **argv)
     mlx_destroy_image(legend.mlx_ptr, legend.img.mlx_img);  // problémes ******
 
 	mlx_destroy_window(game.mlx_ptr, game.win_ptr);
+    //mlx_destroy_display(game.mlx_ptr);
 	free(game.mlx_ptr);
 
 }
