@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/09/22 08:47:50 by pwolff            #+#    #+#              #
+#    Updated: 2022/09/27 14:35:33 by pwolff           ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 BLU			= \033[0;34m
 GRN			= \033[0;32m
 RED			= \033[0;31m
@@ -10,20 +22,44 @@ SRC		= srcs/init_game.c  srcs/ft_close.c srcs/init_map.c srcs/error_msg.c srcs/m
 	srcs/init_var_player.c  srcs/movements.c srcs/draw_player.c srcs/ft_input.c \
 	srcs/reprint_pos.c srcs/print_background.c srcs/init_legend.c
 
-#  *********************************************************
-#  *******************   Version Mac  **********************
-#  *********************************************************
-
 NAME		= cub3D
-
-
-OBJ		= $(SRC:.c=.o)
+OBJ			= $(SRC:.c=.o)
 PROJECT_H	= includes/cub3d.h
-CC		= gcc
+CC			= gcc
 FLAGS		= -Wall -Wextra -Werror
-MLXFLAGS	= -framework OpenGL -framework AppKit
 
-all: $(NAME)
+
+
+ifeq ($(DESKTOP_SESSION), ubuntu)
+
+OBJS_DIR	= objs/
+OBJECTS_PREFIXED = $(addprefix $(OBJS_DIR), $(OBJ))
+MLXFLAGS = -I /usr/X11/include -g -Lmlx_linux -lmlx_Linux -L /usr/lib -Imlx_linux -lmlx -lXext -lX11 -lm
+
+$(OBJS_DIR)%.o : %.c $(PROJECT_H)
+	mkdir -p $(OBJS_DIR)
+	mkdir -p $(OBJS_DIR)srcs
+	$(CC) $(FLAGS) -I/usr/include -Imlx_linux -O3 -c $< -o $@
+	printf	"\033[2K\r${BLU}[BUILD]${RST} '$<' $(END)"
+
+$(NAME): $(OBJECTS_PREFIXED) maker
+	$(CC) -o $(NAME) $(OBJECTS_PREFIXED) $(FLAGS) ./libft/libft.a \
+	./mlx_linux/libmlx.a ${MLXFLAGS}
+	printf "\033[2K\r\033[0;32m[END]\033[0m $(NAME)$(END)\n"
+
+maker:
+	make -C ./libft
+	make -C ./mlx_linux
+
+clean:
+	make clean -C ./libft
+	make clean -C ./mlx_linux
+	rm -rf $(OBJS_DIR)
+	printf "\033[2K\r${GRN}[CLEAN]${RST} done$(END)"
+
+else
+
+MLXFLAGS	= -framework OpenGL -framework AppKit
 
 $(NAME): $(SRC) $(OBJ) maker
 	$(CC) $(FLAGS) -lmlx ${MLXFLAGS} $(SRC) -o $(NAME) ./libft/libft.a
@@ -41,14 +77,19 @@ clean:
 	make clean -C ./libft
 	rm -rf $(OBJ)
 
+endif
+
+
+all: $(NAME)
+
 fclean: clean
 	make fclean -C ./libft
 	rm -rf $(NAME)
+	printf "\033[2K\r${GRN}[FCLEAN]${RST} done$(END)"
 
 re: fclean all 
 
 test: all
 	./$(NAME) map.cub
 
-.PHONY:		all clean fclean re test
-
+.PHONY:		all clean fclean re maker test
