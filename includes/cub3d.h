@@ -6,14 +6,14 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 13:00:33 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/09/26 14:58:52 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/09/27 09:30:43 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
-# ifdef MAC
+# ifdef __APPLE__
 #  define TOUCH_A 0
 #  define TOUCH_W 13
 #  define TOUCH_S 1
