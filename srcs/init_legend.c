@@ -23,13 +23,13 @@ void    init_legend(t_game *game, t_game *legend)
    // draw_square(legend, 30, 40, 20, encode_rgb(0, 255,0));
  int			wi;
     int			he;
-    legend->img.mlx_img = mlx_xpm_file_to_image(legend->mlx_ptr, "./images_xpm/Cube3D.xpm", &wi, &he);
+    legend->img.mlx_img = mlx_xpm_file_to_image(legend->mlx_ptr, "./images_xpm/Cube3D_1b.xpm", &wi, &he);
     mlx_put_image_to_window(legend->mlx_ptr, legend->win_ptr, legend->img.mlx_img, (legend->map.columns * 10) + 5, 0); // put image finie
 
    // mlx_string_put(legend->mlx_ptr, legend->win_ptr, (legend->map.columns *10) + 40, 15, 0xFFFFFF, "Cub3D");
 }
 
-void    draw_circle(t_game *image, int x, int y, int r, int color)
+void    draw_circle_bis(t_game *image, int x, int y, int r, int color)
 {
     double  cos_x;
     double  sin_y;
@@ -38,15 +38,76 @@ void    draw_circle(t_game *image, int x, int y, int r, int color)
     i = 0;
     while (i < 2 * 3.141592)
     {
-        cos_x = cos(i) * r;
-        sin_y = sin(i) * r;
+        cos_x = cos(i) * (r);
+        sin_y = sin(i) * (r);
         img_pix_put(image, x + cos_x, y + sin_y, color);
-        i += 0.01;
+        i += 0.2;
+    }
+
+
+}
+
+
+
+void    draw_circle(t_game *image, int x, int y, int r, int color)
+{
+
+    int  i;
+
+    i = r - 3;
+
+    while (i < (r + 4))
+    {
+        draw_circle_bis(image, x, y, i, color);
+        i++;
+    }
+
+        // clacul de l'orientation du joueur sur le cercle
+    image->r.dir_x = x - cos(*image->apos_game) * r;
+    image->r.dir_y = y - sin(*image->apos_game) * r;
+
+    i = 0;
+    while (i < 3)
+    {
+        draw_circle_bis(image, image->r.dir_x, image->r.dir_y, i, 0x0050D317);
+        i++;
+    }
+    while (i < 5)
+    {
+        draw_circle_bis(image, image->r.dir_x, image->r.dir_y, i, 0x002F7E0D);
+        i++;
+    }
+/*
+    i = 0;
+    while (i < 2 * 3.141592)
+    {
+        cos_x = cos(i) * (r + 3);
+        sin_y = sin(i) * (r + 3);
+        img_pix_put(image, x + cos_x, y + sin_y, color);
+        i += 0.06;
+    }
+
+    i = 0;
+    while (i < 2 * 3.141592)
+    {
+        cos_x = cos(i) * (r - 3);
+        sin_y = sin(i) * (r - 3);
+        img_pix_put(image, x + cos_x, y + sin_y, color);
+        i += 0.06;
     }
     // clacul de l'orientation du joueur sur le cercle
     image->r.dir_x = x - cos(*image->apos_game) * r;
     image->r.dir_y = y - sin(*image->apos_game) * r;
 
+    i = 0;
+    while (i < 2 * 3.141592)
+    {
+        cos_x = cos(i) * 4;
+        sin_y = sin(i) * 4;
+        img_pix_put(image, image->r.dir_x + cos_x, image->r.dir_y + sin_y, SOUTH_COLOR);
+        i += 0.2;
+    }
+    */
 }
 
 int    anim_legend(t_game *legend)
@@ -57,6 +118,8 @@ int    anim_legend(t_game *legend)
     //int b = rand() % 255;
    // int move;
     int y;
+    char    *itoa_angle;
+    char    *temp;
 
    
 
@@ -73,15 +136,20 @@ int    anim_legend(t_game *legend)
         if (y < HEIGHT_MINI)
             y = HEIGHT_MINI;
        // legend->img.mlx_img = mlx_new_image(legend->mlx_ptr, BORDER_X, y); 
-        legend->img.mlx_img = mlx_new_image(legend->mlx_ptr, 110, 110); 
+        legend->img.mlx_img = mlx_new_image(legend->mlx_ptr, 121, 113); 
 
     int			wi;
     int			he;
-        legend->img.mlx_img = mlx_xpm_file_to_image(legend->mlx_ptr, "./images_xpm/Cube3D_3.xpm", &wi, &he);
+        legend->img.mlx_img = mlx_xpm_file_to_image(legend->mlx_ptr, "./images_xpm/Cube3D_2b.xpm", &wi, &he);
 
 
         legend->img.addr = mlx_get_data_addr(legend->img.mlx_img, &legend->img.bpp,
                 &legend->img.line_len, &legend->img.endian); //
+        draw_circle(legend, 60, 56, 48, 0x00DF9D00);
+
+     //  draw_circle(legend, legend->r.dir_x, legend->r.dir_y, 4, SOUTH_COLOR);
+
+
 
 /*
         // usleep(SPEED_MOVIE); // boock le prg rmplacé par cpt_anime
@@ -93,9 +161,7 @@ int    anim_legend(t_game *legend)
         //  ----  Radar
      //   draw_circle(legend, 148, 260, 105, WEST_COLOR);
       //  draw_circle(legend, 148, 110, 105, WEST_COLOR);
-        draw_circle(legend, 54, 51, 48, 0x00000000);
-
-        draw_circle(legend, legend->r.dir_x, legend->r.dir_y, 4, EAST_COLOR);
+        
 
         //draw_circle_player();
 
@@ -108,7 +174,7 @@ int    anim_legend(t_game *legend)
 
    //     mlx_put_image_to_window(legend->mlx_ptr, legend->win_ptr, legend->img.mlx_img, (legend->map.columns * 10) + 5, 0); // put image finie
      //   mlx_put_image_to_window(legend->mlx_ptr, legend->win_ptr, legend->img.mlx_img, (legend->map.columns * 10) + 100, 205); // put image finie
-        mlx_put_image_to_window(legend->mlx_ptr, legend->win_ptr, legend->img.mlx_img, (legend->map.columns * 10) + 99, 209); // put image finie
+        mlx_put_image_to_window(legend->mlx_ptr, legend->win_ptr, legend->img.mlx_img, (legend->map.columns * 10) + 95, 204); // put image finie
 
     /*
         mlx_string_put(legend->mlx_ptr, legend->win_ptr, (legend->map.columns *10) + 40, 110, 0xFF0000, "NORTH");
@@ -121,9 +187,23 @@ int    anim_legend(t_game *legend)
             angle = angle * (-1) + 180;
         angle %= 360;
 
+        itoa_angle = ft_itoa(angle);
+        if (ft_strlen(itoa_angle) < 3)
+        {
+            temp = itoa_angle;
+            itoa_angle = ft_strjoin("0", temp);
+            free(temp);
+        }
+        if (ft_strlen(itoa_angle) < 3)
+        {
+            temp = itoa_angle;
+            itoa_angle = ft_strjoin("0", temp);
+            free(temp);
+        }
 
-        mlx_string_put(legend->mlx_ptr, legend->win_ptr, (legend->map.columns *10) + DEGREE_X1, DEGREE_Y1, WEST_COLOR, "degree angle");
-        mlx_string_put(legend->mlx_ptr, legend->win_ptr, (legend->map.columns *10) + DEGREE_X2, DEGREE_Y2, EAST_COLOR, ft_itoa(angle));
+      //  mlx_string_put(legend->mlx_ptr, legend->win_ptr, (legend->map.columns *10) + DEGREE_X1, DEGREE_Y1, WEST_COLOR, "degree angle");
+        mlx_string_put(legend->mlx_ptr, legend->win_ptr, (legend->map.columns *10) + DEGREE_X2, DEGREE_Y2, SOUTH_COLOR, itoa_angle);
+        free(itoa_angle);
 /*
         mlx_string_put(legend->mlx_ptr, legend->win_ptr, (legend->map.columns *10) + 40, 180, 0xFFFFFF, "    W / UP");
         mlx_string_put(legend->mlx_ptr, legend->win_ptr, (legend->map.columns *10) + 40, 195, 0xFFFFFF, "      |");

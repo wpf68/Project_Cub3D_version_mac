@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 13:00:33 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/09/28 11:03:31 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/09/28 14:48:14 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@
 #  define TOUCH_ESC 53
 #  define DEGREE_X1 120  // à régler ---------------
 #  define DEGREE_Y1 258
-#  define DEGREE_X2 148
-#  define DEGREE_Y2 272
+#  define DEGREE_X2 146
+#  define DEGREE_Y2 291
 # else   // LINUX
 #  define TOUCH_A 113  // Q
 #  define TOUCH_W 122  // Z
@@ -39,8 +39,8 @@
 #  define TOUCH_ESC 65307
 #  define DEGREE_X1 120
 #  define DEGREE_Y1 256
-#  define DEGREE_X2 148
-#  define DEGREE_Y2 273
+#  define DEGREE_X2 146
+#  define DEGREE_Y2 291
 # endif
 
 
