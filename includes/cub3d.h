@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 13:00:33 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/09/27 09:30:43 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/09/28 11:03:31 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,10 @@
 #  define TOUCH_UP 126
 #  define TOUCH_DOWN 125
 #  define TOUCH_ESC 53
+#  define DEGREE_X1 120  // à régler ---------------
+#  define DEGREE_Y1 258
+#  define DEGREE_X2 148
+#  define DEGREE_Y2 272
 # else   // LINUX
 #  define TOUCH_A 113  // Q
 #  define TOUCH_W 122  // Z
@@ -33,6 +37,10 @@
 #  define TOUCH_UP 65362
 #  define TOUCH_DOWN 65364
 #  define TOUCH_ESC 65307
+#  define DEGREE_X1 120
+#  define DEGREE_Y1 256
+#  define DEGREE_X2 148
+#  define DEGREE_Y2 273
 # endif
 
 
@@ -59,9 +67,9 @@
 
 # define WIDTH 800
 # define HEIGTH 600
-# define BORDER_X  150 	//  image right
+# define BORDER_X  300 	//  image right
 # define BORDER_Y  10	//  image tight
-# define HEIGHT_MINI 300  // image right
+# define HEIGHT_MINI 600  // image right
 
 
 
@@ -87,7 +95,7 @@
 # define EAST_COLOR 0x000000FF
 # define WEST_COLOR 0x00FFFF00
 
-# define SPEED_MOVIE 2000
+# define SPEED_MOVIE 500
 
 
 //STRUCTURES 
