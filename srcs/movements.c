@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 08:57:43 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/09/29 09:48:10 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/09/29 11:35:57 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void    update(t_image *image, int key)
        // game->win_ptr = NULL;  // ok plus de segment fault mais le prg ne sort pas
         mlx_destroy_image(game->mlx_ptr, game->img.mlx_img);
         mlx_destroy_image(image->legend.mlx_ptr, image->legend.img.mlx_img);
+        mlx_destroy_image(image->cube.mlx_ptr, image->cube.img.mlx_img);
 
 	  //  mlx_destroy_display(game->mlx_ptr);
         mlx_destroy_window(game->mlx_ptr, game->win_ptr);

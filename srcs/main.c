@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 13:37:22 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/09/29 09:55:32 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/09/29 11:29:05 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int main (int argc, char **argv)
    // mlx_loop_hook(game.mlx_ptr, *print_map, &game);//
 
     init_legend(&images.game, &images.legend); // 
+    init_cube(&images.game, &images.cube);
     
 
     mlx_loop_hook(images.legend.mlx_ptr, *anim_legend, &images.legend);//

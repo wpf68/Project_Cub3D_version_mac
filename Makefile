@@ -6,7 +6,7 @@
 #    By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/22 08:47:50 by pwolff            #+#    #+#              #
-#    Updated: 2022/09/27 14:35:33 by pwolff           ###   ########.fr        #
+#    Updated: 2022/09/29 11:23:53 by pwolff           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,8 @@ SRC		= srcs/init_game.c  srcs/ft_close.c srcs/init_map.c srcs/error_msg.c srcs/m
 	srcs/print_map.c srcs/find_player.c srcs/draw_square.c srcs/check_files_map.c \
 	srcs/check_nb_player.c srcs/count_char.c  srcs/init_player_position.c \
 	srcs/init_var_player.c  srcs/movements.c srcs/draw_player.c srcs/ft_input.c \
-	srcs/reprint_pos.c srcs/print_background.c srcs/init_legend.c
+	srcs/reprint_pos.c srcs/print_background.c srcs/init_legend.c \
+	srcs/init_cube.c
 
 NAME		= cub3D
 OBJ			= $(SRC:.c=.o)

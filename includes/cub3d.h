@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 13:00:33 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/09/29 10:39:33 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/09/29 11:54:19 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 	game		:	X x Y
 	cube		:	600 x 600
 */
-# define IMAGE_X 1800
+# define IMAGE_X 900
 # define IMAGE_Y 900
 # define CUBE_X 600
 # define CUBE_Y 600
@@ -34,7 +34,7 @@
 
 /*	POSITION IMAGES
 
-	legende		:	IMAGE_X - 300, 0
+	legende		:	CUBE_X, 0
 	cube		:	0, 0
 	game		:	0, CUBE_Y
 */
@@ -232,6 +232,7 @@ int		encode_rgb(uint8_t red, uint8_t green, uint8_t blue);
 void    init_legend(t_game *game, t_game *legend);
 int		anim_legend(t_game *legend);
 void    draw_circle(t_game *image, int x, int y, int r, int color);
+void	init_cube(t_game *game, t_game *cube);
 
 
 #endif
