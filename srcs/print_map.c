@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 15:22:49 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/09/23 13:07:05 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/09/29 10:58:06 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,16 @@ int	print_map(t_game *game)
 
 	if (game->win_ptr == NULL) // sécurité
 		return (1);
+	if (game->test_size == 0)
+	{
+		
+		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->img.mlx_img, 0, CUBE_Y); // put image finie
+
+		mlx_string_put(game->mlx_ptr, game->win_ptr, 100 , CUBE_Y + 100, encode_rgb(0, 255, 0), "*** TOO LARGE *** ");
+
+		return (1);
+	}
+	
 	while (x < game->map.lines)
 	{
 		while (y < game->map.columns)
@@ -42,6 +52,6 @@ int	print_map(t_game *game)
 		x++;
 	}
 		
-		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->img.mlx_img, 0, 0); // put image finie
+	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->img.mlx_img, 0, CUBE_Y); // put image finie
 	return (0);
 }

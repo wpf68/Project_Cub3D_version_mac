@@ -2,7 +2,7 @@
 
 void    init_legend(t_game *game, t_game *legend)
 {
-    int y;
+  //  int y;
 
     legend->mlx_ptr = game->mlx_ptr;
     legend->win_ptr = game->win_ptr;
@@ -13,18 +13,18 @@ void    init_legend(t_game *game, t_game *legend)
 
     printf("apos legende = %f  --   apos game = %f\n", *legend->apos_game, game->map.p.apos);  // test
 
-    y = (legend->map.lines *10) + BORDER_Y;
-    if (y < HEIGHT_MINI)
-        y = HEIGHT_MINI;
-    legend->img.mlx_img = mlx_new_image(legend->mlx_ptr, BORDER_X, y); 
+ //   y = (legend->map.lines *10) + BORDER_Y;
+ //   if (y < HEIGHT_MINI)
+ //       y = HEIGHT_MINI;
+    legend->img.mlx_img = mlx_new_image(legend->mlx_ptr, LEGENDE_X, LEGENDE_Y); 
     legend->img.addr = mlx_get_data_addr(legend->img.mlx_img, &legend->img.bpp,
 			&legend->img.line_len, &legend->img.endian); //
 
    // draw_square(legend, 30, 40, 20, encode_rgb(0, 255,0));
- int			wi;
+    int			wi;
     int			he;
     legend->img.mlx_img = mlx_xpm_file_to_image(legend->mlx_ptr, "./images_xpm/Cube3D_1b.xpm", &wi, &he);
-    mlx_put_image_to_window(legend->mlx_ptr, legend->win_ptr, legend->img.mlx_img, (legend->map.columns * 10) + 5, 0); // put image finie
+    mlx_put_image_to_window(legend->mlx_ptr, legend->win_ptr, legend->img.mlx_img, IMAGE_X - 300, 0); // put image finie
 
    // mlx_string_put(legend->mlx_ptr, legend->win_ptr, (legend->map.columns *10) + 40, 15, 0xFFFFFF, "Cub3D");
 }
@@ -174,7 +174,7 @@ int    anim_legend(t_game *legend)
 
    //     mlx_put_image_to_window(legend->mlx_ptr, legend->win_ptr, legend->img.mlx_img, (legend->map.columns * 10) + 5, 0); // put image finie
      //   mlx_put_image_to_window(legend->mlx_ptr, legend->win_ptr, legend->img.mlx_img, (legend->map.columns * 10) + 100, 205); // put image finie
-        mlx_put_image_to_window(legend->mlx_ptr, legend->win_ptr, legend->img.mlx_img, (legend->map.columns * 10) + 95, 204); // put image finie
+        mlx_put_image_to_window(legend->mlx_ptr, legend->win_ptr, legend->img.mlx_img, IMAGE_X - 300 + 90, 204); // put image finie
 
     /*
         mlx_string_put(legend->mlx_ptr, legend->win_ptr, (legend->map.columns *10) + 40, 110, 0xFF0000, "NORTH");
@@ -202,7 +202,7 @@ int    anim_legend(t_game *legend)
         }
 
       //  mlx_string_put(legend->mlx_ptr, legend->win_ptr, (legend->map.columns *10) + DEGREE_X1, DEGREE_Y1, WEST_COLOR, "degree angle");
-        mlx_string_put(legend->mlx_ptr, legend->win_ptr, (legend->map.columns *10) + DEGREE_X2, DEGREE_Y2, SOUTH_COLOR, itoa_angle);
+        mlx_string_put(legend->mlx_ptr, legend->win_ptr, IMAGE_X - 300 - 5 + DEGREE_X2, DEGREE_Y2, SOUTH_COLOR, itoa_angle);
         free(itoa_angle);
 /*
         mlx_string_put(legend->mlx_ptr, legend->win_ptr, (legend->map.columns *10) + 40, 180, 0xFFFFFF, "    W / UP");

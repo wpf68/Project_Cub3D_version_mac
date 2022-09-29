@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 13:27:41 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/09/25 17:48:32 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/09/29 10:59:04 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,18 +22,33 @@ void    init_game(t_game *game)
         error_msg("pointeur mlx introuvable");
  //   game->win_ptr = mlx_new_window(game->mlx_ptr, WIDTH, HEIGTH, "cub3d");
 
-    x = (game->map.columns * 10) + BORDER_X;
-    y = (game->map.lines *10) + BORDER_Y;
-    if (y < HEIGHT_MINI)
-        y = HEIGHT_MINI;
+    x = IMAGE_X;
+    y = IMAGE_Y;
+ //   x = (game->map.columns * 10) + BORDER_X;
+ //   y = (game->map.lines *10) + BORDER_Y;
+ //   if (y < HEIGHT_MINI)
+ //       y = HEIGHT_MINI;
     game->win_ptr = mlx_new_window(game->mlx_ptr, x, y, "Map_Scan");
     if (game->win_ptr == NULL)
     {
         free(game->win_ptr);   //
         error_msg("erreur ! fenetre introuvable");
     }
-    game->img.mlx_img = mlx_new_image(game->mlx_ptr, (game->map.columns * 10), (game->map.lines *10)); //
-    game->img.addr = mlx_get_data_addr(game->img.mlx_img, &game->img.bpp,
-			&game->img.line_len, &game->img.endian); //
+    if (game->map.columns * 10 < IMAGE_X - LEGENDE_X && game->map.lines * 10 < IMAGE_Y - CUBE_Y)
+    {
+        game->test_size = 1;
+        game->img.mlx_img = mlx_new_image(game->mlx_ptr, (game->map.columns * 10), (game->map.lines *10)); //
+        game->img.addr = mlx_get_data_addr(game->img.mlx_img, &game->img.bpp,
+                    &game->img.line_len, &game->img.endian); 
+    }
+    else
+    {
+        game->test_size = 0;
+        game->img.mlx_img = mlx_new_image(game->mlx_ptr, IMAGE_X - LEGENDE_X, IMAGE_Y - CUBE_Y); //
+        game->img.addr = mlx_get_data_addr(game->img.mlx_img, &game->img.bpp,
+                    &game->img.line_len, &game->img.endian); 
+    }
+
+    //
     //mlx_hook(game->win_ptr, 17, 0, ft_close, 0);
 }

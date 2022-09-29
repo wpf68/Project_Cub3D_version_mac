@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 12:09:37 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/09/24 09:26:46 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/09/29 10:52:08 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,9 @@ void    reprint_pos(t_game *game)
     x = 0;
     y = 0;
 
+	if (game->test_size == 0)
+		return;
+	
 	mlx_destroy_image(game->mlx_ptr, game->img.mlx_img);//
 	game->img.mlx_img = mlx_new_image(game->mlx_ptr, (game->map.columns * 10) + 10, (game->map.lines *10) + 10); //
     game->img.addr = mlx_get_data_addr(game->img.mlx_img, &game->img.bpp,
@@ -97,7 +100,7 @@ void    reprint_pos(t_game *game)
 	draw_player(game, game->map.p.pos.y, game->map.p.pos.x, 10, int_color);
 
 //	mlx_destroy_image(game->mlx_ptr, game->img.mlx_img);//
-	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->img.mlx_img, 0, 0); // put image finie
+	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->img.mlx_img, 0, CUBE_Y); // put image finie
 
 	//draw_player(game, game->map.p.pos.y, game->map.p.pos.x, 10, PLAYER_COLOR);
 }

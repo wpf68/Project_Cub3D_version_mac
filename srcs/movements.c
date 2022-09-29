@@ -6,17 +6,19 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 08:57:43 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/09/26 14:40:27 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/09/29 09:48:10 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 // #include <X11/keysym.h>  //
 
-void    update(t_game *game, int key)
+void    update(t_image *image, int key)
 {
 
-    
+    t_game  *game;
+
+    game = &image->game;
     
     if (key == TOUCH_RIGHT)     //  rotation droite
         game->map.p.apos += game->map.p.rotspeed;
@@ -28,10 +30,10 @@ void    update(t_game *game, int key)
         move_player(game, 1.0);
     if (key == TOUCH_ESC)       //
     {
-        mlx_destroy_window(game->mlx_ptr, game->win_ptr);       // segment fautl !!!
-        game->win_ptr = NULL;  // ok plus de segment fault mais le prg ne sort pas
+      //  mlx_destroy_window(game->mlx_ptr, game->win_ptr);       // segment fautl !!!
+       // game->win_ptr = NULL;  // ok plus de segment fault mais le prg ne sort pas
         mlx_destroy_image(game->mlx_ptr, game->img.mlx_img);
-       // mlx_destroy_image(legend.mlx_ptr, legend.img.mlx_img);
+        mlx_destroy_image(image->legend.mlx_ptr, image->legend.img.mlx_img);
 
 	  //  mlx_destroy_display(game->mlx_ptr);
         mlx_destroy_window(game->mlx_ptr, game->win_ptr);

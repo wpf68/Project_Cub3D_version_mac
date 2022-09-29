@@ -6,12 +6,40 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 13:00:33 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/09/28 14:48:14 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/09/29 10:39:33 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
+
+
+
 #ifndef CUB3D_H
 # define CUB3D_H
+
+/*  TAILLES IMAGES
+
+	image total	:	1800 x 900
+
+	legende		:	300 x 600
+	game		:	X x Y
+	cube		:	600 x 600
+*/
+# define IMAGE_X 1800
+# define IMAGE_Y 900
+# define CUBE_X 600
+# define CUBE_Y 600
+# define LEGENDE_X 300
+# define LEGENDE_Y 600
+
+/*	POSITION IMAGES
+
+	legende		:	IMAGE_X - 300, 0
+	cube		:	0, 0
+	game		:	0, CUBE_Y
+*/
+
+
 
 # ifdef __APPLE__
 #  define TOUCH_A 0
@@ -157,6 +185,7 @@ typedef struct s_ray
 
 typedef struct s_game
 {
+	int		test_size; // verifi la taille de la map
 	void	*mlx_ptr;
 	void	*win_ptr;
 	t_map	map;
@@ -164,6 +193,15 @@ typedef struct s_game
 	t_img	img;  // pour mlx_new_image
 	double	*apos_game; // pour radar
 } t_game;
+
+typedef struct s_image
+{
+	t_game	game;
+    t_game  legend;
+	t_game	cube;
+} t_image;
+
+
 
 // FUNCTIONS
 
@@ -175,7 +213,7 @@ void	error_msg(char *msg);
 int		ft_close(void);
 int		find_player(char p, char *characters);
 void	draw_square(t_game *game, int posx, int posy, int side, int color);
-void	update(t_game *game, int key);
+void	update(t_image *images, int key);
 void	move_player(t_game *game, double nb);
 int		count_char(char *str, char c);
 void	check_nb_player(t_game *game);
@@ -183,7 +221,7 @@ void	init_player_position(t_game *game, char *line, int y);
 void	check_files_map(int argc, char **argv);
 void	init_var_player(t_game *game);
 void    draw_player(t_game *game, int posx, int posy, int side, int color);
-int		ft_input(int key, void *param);
+int		ft_input(int key, t_image *images);
 void	reprint_pos(t_game *game);
 void	print_background(t_game *game);
 void	draw_player_p(t_game *game, int x, int y);
