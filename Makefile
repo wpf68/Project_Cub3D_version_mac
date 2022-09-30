@@ -6,7 +6,7 @@
 #    By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/22 08:47:50 by pwolff            #+#    #+#              #
-#    Updated: 2022/09/29 11:23:53 by pwolff           ###   ########.fr        #
+#    Updated: 2022/09/30 15:55:34 by pwolff           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,10 +53,10 @@ maker:
 	make -C ./mlx_linux
 
 clean:
-	make clean -C ./libft
-	make clean -C ./mlx_linux
-	rm -rf $(OBJS_DIR)
-	printf "\033[2K\r${GRN}[CLEAN]${RST} done$(END)"
+	@make clean -C ./libft
+	@make clean -C ./mlx_linux
+	@rm -rf $(OBJS_DIR)
+	@printf "\033[2K\r${GRN}[CLEAN]${RST} done$(END) \n"
 
 else
 
@@ -84,9 +84,9 @@ endif
 all: $(NAME)
 
 fclean: clean
-	make fclean -C ./libft
-	rm -rf $(NAME)
-	printf "\033[2K\r${GRN}[FCLEAN]${RST} done$(END)"
+	@make fclean -C ./libft
+	@rm -rf $(NAME)
+	@printf "\033[2K\r${GRN}[FCLEAN]${RST} done$(END) \n"
 
 re: fclean all 
 

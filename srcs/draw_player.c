@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/27 10:27:52 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/09/23 13:25:59 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/09/30 13:58:51 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void    draw_player(t_game *game, int posx, int posy, int side, int color)
 
     i = 0;
     j = 0;
+
     
     if (game->win_ptr == NULL)  //
         return;  //

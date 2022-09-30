@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 08:57:43 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/09/29 11:35:57 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/09/30 15:37:52 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,19 @@ void    update(t_image *image, int key)
     game = &image->game;
     
     if (key == TOUCH_RIGHT)     //  rotation droite
+    {
         game->map.p.apos += game->map.p.rotspeed;
+        if (game->map.p.apos >= 2 * M_PI)   //  pour garder un angle entre 0 et 2*PI
+            game->map.p.apos = game->map.p.apos - (2 * M_PI);
+    }
     if (key == TOUCH_LEFT)     // rotation gauche
+    {
         game->map.p.apos -= game->map.p.rotspeed;
+        if (game->map.p.apos < 0)   //  pour garder un angle entre 0 et 2*PI
+            game->map.p.apos = (2 * M_PI) + game->map.p.apos;
+    }
+        
+
     if (key == TOUCH_W || key == TOUCH_UP)     // 13     avancer
         move_player(game, -1.0);
     if (key == TOUCH_S || key == TOUCH_DOWN)      // 1    reculer
@@ -49,10 +59,109 @@ void    move_player(t_game *game, double nb)
     double  tmp_x;
     double tmp_y;
 
-     tmp_x = game->map.p.pos.x + (game->map.p.speed * cos(game->map.p.apos)) * nb;
-     if (game->map.tab[(int)floor(game->map.p.pos.y / 10)][(int)floor(tmp_x / 10)] == FLOOR)
-         game->map.p.pos.x = tmp_x;
-     tmp_y = game->map.p.pos.y + (game->map.p.speed * sin(game->map.p.apos)) * nb;
-     if (game->map.tab[(int)floor(tmp_y / 10)][(int)floor(game->map.p.pos.x / 10)] == FLOOR)
-         game->map.p.pos.y = tmp_y;        
+    if (game->map.p.apos >= 0 && game->map.p.apos <= M_PI / 2 && nb == -1)   // UP
+    {
+        tmp_x = game->map.p.pos.x + (game->map.p.speed * cos(game->map.p.apos)) * nb;
+        if (game->map.tab[(int)floor(game->map.p.pos.y / 10)][(int)floor(tmp_x / 10)] == FLOOR &&
+                game->map.tab[(int)floor(game->map.p.pos.y / 10) + 1][(int)floor(tmp_x / 10)] == FLOOR &&
+                game->map.tab[(int)floor(game->map.p.pos.y / 10)][(int)floor(tmp_x / 10) + 1] == FLOOR)
+            game->map.p.pos.x = tmp_x;
+        tmp_y = game->map.p.pos.y + (game->map.p.speed * sin(game->map.p.apos)) * nb;
+        if (game->map.tab[(int)floor(tmp_y / 10)][(int)floor(game->map.p.pos.x / 10)] == FLOOR && 
+                game->map.tab[(int)floor(tmp_y / 10)][(int)floor(game->map.p.pos.x / 10) + 1] == FLOOR &&
+                game->map.tab[(int)floor(tmp_y / 10) + 1][(int)floor(game->map.p.pos.x / 10)] == FLOOR )
+            game->map.p.pos.y = tmp_y;  
+    }
+    else if (game->map.p.apos > M_PI / 2 && game->map.p.apos <= M_PI && nb == -1)
+    {
+        tmp_x = game->map.p.pos.x + (game->map.p.speed * cos(game->map.p.apos)) * nb;
+        if (game->map.tab[(int)floor(game->map.p.pos.y / 10)][(int)floor(tmp_x / 10)] == FLOOR && 
+                 game->map.tab[(int)floor(game->map.p.pos.y / 10)][(int)floor(tmp_x / 10) + 1] == FLOOR &&
+                 game->map.tab[(int)floor(game->map.p.pos.y / 10) + 1][(int)floor(tmp_x / 10) + 1] == FLOOR )
+            game->map.p.pos.x = tmp_x;
+        tmp_y = game->map.p.pos.y + (game->map.p.speed * sin(game->map.p.apos)) * nb;
+        if (game->map.tab[(int)floor(tmp_y / 10)][(int)floor((game->map.p.pos.x) / 10)] == FLOOR &&
+                game->map.tab[(int)floor(tmp_y / 10)][(int)floor((game->map.p.pos.x) / 10) + 1] == FLOOR &&
+                game->map.tab[(int)floor(tmp_y / 10) + 1][(int)floor((game->map.p.pos.x) / 10) + 1] == FLOOR) 
+            game->map.p.pos.y = tmp_y;  
+    }
+    else if (game->map.p.apos >= M_PI && game->map.p.apos < 3 * M_PI / 2 && nb == -1)
+    {
+        tmp_x = game->map.p.pos.x + (game->map.p.speed * cos(game->map.p.apos)) * nb;
+        if (game->map.tab[(int)floor(game->map.p.pos.y / 10)][(int)floor(tmp_x / 10) + 1] == FLOOR &&
+                game->map.tab[(int)floor(game->map.p.pos.y / 10) + 1][(int)floor(tmp_x / 10) + 1] == FLOOR &&
+                game->map.tab[(int)floor(game->map.p.pos.y / 10) + 1][(int)floor(tmp_x / 10)] == FLOOR)
+            game->map.p.pos.x = tmp_x;
+        tmp_y = game->map.p.pos.y + (game->map.p.speed * sin(game->map.p.apos)) * nb;
+        if (game->map.tab[(int)floor(tmp_y / 10) + 1][(int)floor(game->map.p.pos.x / 10) + 1] == FLOOR && 
+                 game->map.tab[(int)floor(tmp_y / 10)][(int)floor(game->map.p.pos.x / 10) + 1] == FLOOR &&
+                 game->map.tab[(int)floor(tmp_y / 10) + 1][(int)floor(game->map.p.pos.x / 10)] == FLOOR )
+            game->map.p.pos.y = tmp_y;  
+    }
+    else if (game->map.p.apos >= 3 * M_PI / 2 && game->map.p.apos < 2 * M_PI && nb == -1)
+    {
+        tmp_x = game->map.p.pos.x + (game->map.p.speed * cos(game->map.p.apos)) * nb;
+        if (game->map.tab[(int)floor(game->map.p.pos.y / 10)][(int)floor(tmp_x / 10)] == FLOOR &&
+                game->map.tab[(int)floor(game->map.p.pos.y / 10) + 1][(int)floor(tmp_x / 10) + 1] == FLOOR &&
+                game->map.tab[(int)floor(game->map.p.pos.y / 10) + 1][(int)floor(tmp_x / 10)] == FLOOR)
+            game->map.p.pos.x = tmp_x;
+        tmp_y = game->map.p.pos.y + (game->map.p.speed * sin(game->map.p.apos)) * nb;
+        if (game->map.tab[(int)floor(tmp_y / 10)][(int)floor(game->map.p.pos.x / 10)] == FLOOR &&
+                game->map.tab[(int)floor(tmp_y / 10) + 1][(int)floor(game->map.p.pos.x / 10)] == FLOOR &&
+                game->map.tab[(int)floor(tmp_y / 10) + 1][(int)floor(game->map.p.pos.x / 10) + 1] == FLOOR)
+            game->map.p.pos.y = tmp_y;  
+    }
+    else if (game->map.p.apos >= 0 && game->map.p.apos <= M_PI / 2 && nb == 1)  //  DOWN
+    {
+        tmp_x = game->map.p.pos.x + (game->map.p.speed * cos(game->map.p.apos)) * nb;
+        if (game->map.tab[(int)floor(game->map.p.pos.y / 10)][(int)floor(tmp_x / 10) + 1] == FLOOR &&
+                game->map.tab[(int)floor(game->map.p.pos.y / 10) + 1][(int)floor(tmp_x / 10) + 1] == FLOOR &&
+                game->map.tab[(int)floor(game->map.p.pos.y / 10) + 1][(int)floor(tmp_x / 10)] == FLOOR)
+            game->map.p.pos.x = tmp_x;
+        tmp_y = game->map.p.pos.y + (game->map.p.speed * sin(game->map.p.apos)) * nb;
+        if (game->map.tab[(int)floor(tmp_y / 10) + 1][(int)floor(game->map.p.pos.x / 10) + 1] == FLOOR && 
+                game->map.tab[(int)floor(tmp_y / 10)][(int)floor(game->map.p.pos.x / 10) + 1] == FLOOR &&
+                game->map.tab[(int)floor(tmp_y / 10) + 1][(int)floor(game->map.p.pos.x / 10)] == FLOOR )
+            game->map.p.pos.y = tmp_y;  
+    }
+    else if (game->map.p.apos > M_PI / 2 && game->map.p.apos <= M_PI && nb == 1)
+    {
+        tmp_x = game->map.p.pos.x + (game->map.p.speed * cos(game->map.p.apos)) * nb;
+        if (game->map.tab[(int)floor(game->map.p.pos.y / 10)][(int)floor(tmp_x / 10)] == FLOOR && 
+                 game->map.tab[(int)floor(game->map.p.pos.y / 10) + 1][(int)floor(tmp_x / 10) + 1] == FLOOR &&
+                 game->map.tab[(int)floor(game->map.p.pos.y / 10) + 1][(int)floor(tmp_x / 10)] == FLOOR )
+            game->map.p.pos.x = tmp_x;
+        tmp_y = game->map.p.pos.y + (game->map.p.speed * sin(game->map.p.apos)) * nb;
+        if (game->map.tab[(int)floor(tmp_y / 10)][(int)floor((game->map.p.pos.x) / 10)] == FLOOR &&
+                game->map.tab[(int)floor(tmp_y / 10) + 1][(int)floor((game->map.p.pos.x) / 10) + 1] == FLOOR &&
+                game->map.tab[(int)floor(tmp_y / 10) + 1][(int)floor((game->map.p.pos.x) / 10)] == FLOOR) 
+            game->map.p.pos.y = tmp_y;  
+    }
+    else if (game->map.p.apos >= M_PI && game->map.p.apos < 3 * M_PI / 2 && nb == 1)
+    {
+        tmp_x = game->map.p.pos.x + (game->map.p.speed * cos(game->map.p.apos)) * nb;
+        if (game->map.tab[(int)floor(game->map.p.pos.y / 10)][(int)floor(tmp_x / 10)] == FLOOR &&
+                game->map.tab[(int)floor(game->map.p.pos.y / 10)][(int)floor(tmp_x / 10) + 1] == FLOOR &&
+                game->map.tab[(int)floor(game->map.p.pos.y / 10) + 1][(int)floor(tmp_x / 10)] == FLOOR)
+            game->map.p.pos.x = tmp_x;
+        tmp_y = game->map.p.pos.y + (game->map.p.speed * sin(game->map.p.apos)) * nb;
+        if (game->map.tab[(int)floor(tmp_y / 10)][(int)floor(game->map.p.pos.x / 10)] == FLOOR && 
+                 game->map.tab[(int)floor(tmp_y / 10)][(int)floor(game->map.p.pos.x / 10) + 1] == FLOOR &&
+                 game->map.tab[(int)floor(tmp_y / 10) + 1][(int)floor(game->map.p.pos.x / 10)] == FLOOR )
+            game->map.p.pos.y = tmp_y;  
+    }
+    else if (game->map.p.apos >= 3 * M_PI / 2 && game->map.p.apos < 2 * M_PI && nb == 1)
+    {
+        tmp_x = game->map.p.pos.x + (game->map.p.speed * cos(game->map.p.apos)) * nb;
+        if (game->map.tab[(int)floor(game->map.p.pos.y / 10)][(int)floor(tmp_x / 10)] == FLOOR &&
+                game->map.tab[(int)floor(game->map.p.pos.y / 10)][(int)floor(tmp_x / 10) + 1] == FLOOR &&
+                game->map.tab[(int)floor(game->map.p.pos.y / 10) + 1][(int)floor(tmp_x / 10) + 1] == FLOOR)
+            game->map.p.pos.x = tmp_x;
+        tmp_y = game->map.p.pos.y + (game->map.p.speed * sin(game->map.p.apos)) * nb;
+        if (game->map.tab[(int)floor(tmp_y / 10)][(int)floor(game->map.p.pos.x / 10)] == FLOOR &&
+                game->map.tab[(int)floor(tmp_y / 10)][(int)floor(game->map.p.pos.x / 10) + 1] == FLOOR &&
+                game->map.tab[(int)floor(tmp_y / 10) + 1][(int)floor(game->map.p.pos.x / 10) + 1] == FLOOR)
+            game->map.p.pos.y = tmp_y;  
+    }
+      
 }
