@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 14:45:25 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/10/01 11:13:13 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/01 15:21:54 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void	init_map(t_game *game, char *argv)
 {
 	char	*read_str;
+	char	*temp_temp;
 	char	*temp;
 	int		map_fd;
 	int		i;
@@ -22,7 +23,7 @@ void	init_map(t_game *game, char *argv)
 	i = 0;
 
 	read_str = ft_strjoin("maps/", argv); //
-	ft_printf("chemin map : %s\n", read_str);  // ----------------  test
+	//ft_printf("chemin map : %s\n", read_str);  // ----------------  test
 	map_fd = open(read_str, O_RDONLY); //
 	free(read_str);   //
 
@@ -33,7 +34,9 @@ void	init_map(t_game *game, char *argv)
 	temp = ft_strdup("");
 	while (read_str)
 	{
-		temp = ft_strjoin(temp, read_str);
+		temp_temp = temp;
+		temp = ft_strjoin(temp_temp, read_str);
+		free(temp_temp);
 		read_str = get_next_line(map_fd);
 		i++;
 	}

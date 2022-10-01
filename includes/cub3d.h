@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 13:00:33 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/10/01 11:05:56 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/01 13:53:31 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,7 @@
 # define WEST 'W'
 # define EAST 'E'
 
+# define SKY_COLOR 0x000000FF   // à definir
 # define WALL_COLOR 0x006C767C
 # define FLOOR_COLOR 0x008FB5D1
 # define PLAYER_COLOR 0x001093D9
@@ -112,6 +113,8 @@
 # define SOUTH_COLOR 0x0000FF00
 # define EAST_COLOR 0x000000FF
 # define WEST_COLOR 0x00FFFF00
+
+# define ANGLE_OF_VIEW M_PI/4  // 45 degrés
 
 
 //STRUCTURES 
@@ -220,7 +223,9 @@ int		encode_rgb(uint8_t red, uint8_t green, uint8_t blue);
 void    init_legend(t_game *game, t_game *legend);
 int		anim_legend(t_game *legend);
 void    draw_circle(t_game *image, int x, int y, int r, int color);
+void    draw_circle_bis(t_game *image, int x, int y, int r, int color);
 void	init_cube(t_game *game, t_game *cube);
+int		anim_cub3D(t_image *images);
 
 
 #endif

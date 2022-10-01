@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_input.c                                         :+:      :+:    :+:   */
+/*   img_pix_put.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/01 08:37:57 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/10/01 13:12:55 by pwolff           ###   ########.fr       */
+/*   Created: 2022/10/01 13:33:12 by pwolff            #+#    #+#             */
+/*   Updated: 2022/10/01 13:34:52 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
 #include "../includes/cub3d.h"
 
-int ft_input(int key, t_image *images)
+void	img_pix_put(t_game *game, int x, int y, int color)
 {
-    t_game *game;
+	char    *pixel;
+	int		i;
 
-    game = &images->game;
-    update(images, key);
-    if (game->win_ptr == NULL)
-        return (1);
-    ft_printf("key --> %d\n", key);
-
-    anim_legend(&images->legend);  //  à la place du mlx_loop_hook du main
-    anim_cub3D(images);
-    reprint_pos(game);
-    return (0);
+	i = game->img.bpp - 8;
+    pixel = game->img.addr + (y * game->img.line_len + x * (game->img.bpp / 8));
+	while (i >= 0)
+	{
+		/* big endian, MSB is the leftmost bit */
+		if (game->img.endian != 0)
+			*pixel++ = (color >> i) & 0xFF;
+		/* little endian, LSB is the leftmost bit */
+		else
+			*pixel++ = (color >> (game->img.bpp - 8 - i)) & 0xFF;
+		i -= 8;
+	}
 }

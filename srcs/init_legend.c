@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 14:04:52 by pwolff            #+#    #+#             */
-/*   Updated: 2022/10/01 11:05:54 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/01 15:59:10 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ int    anim_legend(t_game *legend)
         draw_circle(legend, 60, 56, 48, 0x00DF9D00);
         mlx_put_image_to_window(legend->mlx_ptr, legend->win_ptr, legend->img.mlx_img, CUBE_X + 90, 204); // put image finie
 
-        int angle = (*legend->apos_game) * 180 / 3.14;
+        int angle = (*legend->apos_game) * 180 / M_PI;
         if (angle < 0)
             angle = angle * (-1) + 180;
         angle %= 360;

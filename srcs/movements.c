@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 08:57:43 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/10/01 11:09:55 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/01 15:24:59 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void    update(t_image *image, int key)
 {
 
     t_game  *game;
+    int     i;
 
     game = &image->game;
     
@@ -48,6 +49,12 @@ void    update(t_image *image, int key)
 
         mlx_destroy_window(game->mlx_ptr, game->win_ptr);
 	    free(game->mlx_ptr);
+
+        i = -1;
+        while (image->game.map.tab[++i])
+            free(image->game.map.tab[i]);
+
+        free(image->game.map.tab);
         exit (0);
     }
 
