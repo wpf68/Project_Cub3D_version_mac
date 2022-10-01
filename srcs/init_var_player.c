@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 10:27:59 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/09/23 14:51:02 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/01 11:19:18 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ void    init_var_player(t_game *game)
 {
     game->map.nb_player = 0;
     game->map.p.speed = 0.5;
-  //  game->map.p.rotspeed = 0.2;
-    game->map.p.rotspeed = 0.05;  // 
+    game->map.p.rotspeed = 0.1;
     init_angle_player(game);
 }

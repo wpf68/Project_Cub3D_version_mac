@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 12:09:37 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/09/29 10:52:08 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/01 11:20:59 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ void    reprint_pos(t_game *game)
 		x = (((3141592 / 2) - orientation) / 6160) * 1;
 		if (x < 0)
 			x*= -1;
-		printf("color red x = %d\n", x);  // 
 		int_color = encode_rgb(255 - x, 0, 0);   //  red  - NORTH  -  16711680
 	}
 	else if (orientation >= (3 * 3141592 / 4) && orientation < (5 * 3141592 / 4))
@@ -72,7 +71,6 @@ void    reprint_pos(t_game *game)
 		x = (((3141592) - orientation) / 6160) * 1;
 		if (x < 0)
 			x*= -1;
-		printf("color blue x = %d\n", x);  // 
 		int_color = encode_rgb(0, 0, 255 - x);  // blue  - EAST  - 255
 	}
 	else if (orientation >= (5 * 3141592 / 4) && orientation < (7 * 3141592 / 4))
@@ -80,7 +78,6 @@ void    reprint_pos(t_game *game)
 		x = (((3 * 3141592 / 2) - orientation) / 6160) * 1;
 		if (x < 0)
 			x*= -1;
-		printf("color green x = %d\n", x);  // 
 		int_color = encode_rgb(0, 255 - x, 0); // green  - SOUTH  -  65280
 	}
 	else
@@ -89,18 +86,11 @@ void    reprint_pos(t_game *game)
 			x = orientation / 6160;
 		else
 			x = (((3141592 * 2) - orientation) / 6160) * 2;
-		printf("color Yellow x = %d\n", x);  // 
 		int_color = encode_rgb(255, 255, x); // 16776960 - // yellow - WEST 
 	}
 
-
-
-	//int_color = 16711680;  // test
 	printf("apos = %f  Orientation = %d  --  int_color = %d\n", game->map.p.apos, orientation, int_color); //
 	draw_player(game, game->map.p.pos.y, game->map.p.pos.x, 10, int_color);
 
-//	mlx_destroy_image(game->mlx_ptr, game->img.mlx_img);//
 	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->img.mlx_img, 0, CUBE_Y); // put image finie
-
-	//draw_player(game, game->map.p.pos.y, game->map.p.pos.x, 10, PLAYER_COLOR);
 }

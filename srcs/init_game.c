@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 13:27:41 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/09/29 10:59:04 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/01 11:17:34 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,11 @@ void    init_game(t_game *game)
     game->mlx_ptr = mlx_init();
     if (game->mlx_ptr == NULL)
         error_msg("pointeur mlx introuvable");
- //   game->win_ptr = mlx_new_window(game->mlx_ptr, WIDTH, HEIGTH, "cub3d");
 
     x = IMAGE_X;
     y = IMAGE_Y;
- //   x = (game->map.columns * 10) + BORDER_X;
- //   y = (game->map.lines *10) + BORDER_Y;
- //   if (y < HEIGHT_MINI)
- //       y = HEIGHT_MINI;
-    game->win_ptr = mlx_new_window(game->mlx_ptr, x, y, "Map_Scan");
+
+    game->win_ptr = mlx_new_window(game->mlx_ptr, x, y, "Cub3D");
     if (game->win_ptr == NULL)
     {
         free(game->win_ptr);   //
@@ -49,6 +45,4 @@ void    init_game(t_game *game)
                     &game->img.line_len, &game->img.endian); 
     }
 
-    //
-    //mlx_hook(game->win_ptr, 17, 0, ft_close, 0);
 }

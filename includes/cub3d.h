@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 13:00:33 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/09/29 11:54:19 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/01 11:05:56 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,16 +91,6 @@
 # include <time.h>
 
 
-//SIZE 
-
-# define WIDTH 800
-# define HEIGTH 600
-# define BORDER_X  300 	//  image right
-# define BORDER_Y  10	//  image tight
-# define HEIGHT_MINI 600  // image right
-
-
-
 //COLORS 
 
 # define RED "\033[1;31m"
@@ -122,8 +112,6 @@
 # define SOUTH_COLOR 0x0000FF00
 # define EAST_COLOR 0x000000FF
 # define WEST_COLOR 0x00FFFF00
-
-# define SPEED_MOVIE 500
 
 
 //STRUCTURES 
@@ -191,7 +179,7 @@ typedef struct s_game
 	t_map	map;
 	t_ray	r;
 	t_img	img;  // pour mlx_new_image
-	double	*apos_game; // pour radar
+	double	*apos_game; // pour boussole
 } t_game;
 
 typedef struct s_image
@@ -214,7 +202,7 @@ int		ft_close(void);
 int		find_player(char p, char *characters);
 void	draw_square(t_game *game, int posx, int posy, int side, int color);
 void	update(t_image *images, int key);
-void	move_player(t_game *game, double nb);
+void	move_player(t_game *game, double nb, double alpha);
 int		count_char(char *str, char c);
 void	check_nb_player(t_game *game);
 void	init_player_position(t_game *game, char *line, int y);

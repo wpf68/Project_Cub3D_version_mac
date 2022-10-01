@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/27 10:27:52 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/09/30 13:58:51 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/01 11:10:22 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,6 @@ void    draw_player(t_game *game, int posx, int posy, int side, int color)
         {
             if (game->win_ptr != NULL)
                 img_pix_put(game, posy + i, posx + j, color);
-
-           // mlx_pixel_put(game->mlx_ptr, game->win_ptr, posy + i, posx + j, color);
         }
         j = 0;
     }
