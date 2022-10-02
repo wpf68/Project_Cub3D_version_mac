@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 13:03:50 by pwolff            #+#    #+#             */
-/*   Updated: 2022/10/02 12:52:13 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/02 14:28:27 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,11 @@ int		anim_cub3D(t_image *images)
 
     double  planeX; 
     double  planeY;
+
+    planeX = sin(images->game.map.p.apos) * -0.66;  // YES
+    planeY = cos(images->game.map.p.apos) * -0.66;  // YES
+
+    /*
     if (images->game.map.p.apos >= 3 * M_PI /4 && images->game.map.p.apos < 5 * M_PI / 4)
     {
         planeX = 0;
@@ -64,7 +69,7 @@ int		anim_cub3D(t_image *images)
         planeY = 0;
     }
     
-
+*/
 
  //  double  planeX = 0; 
   //  double  planeY = 0.66;
