@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 12:09:37 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/10/01 11:20:59 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/03 12:17:00 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,35 +21,55 @@ int	encode_rgb(uint8_t red, uint8_t green, uint8_t blue)
 void    reprint_pos(t_game *game)
 {
     int x;
-    int y;
+ //   int y;
 	int	int_color;  // couleur en fonction de l'orientation du player
 
     x = 0;
-    y = 0;
+ //   y = 0;
 
 	if (game->test_size == 0)
 		return;
-	
+	/*
 	mlx_destroy_image(game->mlx_ptr, game->img.mlx_img);//
 	game->img.mlx_img = mlx_new_image(game->mlx_ptr, (game->map.columns * 10) + 10, (game->map.lines *10) + 10); //
     game->img.addr = mlx_get_data_addr(game->img.mlx_img, &game->img.bpp,
 			&game->img.line_len, &game->img.endian); //
-
+*/
+/*
 	print_background(game);
     while (x < game->map.lines)
 	{
 		while (y < game->map.columns)
 		{
 			if (game->map.tab[x][y] == WALL)
-				draw_square(game, x * 10, y * 10, 10, WALL_COLOR);
-			if (game->map.tab[x][y] == FLOOR)
-				draw_square(game, x * 10, y * 10, 10, FLOOR_COLOR);				
+				{
+
+					int			wi = 20;
+    				int			he;
+					
+    				game->img.mlx_img = mlx_xpm_file_to_image(game->mlx_ptr, "./images_xpm/wall.xpm", &wi, &he);
+					mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->img.mlx_img, y * 10, x * 10 + CUBE_Y); // put image finie
+					//draw_square(game, x * 10, y * 10, 10, WALL_COLOR);
+
+
+				}
+		//	if (game->map.tab[x][y] == FLOOR)
+		//		draw_square(game, x * 10, y * 10, 10, FLOOR_COLOR);				
 			y++;
 		}
 		y = 0;
 		x++;
 	}
-	draw_square(game, game->map.p.pos.y, game->map.p.pos.x, 10, FLOOR_COLOR);
+
+	*/
+	
+	mlx_destroy_image(game->mlx_ptr, game->img.mlx_img);//
+	game->img.mlx_img = mlx_new_image(game->mlx_ptr, 10, 10); //
+    game->img.addr = mlx_get_data_addr(game->img.mlx_img, &game->img.bpp,
+			&game->img.line_len, &game->img.endian); //
+	
+//	draw_square(game, 0, 0, 10, FLOOR_COLOR);
+//	draw_square(game, game->map.p.pos.y, game->map.p.pos.x, 10, FLOOR_COLOR);
 
 	//  Couleur du joueur en fonction de son orientation  //
 	int	orientation;
@@ -82,6 +102,7 @@ void    reprint_pos(t_game *game)
 	}
 	else
 	{
+
 		if (orientation < 3141592 / 4)
 			x = orientation / 6160;
 		else
@@ -89,8 +110,12 @@ void    reprint_pos(t_game *game)
 		int_color = encode_rgb(255, 255, x); // 16776960 - // yellow - WEST 
 	}
 
-	printf("apos = %f  Orientation = %d  --  int_color = %d\n", game->map.p.apos, orientation, int_color); //
-	draw_player(game, game->map.p.pos.y, game->map.p.pos.x, 10, int_color);
+	//printf("apos = %f  Orientation = %d  --  int_color = %d\n", game->map.p.apos, orientation, int_color); //
+	draw_player(game, 0, 0, 10, int_color);
+		
+	//draw_player(game, game->map.p.pos.y, game->map.p.pos.x, 10, int_color);
 
-	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->img.mlx_img, 0, CUBE_Y); // put image finie
+	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->img.mlx_img, game->map.p.pos.x, game->map.p.pos.y + CUBE_Y); // put image finie
+
+	//mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->img.mlx_img, 0, CUBE_Y); // put image finie
 }

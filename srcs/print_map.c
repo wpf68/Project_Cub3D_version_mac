@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 15:22:49 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/09/29 10:58:06 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/03 12:02:03 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,18 @@ int	print_map(t_game *game)
 		while (y < game->map.columns)
 		{
 			if (game->map.tab[x][y] == WALL)
-				draw_square(game, x * 10, y * 10, 10, WALL_COLOR);
-			if (game->map.tab[x][y] == FLOOR)
-				draw_square(game, x * 10, y * 10, 10, FLOOR_COLOR);
+			{
+				int	wi;
+				int	he;
+
+				game->img.mlx_img = mlx_xpm_file_to_image(game->mlx_ptr, "./images_xpm/wall.xpm", &wi, &he);
+				mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->img.mlx_img, y * 10, x * 10 + CUBE_Y); // put image finie
+				//	draw_square(game, x * 10, y * 10, 10, WALL_COLOR);
+
+			}
+				
+		//	if (game->map.tab[x][y] == FLOOR)
+		//		draw_square(game, x * 10, y * 10, 10, FLOOR_COLOR);
 			if (find_player(game->map.tab[x][y], "NSEW") == 1)
 			{
 				draw_player_p(game, x, y);

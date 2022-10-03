@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 13:03:50 by pwolff            #+#    #+#             */
-/*   Updated: 2022/10/03 09:37:51 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/03 12:18:04 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int		anim_cub3D(t_image *images)
     double dirY = -(sin(images->game.map.p.apos));
   //  double dirX = -1, dirY = 0; //initial direction vector
 
-    printf("x = %f y = %f  direct x = %f  direct y = %f\n", posX, posY, dirX, dirY);
+   // printf("x = %f y = %f  direct x = %f  direct y = %f\n", posX, posY, dirX, dirY);
    // return (0);
 
 
@@ -230,8 +230,8 @@ int		anim_cub3D(t_image *images)
 
     }
 
-    printf("x = %f y = %f  direct x = %f  direct y = %f\n", posX, posY, dirX, dirY);
-    printf(" ***********  planeX = %f planeY = %f\n", planeX, planeY);
+   // printf("x = %f y = %f  direct x = %f  direct y = %f\n", posX, posY, dirX, dirY);
+   // printf(" ***********  planeX = %f planeY = %f\n", planeX, planeY);
 
 
 

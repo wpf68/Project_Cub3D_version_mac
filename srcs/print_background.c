@@ -3,17 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   print_background.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfuhrman <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 12:35:07 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/08/01 12:42:07 by mfuhrman         ###   ########.fr       */
+/*   Updated: 2022/10/03 12:05:38 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
+
+
 void    print_background(t_game *game)
 {
+    return ;
+
+    
     int x;
     int y;
 
