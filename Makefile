@@ -6,7 +6,7 @@
 #    By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/22 08:47:50 by pwolff            #+#    #+#              #
-#    Updated: 2022/10/01 13:34:48 by pwolff           ###   ########.fr        #
+#    Updated: 2022/10/03 10:08:24 by pwolff           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -91,6 +91,7 @@ fclean: clean
 re: fclean all 
 
 test: all
-	./$(NAME) map.cub
+	./$(NAME) map.cub 
+	#valgrind ./$(NAME) map.cub 
 
 .PHONY:		all clean fclean re maker test

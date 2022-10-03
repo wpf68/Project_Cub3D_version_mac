@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 13:03:50 by pwolff            #+#    #+#             */
-/*   Updated: 2022/10/02 14:28:27 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/03 09:37:51 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int		anim_cub3D(t_image *images)
     double  planeX; 
     double  planeY;
 
-    planeX = sin(images->game.map.p.apos) * -0.66;  // YES
+    planeX = sin(images->game.map.p.apos) * 0.66;  // YES
     planeY = cos(images->game.map.p.apos) * -0.66;  // YES
 
     /*
@@ -86,7 +86,7 @@ int		anim_cub3D(t_image *images)
         while (j < CUBE_Y)
         {
             if (j < CUBE_Y / 2)
-               img_pix_put(cube, i, j, SKY_COLOR);
+               img_pix_put(cube, i, j, encode_rgb(100, 100, 255));
             else
                img_pix_put(cube, i, j, FLOOR_COLOR);
             j++;
@@ -201,7 +201,20 @@ int		anim_cub3D(t_image *images)
             int color = WEST_COLOR;
 
             //give x and y sides different brightness
-           // if(side == 1) {color = color / 2;}
+            if(side == 0) 
+            {
+                if (posX < mapX)
+                    color = WEST_COLOR;
+                else
+                    color = EAST_COLOR;
+            }
+            else
+            {
+                if (posY < mapY)
+                    color = NORTH_COLOR;
+                else
+                    color = SOUTH_COLOR;
+            }
 
             //draw the pixels of the stripe as a vertical line
             //verLine(x, drawStart, drawEnd, color);

@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 08:57:43 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/10/01 15:24:59 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/03 09:49:14 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void    update(t_image *image, int key)
 {
 
     t_game  *game;
-    int     i;
 
     game = &image->game;
     
@@ -42,21 +41,7 @@ void    update(t_image *image, int key)
     else if (key == TOUCH_D)      // 1    reculer
         move_player(game, 1.0, -(M_PI / 2));
     else if (key == TOUCH_ESC)       //
-    {
-        mlx_destroy_image(game->mlx_ptr, game->img.mlx_img);
-        mlx_destroy_image(image->legend.mlx_ptr, image->legend.img.mlx_img);
-        mlx_destroy_image(image->cube.mlx_ptr, image->cube.img.mlx_img);
-
-        mlx_destroy_window(game->mlx_ptr, game->win_ptr);
-	    free(game->mlx_ptr);
-
-        i = -1;
-        while (image->game.map.tab[++i])
-            free(image->game.map.tab[i]);
-
-        free(image->game.map.tab);
-        exit (0);
-    }
+        ft_close(image);
 
 }
 

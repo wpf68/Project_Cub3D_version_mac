@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 13:37:22 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/10/01 11:16:55 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/03 09:45:03 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,6 @@ int main (int argc, char **argv)
     init_cube(&images.game, &images.cube);
     
     mlx_hook(images.game.win_ptr, 2, 1L<<0, *ft_input, &images);
+    mlx_hook(images.game.win_ptr, 33, 1L << 17, ft_close, &images);
     mlx_loop(images.game.mlx_ptr);
 }

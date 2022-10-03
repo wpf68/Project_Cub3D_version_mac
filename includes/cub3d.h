@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 13:00:33 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/10/01 13:53:31 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/03 09:44:22 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -201,7 +201,7 @@ void	init_map(t_game *game, char *argv);
 int		print_map(t_game *game); 
 int		main(int argc, char **argv);
 void	error_msg(char *msg);
-int		ft_close(void);
+int		ft_close(t_image *images);
 int		find_player(char p, char *characters);
 void	draw_square(t_game *game, int posx, int posy, int side, int color);
 void	update(t_image *images, int key);
