@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfuhrman <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/22 11:22:29 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/02/24 11:18:45 by mfuhrman         ###   ########.fr       */
+/*   Created: 2022/02/26 13:28:13 by pwolff            #+#    #+#             */
+/*   Updated: 2022/02/27 11:20:05 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,29 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	int	i;
+	char	*result;
 
-	i = 0;
-	if (s == NULL)
-		return (NULL);
-	while (s[i] != '\0')
-		i++;
-	while (i)
+	result = NULL;
+	while (*s)
 	{
-		if (s[i] == (char)c)
-			return ((char *) &s[i]);
-		i--;
+		if (*s == c)
+			result = (char *)s;
+		s++;
 	}
-	if (s[i] == (char)c)
-		return ((char *) &s[i]);
-	return (NULL);
+	if (*s == c)
+		result = (char *)s;
+	return (result);
 }
+
+/*
+char *strchr(const char *s, int c);
+La fonction strchr() renvoie un pointeur sur la première occurrence du 
+caractère c dans la chaîne s.
+
+char *strrchr(const char *s, int c);
+La fonction strrchr() renvoie un pointeur sur la dernière occurrence du
+ caractère c dans la chaîne s.
+
+Les fonctions strchr() et strrchr() renvoient un pointeur sur le caractère 
+correspondant, ou NULL si le caractère n'a pas été trouvé.
+*/

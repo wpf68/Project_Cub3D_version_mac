@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfuhrman <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/23 10:07:34 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/04/04 15:17:02 by mfuhrman         ###   ########.fr       */
+/*   Created: 2022/02/26 13:04:07 by pwolff            #+#    #+#             */
+/*   Updated: 2022/02/26 13:06:51 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,26 @@
 
 char	*ft_strdup(const char *s)
 {
-	char	*tab;
-	int		i;
-	int		len;
+	char	*ptr;
+	char	*src;
 
-	len = 0;
-	while (s[len] != '\0')
-		len++;
-	tab = (char *)malloc(sizeof(char) * (len + 1));
-	i = 0;
-	if (!(tab))
+	src = (char *)s;
+	ptr = malloc(sizeof(char) * ((ft_strlen(src)) + 1));
+	if (ptr == NULL)
 		return (NULL);
-	while (i < len)
-	{
-		tab[i] = s[i];
-		i++;
-	}
-	tab[i] = '\0';
-	return (tab);
+	ft_memcpy(ptr, src, (ft_strlen(src) + 1));
+	return (ptr);
 }
+
+/*
+char *strdup(const char *s);
+
+La fonction strdup() renvoie un pointeur sur une nouvelle chaîne de 
+caractères qui est dupliquée depuis s. La mémoire occupée par cette 
+nouvelle chaîne est obtenue en appelant malloc(3), et peut (doit) donc 
+être libérée avec free(3).
+
+VALEUR RENVOYÉE
+La fonction strdup() renvoie un pointeur sur la chaîne dupliquée, ou 
+NULL s'il n'y avait pas assez de mémoire.  
+*/

@@ -3,48 +3,87 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfuhrman <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/02 13:55:45 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/04/02 13:57:47 by mfuhrman         ###   ########.fr       */
+/*   Created: 2022/03/10 15:07:57 by pwolff            #+#    #+#             */
+/*   Updated: 2022/03/17 13:10:22 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	f_l(char *str)
+size_t	get_strchr(const char *s, int c)
 {
-	size_t	i;
+	size_t	len;
+
+	if (!s)
+		return (0);
+	len = 1;
+	while (s[len] != c && s[len] != '\0')
+		len++;
+	if (s[len] == c)
+		return (len);
+	return (0);
+}
+
+static size_t	get_strlen(const char *str)
+{
+	unsigned long int	i;
 
 	i = 0;
-	while (str[i] != '\0')
+	while (str != NULL && str[i])
 		i++;
 	return (i);
 }
 
-char	*ft_s_join(char *temp, char *buff)
+static void	*get_memcpy(void *dest, const void *src, unsigned long int n)
 {
-	size_t	i;
-	size_t	j;
-	char	*tab;
+	unsigned long int	i;
+	char				*first;
+	char				*secound;
 
-	if (!temp)
+	if (dest == NULL && src == NULL)
+		return (dest);
+	first = (char *)dest;
+	secound = (char *)src;
+	i = 0;
+	while (i < n)
 	{
-		temp = (char *)(malloc(sizeof(char) * 1));
-		temp[0] = '\0';
+		first[i] = secound[i];
+		i++;
 	}
-	if (!temp || !buff)
+	return (dest);
+}
+
+static void	get_bzero(void *s, unsigned long int n)
+{
+	unsigned long int	i;
+	unsigned char		*str;
+
+	i = 0;
+	str = (unsigned char *)s;
+	while (i < n)
+	{
+		str[i] = '\0';
+		i++;
+	}
+}
+
+char	*get_strjoin(char const *s1, char const *s2)
+{
+	char	*tab;
+	size_t	size;
+
+	if (!s1 && !s2)
 		return (NULL);
-	tab = (char *)malloc(sizeof(char) * (f_l(temp) + f_l(buff)+ 1));
-	if (!tab)
+	size = get_strlen((char *)s1) + get_strlen((char *)s2) + 1;
+	tab = NULL;
+	tab = (char *)(malloc(sizeof(char) * size));
+	if (tab == NULL)
 		return (NULL);
-	i = -1;
-	j = 0;
-	while (temp[++i] != '\0')
-		tab[i] = temp[i];
-	while (buff[j])
-		tab[i++] = buff[j++];
-	tab[i] = '\0';
-	free (temp);
+	get_bzero(tab, size);
+	size = get_strlen((char *)s1);
+	get_memcpy(tab, (char *)s1, size);
+	get_memcpy(&tab[size], (char *)s2, get_strlen((char *)s2));
 	return (tab);
 }

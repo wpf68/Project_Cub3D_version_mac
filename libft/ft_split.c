@@ -3,47 +3,47 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfuhrman <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/25 08:20:51 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/04/05 08:01:35 by mfuhrman         ###   ########.fr       */
+/*   Created: 2022/02/26 12:56:10 by pwolff            #+#    #+#             */
+/*   Updated: 2022/03/03 11:21:13 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	count_words(const char *str, char c)
+static int	ft_part(const char *tab, char c)
 {
-	int	i;
-	int	trigger;
+	int	part;
+	int	test;
 
-	i = 0;
-	trigger = 0;
-	while (*str)
+	part = 0;
+	test = 0;
+	while (*tab)
 	{
-		if (*str != c && trigger == 0)
+		if (*tab != c && test == 0)
 		{
-			trigger = 1;
-			i++;
+			part++;
+			test = 1;
 		}
-		else if (*str == c)
-			trigger = 0;
-		str++;
+		else if (*tab == c)
+			test = 0;
+		tab++;
 	}
-	return (i);
+	return (part);
 }
 
-static char	*word_dup(const char *str, int debut, int fin)
+static char	*ft_tab(const char *str, int start, int finish)
 {
-	char	*word;
+	char	*tab;
 	int		i;
 
 	i = 0;
-	word = (char *)malloc(sizeof(char) * (fin - debut + 1));
-	while (debut < fin)
-		word[i++] = str[debut++];
-	word[i] = '\0';
-	return (word);
+	tab = malloc((finish - start + 1) * sizeof(char));
+	while (start < finish)
+		tab[i++] = str[start++];
+	tab[i] = '\0';
+	return (tab);
 }
 
 char	**ft_split(char const *s, char c)
@@ -51,10 +51,10 @@ char	**ft_split(char const *s, char c)
 	size_t	i;
 	size_t	j;
 	int		index;
-	char	**tab;
+	char	**split;
 
-	tab = (char **)malloc(sizeof(char *) * (count_words(s, c) + 1));
-	if (!s || (!tab))
+	split = malloc((ft_part(s, c) + 1) * sizeof(char *));
+	if (!s || !split)
 		return (NULL);
 	i = 0;
 	j = 0;
@@ -65,11 +65,34 @@ char	**ft_split(char const *s, char c)
 			index = i;
 		else if ((s[i] == c || i == ft_strlen(s)) && index >= 0)
 		{
-			tab[j++] = word_dup(s, index, i);
+			split[j++] = ft_tab(s, index, i);
 			index = -1;
 		}
 		i++;
 	}
-	tab[j] = 0;
-	return (tab);
+	split[j] = 0;
+	return (split);
 }
+/*
+Prototype 
+char **ft_split(char const *s, char c);
+
+Paramètres 
+s: La chaîne de caractères à découper.
+c: Le caractère délimiteur.
+
+Valeur de retour 
+Le tableau de nouvelles chaînes de caractères
+résultant du découpage.
+NULL si l’allocation échoue.
+
+Fonctions externes autorisées
+malloc, free
+
+Description 
+Alloue (avec malloc(3)) et retourne un tableau
+de chaînes de caractères obtenu en séparant ’s’ à
+l’aide du caractère ’c’, utilisé comme délimiteur.
+Le tableau doit être terminé par NULL.
+
+*/

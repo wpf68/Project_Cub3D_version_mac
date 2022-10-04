@@ -3,54 +3,51 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfuhrman <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/24 16:42:44 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/04/05 08:00:51 by mfuhrman         ###   ########.fr       */
+/*   Created: 2022/02/26 13:07:53 by pwolff            #+#    #+#             */
+/*   Updated: 2022/02/26 13:09:17 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	lengthcat(const char *s1, const char *s2)
-{
-	unsigned int	i;
-	unsigned int	j;
-	int				length;
-
-	i = 0;
-	j = 0;
-	length = 0;
-	while (s1[i] != '\0')
-		i++;
-	while (s2[j] != '\0')
-		j++;
-	length = (i + j);
-	return (length);
-}
-
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	unsigned int	i;
-	unsigned int	j;
-	int				size;
-	char			*tab;
+	char	*tab;
+	size_t	size;
 
-	if (!s1 || !s2)
+	if (!s1 && !s2)
 		return (NULL);
-	size = lengthcat(s1, s2);
-	tab = (char *)malloc(sizeof(char) * (size + 1));
-	if (!(tab))
+	size = ft_strlen((char *)s1) + ft_strlen((char *)s2) + 1;
+	tab = NULL;
+	tab = (char *)(malloc(sizeof(char) * size));
+	if (tab == NULL)
 		return (NULL);
-	i = 0;
-	j = 0;
-	while (s1[i] != '\0')
-	{
-		tab[i] = s1[i];
-		i++;
-	}
-	while (s2[j] != '\0')
-		tab[i++] = s2[j++];
-	tab[i] = '\0';
+	ft_bzero(tab, size);
+	size = ft_strlen((char *)s1);
+	ft_memcpy(tab, (char *)s1, size);
+	ft_memcpy(&tab[size], (char *)s2, ft_strlen((char *)s2));
 	return (tab);
 }
+
+/*
+Prototype 
+char *ft_strjoin(char const *s1, char const *s2);
+
+Paramètres 
+s1: La chaîne de caractères préfixe.
+s2: La chaîne de caractères suffixe.
+
+Valeur de retour 
+La nouvelle chaîne de caractères.
+
+NULL si l’allocation échoue.
+
+Fonctions externes autorisées
+malloc
+
+Description 
+Alloue (avec malloc(3)) et retourne une nouvelle chaîne, résultat 
+de la concaténation de s1 et s2.
+*/

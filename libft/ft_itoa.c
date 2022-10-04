@@ -3,63 +3,117 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfuhrman <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/25 12:41:44 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/02/27 09:02:05 by mfuhrman         ###   ########.fr       */
+/*   Created: 2022/02/26 11:54:21 by pwolff            #+#    #+#             */
+/*   Updated: 2022/03/07 14:37:58 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char	*ft_array(char *x, unsigned int number, long int len)
+static void	ft_fill_tab(char *str, int *nbr, int *i)
 {
-	while (number > 0)
+	*i = *i - 1;
+	while (*nbr / 10)
 	{
-		x[len--] = 48 + (number % 10);
-		number = number / 10;
+		str[*i] = *nbr % 10 + '0';
+		*i = *i - 1;
+		*nbr /= 10;
 	}
-	return (x);
+	str[*i] = *nbr % 10 + '0';
 }
 
-static long int	ft_len(int n)
+static void	ft_size_tab(int *nbr, int *i)
 {
-	int	len;
+	int	nb2;
 
-	len = 0;
-	if (n <= 0)
-		len = 1;
-	while (n != 0)
+	*i = 1;
+	if (*nbr < 0)
+		*i = 2;
+	nb2 = *nbr;
+	while (nb2 != 0)
 	{
-		len++;
-		n = n / 10;
+		*i = *i + 1;
+		nb2 = nb2 / 10;
 	}
-	return (len);
+}
+
+static char	*ft_mini_tab(void)
+{
+	char	*tab;
+
+	tab = (char *)malloc(sizeof(char) * 12);
+	if (tab == NULL)
+		return (NULL);
+	tab[0] = '-';
+	tab[1] = '2';
+	tab[2] = '1';
+	tab[3] = '4';
+	tab[4] = '7';
+	tab[5] = '4';
+	tab[6] = '8';
+	tab[7] = '3';
+	tab[8] = '6';
+	tab[9] = '4';
+	tab[10] = '8';
+	tab[11] = '\0';
+	return (tab);
+}
+
+static char	*ft_zero(void)
+{
+	char	*tab;
+
+	tab = (char *)malloc(sizeof(char) * 2);
+	if (tab == NULL)
+		return (NULL);
+	tab[0] = '0';
+	tab[1] = '\0';
+	return (tab);
 }
 
 char	*ft_itoa(int n)
 {
-	char			*x;
-	unsigned int	number;
-	long int		len;
-	int				neg;
+	int		i;
+	char	*str;
 
-	neg = 1;
-	len = ft_len(n);
-	x = malloc(sizeof(char) * (len + 1));
-	if (!(x))
-		return (NULL);
-	x[len--] = '\0';
 	if (n == 0)
-		x[0] = '0';
+		return (ft_zero());
+	if (n == -2147483648)
+		return (ft_mini_tab());
+	ft_size_tab(&n, &i);
+	str = (char *)malloc(sizeof(char) * (i));
+	if (str == NULL)
+		return (NULL);
+	i--;
+	str[i] = '\0';
 	if (n < 0)
 	{
-		neg *= -1;
-		number = n * neg;
-		x[0] = '-';
+		str[0] = '-';
+		n *= -1;
 	}
-	else
-		number = n;
-	x = ft_array(x, number, len);
-	return (x);
+	ft_fill_tab(str, &n, &i);
+	return (str);
 }
+
+/*
+Prototype 
+char *ft_itoa(int n);
+
+Paramètres 
+n: L’entier à convertir.
+
+Valeur de retour 
+La chaîne de caractères représentant l’entier.
+NULL si l’allocation échoue.
+
+Fonctions externes autorisées
+malloc
+
+Description 
+Alloue (avec malloc(3)) et retourne une chaîne
+de caractères représentant l’entier ’n’ reçu en
+argument. Les nombres négatifs doivent être gérés.
+
+*/

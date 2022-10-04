@@ -3,19 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfuhrman <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/22 00:58:29 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/02/23 11:51:46 by mfuhrman         ###   ########.fr       */
+/*   Created: 2022/02/26 11:50:57 by pwolff            #+#    #+#             */
+/*   Updated: 2022/03/07 14:16:10 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "libft.h"
 
 int	ft_isascii(int c)
 {
 	if (c >= 0 && c <= 127)
 		return (1);
-	else
-		return (0);
+	return (0);
 }
+/*
+ 
+isascii()
+vérifie si c est un unsigned char sur 7 bits, entrant dans le jeu de 
+caractères ASCII.
+
+Les valeurs renvoyées sont non nulles si le caractère c entre dans la 
+catégorie testée, 
+et zéro sinon  
+
+*/

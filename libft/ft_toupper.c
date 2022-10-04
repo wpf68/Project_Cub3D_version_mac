@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfuhrman <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/22 04:15:59 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/02/24 10:36:01 by mfuhrman         ###   ########.fr       */
+/*   Created: 2022/02/26 13:34:20 by pwolff            #+#    #+#             */
+/*   Updated: 2022/02/26 13:34:29 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,21 @@
 
 int	ft_toupper(int c)
 {
-	if (c >= 'a' && c <= 'z')
-		c = c - 32;
+	if (ft_isascii(c) && c >= 'a' && c <= 'z')
+		c = c - 'a' + 'A';
 	return (c);
 }
+
+/*
+int toupper(int c);
+toupper() convertit la lettre c en majuscule si c'est possible.
+
+int tolower(int c);
+tolower() convertit la lettre c en minuscule si c'est possible.
+ 
+Si c n'est ni une valeur unsigned char, ni EOF, le comportement de ces 
+fonctions est imprévisible.
+
+La valeur renvoyée est celle de la lettre convertie, ou bien c si la 
+conversion n'était pas possible.  
+*/

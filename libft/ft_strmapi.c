@@ -3,30 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfuhrman <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/25 13:29:47 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/03/02 10:56:33 by mfuhrman         ###   ########.fr       */
+/*   Created: 2022/02/26 13:17:12 by pwolff            #+#    #+#             */
+/*   Updated: 2022/02/26 13:19:38 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strmapi(char const *s, char (*f) (unsigned int, char))
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	unsigned int	i;
-	unsigned int	len;
-	char			*tab;
+	char				*tab;
+	unsigned long int	len;
+	unsigned long int	i;
 
-	len = 0;
+	if (!s || !f)
+		return (NULL);
+	len = ft_strlen((char *)s);
+	tab = (char *)malloc(sizeof(char) * (len + 1));
+	if (tab == NULL)
+		return (NULL);
 	i = 0;
-	if (!s)
-		return (NULL);
-	while (s[len])
-		len++;
-	tab = malloc(sizeof(*tab) * (len + 1));
-	if (!(tab))
-		return (NULL);
 	while (s[i])
 	{
 		tab[i] = f(i, s[i]);
@@ -35,3 +33,26 @@ char	*ft_strmapi(char const *s, char (*f) (unsigned int, char))
 	tab[i] = '\0';
 	return (tab);
 }
+
+/*
+Prototype 
+char *ft_strmapi(char const *s, char (*f)(unsigned int, char));
+
+Paramètres 
+s: La chaîne de caractères sur laquelle itérer.
+f: La fonction à appliquer à chaque caractère.
+
+Valeur de retour 
+La chaîne de caractères résultant des applications successives de ’f’.
+Retourne NULL si l’allocation échoue.
+
+Fonctions externes autorisées
+malloc
+
+Description 
+Applique la fonction ’f’ à chaque caractère de la
+chaîne de caractères passée en argument pour créer
+une nouvelle chaîne de caractères (avec malloc(3))
+résultant des applications successives de ’f’.
+
+*/

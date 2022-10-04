@@ -3,26 +3,39 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfuhrman <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/22 11:46:43 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/02/28 13:59:41 by mfuhrman         ###   ########.fr       */
+/*   Created: 2022/02/26 11:58:58 by pwolff            #+#    #+#             */
+/*   Updated: 2022/02/26 16:14:39 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memchr(const void *s, int c, size_t n)
+void	*ft_memchr(const void *s, int c, unsigned long int n)
 {
-	unsigned char	*str;
+	char	*str;
+	char	*str_end;
 
-	str = (unsigned char *)s;
-	while (n > 0)
+	str = (char *)s;
+	str_end = str + n;
+	while (str < str_end)
 	{
-		if (*str == (unsigned char)c)
+		if (*str == c)
 			return (str);
 		str++;
-		n--;
 	}
 	return (NULL);
 }
+/*
+void *memchr(const void *s, int c, size_t n);
+
+La fonction memchr() examine les n premiers octets 
+de la zone mémoire pointée par s à la recherche du 
+caractère c. Le premier octet correspondant à c 
+(interprété comme un unsigned char) arrête l'opération.
+
+Les fonctions memchr() et memrchr() renvoient un pointeur 
+sur l'octet correspondant, ou NULL si le caractère n'est 
+pas présent dans la zone de mémoire concernée. 
+*/

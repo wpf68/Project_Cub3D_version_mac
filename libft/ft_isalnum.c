@@ -3,20 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfuhrman <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/22 00:28:14 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/02/23 11:43:01 by mfuhrman         ###   ########.fr       */
+/*   Created: 2022/02/26 11:48:10 by pwolff            #+#    #+#             */
+/*   Updated: 2022/02/26 11:48:41 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "libft.h"
 
 int	ft_isalnum(int c)
 {
 	if ((c >= '0' && c <= '9') || (c >= 'a' && c <= 'z')
 		|| (c >= 'A' && c <= 'Z'))
 		return (1);
-	else
-		return (0);
+	return (0);
 }
+/*
+ 
+isalnum()
+vérifie si l'on a un caractère alphanumérique. C'est équivalent à 
+(isalpha(c) || isdigit(c)).
+
+Les valeurs renvoyées sont non nulles si le caractère c entre dans la 
+catégorie testée, 
+et zéro sinon  
+
+*/

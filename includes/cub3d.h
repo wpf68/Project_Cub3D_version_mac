@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 13:00:33 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/10/04 13:34:32 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/04 14:07:07 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,11 @@
 
 //LIBRAIRIES
 
-//# include <mlx.h>
+# include <mlx.h>
+
+//# include "../mlx_linux/mlx.h"
+//# include "../minilibx_mac/mlx.h"
+
 # include <stdlib.h>
 # include <unistd.h>
 # include <math.h>
@@ -83,9 +87,9 @@
 # include "../libft/libft.h"
 //# include <X11/keysym.h>   // 
 # include <stdio.h> // test
-//# include "../mlx_linux/mlx.h"
-# include "../minilibx_mac/mlx.h"
+
 # include <time.h>
+# include <stdint.h>
 
 
 //COLORS 
