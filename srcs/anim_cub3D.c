@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 13:03:50 by pwolff            #+#    #+#             */
-/*   Updated: 2022/10/03 12:18:04 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/04 19:07:37 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -240,6 +240,25 @@ int		anim_cub3D(t_image *images)
 
 
     mlx_put_image_to_window(cube->mlx_ptr, cube->win_ptr, cube->img.mlx_img, 0, 0);
+
+    int     wi;
+    int     he;
+    t_game  *legend;
+
+    legend = &images->legend;
+
+  //  if (key == TOUCH_RIGHT)     //  rotation droite
+    {
+        mlx_destroy_image(legend->mlx_ptr, legend->img.mlx_img);//
+
+        legend->img.mlx_img = mlx_new_image(legend->mlx_ptr, 162, 159); 
+        legend->img.mlx_img = mlx_xpm_file_to_image(legend->mlx_ptr, "./images_xpm/fleches_bleues_162_159.xpm", &wi, &he);
+        mlx_put_image_to_window(legend->mlx_ptr, legend->win_ptr, legend->img.mlx_img, CUBE_X + 64, 403); // put image finie
+
+    }
+
+
+
     return (0);
 
 }

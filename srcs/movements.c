@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 08:57:43 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/10/03 09:49:14 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/04 17:54:49 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ void    move_player(t_game *game, double nb, double alpha)
     double  tmp_x;
     double  tmp_y;
     double  apos;
+
+
 
     apos = game->map.p.apos + alpha;
     if (apos < 0)

@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 13:00:33 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/10/04 14:07:07 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/04 17:57:50 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -227,6 +227,7 @@ void    draw_circle(t_game *image, int x, int y, int r, int color);
 void    draw_circle_bis(t_game *image, int x, int y, int r, int color);
 void	init_cube(t_game *game, t_game *cube);
 int		anim_cub3D(t_image *images);
+void	anim_direction(t_game *legend, int key);
 
 
 #endif
