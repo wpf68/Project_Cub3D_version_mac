@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 13:37:22 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/10/04 12:23:14 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/05 14:22:41 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,11 @@ int main (int argc, char **argv)
     print_map(&images.game);
     init_legend(&images.game, &images.legend);
     init_cube(&images.game, &images.cube);
-    
-    mlx_hook(images.game.win_ptr, 2, 1L<<0, *ft_input, &images);
-    //mlx_hook(images.game.win_ptr, 33, 1L << 17, ft_close, &images);
 
+    mlx_mouse_hook(images.game.win_ptr, *movements_mouse, &images);
+    mlx_hook(images.game.win_ptr, 2, 1L<<0, *ft_input, &images);
     mlx_hook(images.game.win_ptr, 17, 1L << 17, ft_close, &images);
+   // mlx_hook(images.game.win_ptr, 6, 0, movements_mouse, &images);
+    
     mlx_loop(images.game.mlx_ptr);
 }

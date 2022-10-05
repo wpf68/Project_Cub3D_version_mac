@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 08:57:43 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/10/04 17:54:49 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/05 14:36:41 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,11 +65,15 @@ void    move_player(t_game *game, double nb, double alpha)
             game->map.tab[(int)floor(game->map.p.pos.y / 10)][(int)floor(tmp_x / 10) + 1] == FLOOR &&
             game->map.tab[(int)floor(game->map.p.pos.y / 10) + 1][(int)floor(tmp_x / 10) + 1] == FLOOR)
         game->map.p.pos.x = tmp_x;
+    else
+        game->map.hit_wall = 1;
     tmp_y = game->map.p.pos.y + (game->map.p.speed * sin(apos)) * nb;
     if (game->map.tab[(int)floor(tmp_y / 10)][(int)floor(game->map.p.pos.x / 10)] == FLOOR && 
             game->map.tab[(int)floor(tmp_y / 10)][(int)floor(game->map.p.pos.x / 10) + 1] == FLOOR &&
             game->map.tab[(int)floor(tmp_y / 10) + 1][(int)floor(game->map.p.pos.x / 10)] == FLOOR &&
             game->map.tab[(int)floor(tmp_y / 10) + 1][(int)floor(game->map.p.pos.x / 10) + 1] == FLOOR)
-        game->map.p.pos.y = tmp_y;  
+        game->map.p.pos.y = tmp_y; 
+    else
+        game->map.hit_wall = 1; 
 
 }

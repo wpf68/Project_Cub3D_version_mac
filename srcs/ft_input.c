@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 08:37:57 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/10/04 18:06:26 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/05 14:30:14 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int ft_input(int key, t_image *images)
     t_game *game;
 
     game = &images->game;
+
+    
     update(images, key);
     anim_direction(&images->legend, key);
     if (game->win_ptr == NULL)

@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 10:27:59 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/10/01 11:19:18 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/05 14:35:09 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void init_angle_player(t_game *game)
                 game->map.p.apos = 0;
         }
     }
-	printf("apos = %f\n", game->map.p.apos); //
+//	printf("apos = %f\n", game->map.p.apos); //
 
 }
 
@@ -43,5 +43,6 @@ void    init_var_player(t_game *game)
     game->map.nb_player = 0;
     game->map.p.speed = 0.5;
     game->map.p.rotspeed = 0.1;
+    game->map.hit_wall = 0;
     init_angle_player(game);
 }

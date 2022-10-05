@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 13:03:50 by pwolff            #+#    #+#             */
-/*   Updated: 2022/10/04 19:07:37 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/05 15:52:23 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,81 @@
 int		anim_cub3D(t_image *images)
 {
     t_game  *cube;
+    int     ii;
+    int     jj;
 
     cube = &images->cube;
+
+    if (images->game.map.hit_wall)
+    {
+   //     ii = 0;
+    //    while (ii++ < 10)
+       /* {
+            t_game  temp;
+
+            temp.img.mlx_img = mlx_new_image(cube->mlx_ptr, CUBE_X, CUBE_Y); 
+            temp.img.addr = mlx_get_data_addr(temp.img.mlx_img, &temp.img.bpp,
+			&temp.img.line_len, &temp.img.endian);
+
+            ii = 0;
+            while (ii < CUBE_X)
+            {
+                jj = 0;
+                while (jj < CUBE_Y)
+                {
+                    if (jj < CUBE_Y / 2)
+                    img_pix_put(&temp, ii, jj, encode_rgb(100, 100, 255));
+                    else
+                    img_pix_put(&temp, ii, jj, FLOOR_COLOR);
+                    jj++;
+                }
+                ii++;
+            }*/
+            mlx_destroy_image(cube->mlx_ptr, cube->img.mlx_img);
+            cube->img.mlx_img = mlx_new_image(cube->mlx_ptr, CUBE_X, CUBE_Y); 
+            cube->img.addr = mlx_get_data_addr(cube->img.mlx_img, &cube->img.bpp,
+		    	&cube->img.line_len, &cube->img.endian);
+            ii = 0;
+            while (ii < CUBE_X)
+            {
+                jj = 0;
+                while (jj < CUBE_Y)
+                {
+                 //   if (jj < CUBE_Y)
+                        img_pix_put(cube, ii, jj, encode_rgb(255, 255, 255));
+                 //   else
+                 //       img_pix_put(cube, ii, jj, encode_rgb(0 ,0 ,0));
+                    jj++;
+                }
+                ii++;
+            }
+            ii = 0;
+            while (ii < CUBE_X / 2)
+            {
+                draw_circle_bis(cube, CUBE_X / 2, CUBE_Y / 2, ii, (ii % 3) * 255);
+                ii += 10;
+            }
+
+
+           //  mlx_destroy_image(cube->mlx_ptr, cube->img.mlx_img);
+         //   cube = &temp;
+            mlx_put_image_to_window(cube->mlx_ptr, cube->win_ptr, cube->img.mlx_img, 0, 0);
+            mlx_do_sync(cube->mlx_ptr);
+            usleep(500);
+            ii = 0;
+
+            
+
+        //    mlx_put_image_to_window(cube->mlx_ptr, cube->win_ptr, &temp.img.mlx_img, 0, 0);
+          //  printf("**********  HIT WALL ************\n");
+          //  usleep(100);
+
+           images->game.map.hit_wall = 0;
+
+        }
+
+
+
     mlx_destroy_image(cube->mlx_ptr, cube->img.mlx_img);
     cube->img.mlx_img = mlx_new_image(cube->mlx_ptr, CUBE_X, CUBE_Y); 
     cube->img.addr = mlx_get_data_addr(cube->img.mlx_img, &cube->img.bpp,

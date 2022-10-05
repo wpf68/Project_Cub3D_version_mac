@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 13:00:33 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/10/04 17:57:50 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/05 14:35:33 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,6 +153,7 @@ typedef struct s_map
 	int		columns;
 	int		nb_player;
 	int		move;
+	int		hit_wall;  // flag pour choc wall
 	t_player p;	
 } t_map;
 
@@ -228,6 +229,7 @@ void    draw_circle_bis(t_game *image, int x, int y, int r, int color);
 void	init_cube(t_game *game, t_game *cube);
 int		anim_cub3D(t_image *images);
 void	anim_direction(t_game *legend, int key);
+int		movements_mouse(int button, int x, int y, t_image *images);
 
 
 #endif

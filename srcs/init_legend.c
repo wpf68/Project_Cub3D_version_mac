@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 14:04:52 by pwolff            #+#    #+#             */
-/*   Updated: 2022/10/01 15:59:10 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/05 14:25:23 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@ void    init_legend(t_game *game, t_game *legend)
     legend->map.columns = game->map.columns;
     legend->map.move = 0;
     legend->apos_game = &(game->map.p.apos);
-
-    printf("apos legende = %f  --   apos game = %f\n", *legend->apos_game, game->map.p.apos);  // test
 
     legend->img.mlx_img = mlx_new_image(legend->mlx_ptr, LEGENDE_X, LEGENDE_Y); 
     legend->img.addr = mlx_get_data_addr(legend->img.mlx_img, &legend->img.bpp,
