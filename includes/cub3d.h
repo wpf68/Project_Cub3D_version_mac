@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 13:00:33 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/10/05 14:35:33 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/06 10:05:55 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,11 @@
 #  define DEGREE_Y1 258
 #  define DEGREE_X2 146
 #  define DEGREE_Y2 291
+#  include "../minilibx_mac/mlx.h"
+
+
 # else   // LINUX
+#  include <mlx.h>
 #  define TOUCH_A 113  // Q
 #  define TOUCH_W 122  // Z
 #  define TOUCH_S 115  // S
@@ -69,16 +73,14 @@
 #  define DEGREE_Y1 256
 #  define DEGREE_X2 146
 #  define DEGREE_Y2 291
+//# include "../mlx_linux/mlx.h"
 # endif
 
 
 //LIBRAIRIES
 
-# include <mlx.h>
 
-//# include "../mlx_linux/mlx.h"
-//# include "../minilibx_mac/mlx.h"
-
+//# include <mlx.h>
 # include <stdlib.h>
 # include <unistd.h>
 # include <math.h>
@@ -230,6 +232,7 @@ void	init_cube(t_game *game, t_game *cube);
 int		anim_cub3D(t_image *images);
 void	anim_direction(t_game *legend, int key);
 int		movements_mouse(int button, int x, int y, t_image *images);
+int		move_test(int x, int y, t_image *images);
 
 
 #endif

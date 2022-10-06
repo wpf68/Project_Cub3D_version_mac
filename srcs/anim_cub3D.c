@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 13:03:50 by pwolff            #+#    #+#             */
-/*   Updated: 2022/10/05 15:52:23 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/06 10:32:35 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 int		anim_cub3D(t_image *images)
 {
     t_game  *cube;
-    int     ii;
+   int     ii;
     int     jj;
 
     cube = &images->cube;
@@ -52,6 +52,12 @@ int		anim_cub3D(t_image *images)
             cube->img.mlx_img = mlx_new_image(cube->mlx_ptr, CUBE_X, CUBE_Y); 
             cube->img.addr = mlx_get_data_addr(cube->img.mlx_img, &cube->img.bpp,
 		    	&cube->img.line_len, &cube->img.endian);
+
+
+
+
+
+               
             ii = 0;
             while (ii < CUBE_X)
             {
@@ -74,12 +80,21 @@ int		anim_cub3D(t_image *images)
             }
 
 
+/*
+
+            int			wi;
+            int			he;
+            cube->img.mlx_img = mlx_xpm_file_to_image(cube->mlx_ptr, "./images_xpm/boom_black_600_600.xpm", &wi, &he);
+            mlx_put_image_to_window(cube->mlx_ptr, cube->win_ptr, cube->img.mlx_img, 0, 0); // put image finie
+*/
+
+
            //  mlx_destroy_image(cube->mlx_ptr, cube->img.mlx_img);
          //   cube = &temp;
             mlx_put_image_to_window(cube->mlx_ptr, cube->win_ptr, cube->img.mlx_img, 0, 0);
             mlx_do_sync(cube->mlx_ptr);
-            usleep(500);
-            ii = 0;
+           usleep(500);
+         //   ii = 0;
 
             
 

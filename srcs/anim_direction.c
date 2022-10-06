@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 17:57:36 by pwolff            #+#    #+#             */
-/*   Updated: 2022/10/04 19:13:10 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/06 09:25:26 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ void	anim_direction(t_game *legend, int key)
     else if (key == TOUCH_D) 
         legend->img.mlx_img = mlx_xpm_file_to_image(legend->mlx_ptr, "./images_xpm/croix_verte_est.xpm", &wi, &he);
 
+    
     mlx_put_image_to_window(legend->mlx_ptr, legend->win_ptr, legend->img.mlx_img, CUBE_X + 64, 403); // put image finie
-
+    mlx_do_sync(legend->mlx_ptr);
+   
 }
