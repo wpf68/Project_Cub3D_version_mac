@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 13:03:50 by pwolff            #+#    #+#             */
-/*   Updated: 2022/10/06 10:32:35 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/07 11:29:47 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -267,7 +267,7 @@ int		anim_cub3D(t_image *images)
                     mapX = 0;
            //     printf(" ---------  mapX = %d mapY = %d\n", mapX / 10, mapY / 10);
 
-                if(images->game.map.tab[mapY / 10][mapX / 10] == WALL) hit = 1;  // X and Y inverse
+                if(images->game.map.tab[mapY / 10][mapX / 10] == WALL) hit = 1;  // X and Y inverse in tab
             }
          //   printf(" ---------  mapX = %d mapY = %d\n", mapX / 10, mapY / 10);
 
@@ -306,10 +306,27 @@ int		anim_cub3D(t_image *images)
 
             //draw the pixels of the stripe as a vertical line
             //verLine(x, drawStart, drawEnd, color);
-
+         //   printf("side = %d  mapX = %d   mapY = %d \n ", side, mapX, mapY);
             i = drawStart - 1;
             while (++i < drawEnd)
-               img_pix_put(cube, x, i, color);
+            {
+                if (side == 1)
+                {
+                 //   printf("mapx = %d   i = %d, height = %d\n", mapX, i - drawStart, drawEnd - drawStart );
+                    color = ft_calc_texture(mapX, i - drawStart, drawEnd - drawStart, images);
+
+
+                }
+                else   
+                {
+                 //   printf("mapY = %d   i = %d, height = %d\n", mapY, i - drawStart, drawEnd - drawStart );
+                    color = ft_calc_texture(mapY, i - drawStart, drawEnd - drawStart, images);
+
+
+                }
+                img_pix_put(cube, x, i, color);
+            }
+               
 
 
 

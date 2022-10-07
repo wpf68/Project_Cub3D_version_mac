@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 14:04:52 by pwolff            #+#    #+#             */
-/*   Updated: 2022/10/05 14:25:23 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/07 10:49:19 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,13 +83,14 @@ int    anim_legend(t_game *legend)
 {
     char    *itoa_angle;
     char    *temp;
-    int     wi;
-    int     he;
+//    int     wi;
+ //   int     he;
    
         mlx_destroy_image(legend->mlx_ptr, legend->img.mlx_img);//
 
         legend->img.mlx_img = mlx_new_image(legend->mlx_ptr, 121, 113); 
-        legend->img.mlx_img = mlx_xpm_file_to_image(legend->mlx_ptr, "./images_xpm/Cube3D_2b.xpm", &wi, &he);
+        legend->img.mlx_img = mlx_xpm_file_to_image(legend->mlx_ptr, "./images_xpm/Cube3D_2b.xpm", 
+                &legend->img.size.x, &legend->img.size.y);
         legend->img.addr = mlx_get_data_addr(legend->img.mlx_img, &legend->img.bpp,
                 &legend->img.line_len, &legend->img.endian); //
         draw_circle(legend, 60, 56, 48, 0x00DF9D00);

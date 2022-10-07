@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 13:00:33 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/10/06 10:05:55 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/07 11:00:50 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,22 +123,32 @@
 //STRUCTURES 
 
 // pour mlx_new_image
-typedef struct s_img
-{
-	void	*mlx_img;
-	char	*addr;
-	int		bpp; /* bits per pixel */
-	int		line_len;
-	int		endian;
-}	t_img;
-//------------------------
-
-
 typedef struct s_vector
 {
 	double	x;
 	double	y;
 }	t_vector;
+
+typedef struct s_vector_int
+{
+	int	x;
+	int	y;
+}	t_vector_int;
+
+typedef struct s_img
+{
+	void			*ref;  //
+	t_vector_int	size;
+	void			*mlx_img;
+	char			*addr;
+	int				bpp; /* bits per pixel */
+	int				line_len;
+	int				endian;
+}	t_img;
+//------------------------
+
+
+
 
 typedef struct s_player
 {
@@ -233,6 +243,8 @@ int		anim_cub3D(t_image *images);
 void	anim_direction(t_game *legend, int key);
 int		movements_mouse(int button, int x, int y, t_image *images);
 int		move_test(int x, int y, t_image *images);
+int 	ft_calc_texture(int x, int i, int height, t_image *images);
+
 
 
 #endif
