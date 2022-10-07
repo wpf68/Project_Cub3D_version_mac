@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 13:37:22 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/10/07 10:43:13 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/07 15:41:31 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 int main (int argc, char **argv)
 {   
     t_image images;
+
+    
+
 /*
     t_img	image;
 
@@ -35,6 +38,16 @@ int main (int argc, char **argv)
     print_map(&images.game);
     init_legend(&images.game, &images.legend);
     init_cube(&images.game, &images.cube);
+
+    images.cube.name_text[0] = ft_strjoin("","./images_xpm/text_NO.xpm");
+    images.cube.name_text[1] = ft_strjoin("","./images_xpm/text_SO.xpm");
+    images.cube.name_text[2] = ft_strjoin("","./images_xpm/text_WE.xpm");
+    images.cube.name_text[3] = ft_strjoin("","./images_xpm/text_EA.xpm");
+
+        printf("*********  stop ****-----****\n");
+
+    ft_init_text(&images.cube); 
+
 
   
    // mlx_mouse_hide();

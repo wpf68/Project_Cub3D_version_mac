@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 13:00:33 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/10/07 11:00:50 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/07 15:54:21 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -193,9 +193,11 @@ typedef struct s_game
 	int		test_size; // verifi la taille de la map
 	void	*mlx_ptr;
 	void	*win_ptr;
+	char	*name_text[4];
 	t_map	map;
 	t_ray	r;
 	t_img	img;  // pour mlx_new_image
+	t_img	img_text[4];
 	double	*apos_game; // pour boussole
 } t_game;
 
@@ -243,8 +245,8 @@ int		anim_cub3D(t_image *images);
 void	anim_direction(t_game *legend, int key);
 int		movements_mouse(int button, int x, int y, t_image *images);
 int		move_test(int x, int y, t_image *images);
-int 	ft_calc_texture(int x, int i, int height, t_image *images);
-
+int 	ft_calc_texture(double x, int i, int height, t_image *images, int face);
+void	ft_init_text(t_game *cube);
 
 
 #endif

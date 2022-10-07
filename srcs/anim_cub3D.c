@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 13:03:50 by pwolff            #+#    #+#             */
-/*   Updated: 2022/10/07 11:29:47 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/07 15:47:40 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,13 @@ int		anim_cub3D(t_image *images)
     int     jj;
 
     cube = &images->cube;
+
+
+
+ 
+
+
+    
 
     if (images->game.map.hit_wall)
     {
@@ -287,21 +294,22 @@ int		anim_cub3D(t_image *images)
 
             //choose wall color
             int color = WEST_COLOR;
+            int index;
 
             //give x and y sides different brightness
             if(side == 0) 
             {
                 if (posX < mapX)
-                    color = WEST_COLOR;
+                    index = 2;
                 else
-                    color = EAST_COLOR;
+                    index = 3;
             }
             else
             {
                 if (posY < mapY)
-                    color = NORTH_COLOR;
+                    index = 0;
                 else
-                    color = SOUTH_COLOR;
+                    index = 1;
             }
 
             //draw the pixels of the stripe as a vertical line
@@ -310,21 +318,32 @@ int		anim_cub3D(t_image *images)
             i = drawStart - 1;
             while (++i < drawEnd)
             {
+           //     j = -1;
+            //    while (++j < 10)
+                {
                 if (side == 1)
                 {
                  //   printf("mapx = %d   i = %d, height = %d\n", mapX, i - drawStart, drawEnd - drawStart );
-                    color = ft_calc_texture(mapX, i - drawStart, drawEnd - drawStart, images);
+                    color = ft_calc_texture(mapX, i - drawStart, drawEnd - drawStart, images, index);
+                   // color = ft_calc_texture(sideDistX, i - drawStart, drawEnd - drawStart, images);
 
 
                 }
                 else   
                 {
                  //   printf("mapY = %d   i = %d, height = %d\n", mapY, i - drawStart, drawEnd - drawStart );
-                    color = ft_calc_texture(mapY, i - drawStart, drawEnd - drawStart, images);
+                   color = ft_calc_texture(mapY, i - drawStart, drawEnd - drawStart, images, index);
+                  //  color = ft_calc_texture(sideDistY, i - drawStart, drawEnd - drawStart, images);
 
 
                 }
                 img_pix_put(cube, x, i, color);
+
+
+
+
+                }
+                
             }
                
 

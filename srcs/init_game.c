@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 13:27:41 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/10/01 11:17:34 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/07 15:45:21 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,9 @@ void    init_game(t_game *game)
         game->img.addr = mlx_get_data_addr(game->img.mlx_img, &game->img.bpp,
                     &game->img.line_len, &game->img.endian); 
     }
+
+
+
+
 
 }
