@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 09:54:00 by pwolff            #+#    #+#             */
-/*   Updated: 2022/10/07 15:57:18 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/08 14:34:52 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int ft_calc_texture(double x_map, int i, int height, t_image *images, int face)
 //			&(image.line_len), &(image.endian));
 
    // x = (int)x_map;
-    x = (x_map / 50.0) - (int)(x_map / 50.0);
+    x = x_map / (1.0 * (images->game.rapport_player)) - (int)(x_map / (1.0 * (images->game.rapport_player)));
   // printf("x_map  =  %f   x = %f\n", x_map, x);
 
 

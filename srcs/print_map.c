@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 15:22:49 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/10/03 12:02:03 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/08 14:43:56 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@ int	print_map(t_game *game)
 			if (find_player(game->map.tab[x][y], "NSEW") == 1)
 			{
 				draw_player_p(game, x, y);
-				game->map.tab[(int)floor(game->map.p.pos.y / 10)]\
-				[(int)floor(game->map.p.pos.x / 10)] = FLOOR;
+				game->map.tab[(int)floor(game->map.p.pos.y / game->rapport_player)]\
+				[(int)floor(game->map.p.pos.x / game->rapport_player)] = FLOOR;
 			}				
 			y++;
 		}

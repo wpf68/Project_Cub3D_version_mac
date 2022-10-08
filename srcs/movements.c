@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 08:57:43 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/10/05 14:36:41 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/08 14:38:47 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,10 @@ void    move_player(t_game *game, double nb, double alpha)
     if (apos > 2 * M_PI)
         apos = apos - (2 * M_PI);
 
+
+    game->map.p.pos.x = game->map.p.pos.x / game->rapport_player * 10;
+    game->map.p.pos.y = game->map.p.pos.y / game->rapport_player * 10;
+
     tmp_x = game->map.p.pos.x + (game->map.p.speed * cos(apos)) * nb;
     if (game->map.tab[(int)floor(game->map.p.pos.y / 10)][(int)floor(tmp_x / 10)] == FLOOR &&
             game->map.tab[(int)floor(game->map.p.pos.y / 10) + 1][(int)floor(tmp_x / 10)] == FLOOR &&
@@ -75,5 +79,8 @@ void    move_player(t_game *game, double nb, double alpha)
         game->map.p.pos.y = tmp_y; 
     else
         game->map.hit_wall = 1; 
+
+    game->map.p.pos.x = game->map.p.pos.x / 10 * game->rapport_player;
+    game->map.p.pos.y = game->map.p.pos.y / 10 * game->rapport_player;
 
 }

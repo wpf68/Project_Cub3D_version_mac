@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 13:00:33 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/10/07 15:54:21 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/08 15:39:09 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #ifndef CUB3D_H
 # define CUB3D_H
 
+# define DEFINITION_TEXTURES 300
 /*  TAILLES IMAGES
 
 	image total	:	1800 x 900
@@ -199,6 +200,7 @@ typedef struct s_game
 	t_img	img;  // pour mlx_new_image
 	t_img	img_text[4];
 	double	*apos_game; // pour boussole
+	int		rapport_player;
 } t_game;
 
 typedef struct s_image
