@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 13:37:22 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/10/08 15:36:09 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/09 10:44:41 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,16 +46,23 @@ int main (int argc, char **argv)
     init_cube(&images.game, &images.cube);
 
 //    images.cube.name_text[0] = ft_strjoin("","./images_xpm/text_NO.xpm");
-    images.cube.name_text[0] = ft_strjoin("","./images_xpm/Cube3D_2b.xpm");
-    images.cube.name_text[1] = ft_strjoin("","./images_xpm/text_SO.xpm");
-    images.cube.name_text[2] = ft_strjoin("","./images_xpm/text_WE.xpm");
+ //  images.cube.name_text[0] = ft_strjoin("","./images_xpm/Cube3D_2b.xpm");
+  // images.cube.name_text[1] = ft_strjoin("","./images_xpm/text_SO.xpm");
+ // images.cube.name_text[2] = ft_strjoin("","./images_xpm/text_WE.xpm");
  //   images.cube.name_text[2] = ft_strjoin("","./images_xpm/Cube3D_2b.xpm");
 
-    images.cube.name_text[3] = ft_strjoin("","./images_xpm/text_EA.xpm");
+   images.cube.name_text[3] = ft_strjoin("","./images_xpm/text_EA.xpm");
+
+
+   images.cube.name_text[0] = ft_strjoin("","./images_xpm/text__metal+structure+03_d100.xpm");
+     images.cube.name_text[1] = ft_strjoin("","./images_xpm/text_Marble-125_1024.xpm");
+   images.cube.name_text[2] = ft_strjoin("","./images_xpm/text_Com_BrickFacade0004_1_seamless_S.xpm");
+   images.cube.name_text[3] = ft_strjoin("","./images_xpm/txt_laine.xpm");
 
 
     ft_init_text(&images.cube); 
 
+    printf("**********  textures OK *******************\n");
 
   
    // mlx_mouse_hide();
