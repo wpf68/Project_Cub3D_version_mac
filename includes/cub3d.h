@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 13:00:33 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/10/08 15:39:09 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/09 17:39:49 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # define CUB3D_H
 
 # define DEFINITION_TEXTURES 300
+# define NB_TEXTURES 6
+
 /*  TAILLES IMAGES
 
 	image total	:	1800 x 900
@@ -194,11 +196,11 @@ typedef struct s_game
 	int		test_size; // verifi la taille de la map
 	void	*mlx_ptr;
 	void	*win_ptr;
-	char	*name_text[4];
+	char	*name_text[NB_TEXTURES];
 	t_map	map;
 	t_ray	r;
 	t_img	img;  // pour mlx_new_image
-	t_img	img_text[4];
+	t_img	img_text[NB_TEXTURES];
 	double	*apos_game; // pour boussole
 	int		rapport_player;
 } t_game;
@@ -208,6 +210,7 @@ typedef struct s_image
 	t_game	game;
     t_game  legend;
 	t_game	cube;
+	//char	texture_hit;
 } t_image;
 
 

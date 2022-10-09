@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 13:03:50 by pwolff            #+#    #+#             */
-/*   Updated: 2022/10/08 15:41:13 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/09 17:48:47 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int		anim_cub3D(t_image *images)
     t_game  *cube;
    int     ii;
     int     jj;
+    char    texture_hit;
 
     cube = &images->cube;
 
@@ -49,17 +50,17 @@ int		anim_cub3D(t_image *images)
                 jj = 0;
                 while (jj < CUBE_Y)
                 {
-                        img_pix_put(cube, ii, jj, encode_rgb(255, 255, 255));
+                    img_pix_put(cube, ii, jj, encode_rgb(255, 255, 255));
                     jj++;
                 }
                 ii++;
             }
-            ii = 0;
+     /*       ii = 0;
             while (ii < CUBE_X / 2)
             {
                 draw_circle_bis(cube, CUBE_X / 2, CUBE_Y / 2, ii, (ii % 3) * 255);
                 ii += 10;
-            }
+            }*/
 
             mlx_put_image_to_window(cube->mlx_ptr, cube->win_ptr, cube->img.mlx_img, 0, 0);
             mlx_do_sync(cube->mlx_ptr);
@@ -111,9 +112,19 @@ int		anim_cub3D(t_image *images)
         while (j < CUBE_Y)
         {
             if (j < CUBE_Y / 2)
-               img_pix_put(cube, i, j, encode_rgb(150, 150, 255));  // sky
+            {
+          //     img_pix_put(cube, i, j, encode_rgb(150, 150, 255));  // sky
+               img_pix_put(cube, i, j, encode_rgb(0, 0, 0));  // sky
+
+
+            }
             else
-               img_pix_put(cube, i, j, encode_rgb(100, 255, 100));  // floor
+            {
+         //      img_pix_put(cube, i, j, encode_rgb(100, 255, 100));  // floor
+               img_pix_put(cube, i, j, encode_rgb(50, 50, 55)); 
+
+
+            }
             j++;
         }
         i++;
@@ -204,7 +215,13 @@ int		anim_cub3D(t_image *images)
  //                   mapX = 0;
            //     printf(" ---------  mapX = %d mapY = %d\n", mapX / 10, mapY / 10);
 
-                if(images->game.map.tab[(int)(mapY / images->game.rapport_player)][(int)(mapX / images->game.rapport_player)] == WALL) hit = 1;  // X and Y inverse in tab
+                if(images->game.map.tab[(int)(mapY / images->game.rapport_player)][(int)(mapX / images->game.rapport_player)] >= WALL &&
+                      images->game.map.tab[(int)(mapY / images->game.rapport_player)][(int)(mapX / images->game.rapport_player)] <= '9') 
+                {
+                    texture_hit = images->game.map.tab[(int)(mapY / images->game.rapport_player)][(int)(mapX / images->game.rapport_player)];
+                    hit = 1;  // X and Y inverse in tab
+                }
+                
             }
            // printf(" ---------  mapX = %f mapY = %f\n", mapX, mapY);
 
@@ -229,20 +246,24 @@ int		anim_cub3D(t_image *images)
             int index;
 
             //give x and y sides different brightness
-            if(side == 0) 
+            if(side == 0 && texture_hit == WALL) 
             {
                 if (posX < mapX)
                     index = 2;
                 else
                     index = 3;
             }
-            else
+            else if(texture_hit == WALL)
             {
                 if (posY < mapY)
                     index = 0;
                 else
                     index = 1;
             }
+            else if (texture_hit == '2')
+                index = 5;
+            else
+                index = 4;
 
             //draw the pixels of the stripe as a vertical line
             //verLine(x, drawStart, drawEnd, color);

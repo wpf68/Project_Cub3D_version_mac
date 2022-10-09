@@ -6,7 +6,7 @@
 #    By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/04 12:25:59 by pwolff            #+#    #+#              #
-#    Updated: 2022/10/07 15:03:32 by pwolff           ###   ########.fr        #
+#    Updated: 2022/10/09 17:15:06 by pwolff           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -78,7 +78,7 @@ fclean: clean
 re: fclean all 
 
 bonus: all
-	./$(NAME) map.cub 
+	./$(NAME) map_star.cub 
 	#valgrind ./$(NAME) map.cub 
 
 

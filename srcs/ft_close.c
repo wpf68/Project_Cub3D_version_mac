@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 13:33:56 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/10/07 15:03:35 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/09 17:03:06 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int ft_close(t_image *image)
     free(image->game.map.tab);
 
     i = -1;
-    while(++i < 4)
+    while(++i < 6)
         free(image->cube.name_text[i]);
 
     exit (0);

@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 15:22:49 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/10/08 14:43:56 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/09 17:27:19 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	print_map(t_game *game)
 	{
 		while (y < game->map.columns)
 		{
-			if (game->map.tab[x][y] == WALL)
+			if (game->map.tab[x][y] >= WALL && game->map.tab[x][y] <= '9')   //  test
 			{
 				int	wi;
 				int	he;
