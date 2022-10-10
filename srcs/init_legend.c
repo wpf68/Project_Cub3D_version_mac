@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 14:04:52 by pwolff            #+#    #+#             */
-/*   Updated: 2022/10/07 10:49:19 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/10 15:53:19 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,15 @@ void    init_legend(t_game *game, t_game *legend)
     legend->map.columns = game->map.columns;
     legend->map.move = 0;
     legend->apos_game = &(game->map.p.apos);
-
     legend->img.mlx_img = mlx_new_image(legend->mlx_ptr, LEGENDE_X, LEGENDE_Y); 
     legend->img.addr = mlx_get_data_addr(legend->img.mlx_img, &legend->img.bpp,
 			&legend->img.line_len, &legend->img.endian); //
-
     int			wi;
     int			he;
-    legend->img.mlx_img = mlx_xpm_file_to_image(legend->mlx_ptr, "./images_xpm/Cube3D_1b.xpm", &wi, &he);
-    mlx_put_image_to_window(legend->mlx_ptr, legend->win_ptr, legend->img.mlx_img, CUBE_X, 0); // put image finie
-
+    legend->img.mlx_img = mlx_xpm_file_to_image(legend->mlx_ptr, 
+        "./images_xpm/Cube3D_1b.xpm", &wi, &he);
+    mlx_put_image_to_window(legend->mlx_ptr, legend->win_ptr, 
+        legend->img.mlx_img, CUBE_X, 0); // put image finie
 }
 
 void    draw_circle_bis(t_game *image, int x, int y, int r, int color)
@@ -51,41 +50,28 @@ void    draw_circle_bis(t_game *image, int x, int y, int r, int color)
 
 void    draw_circle(t_game *image, int x, int y, int r, int color)
 {
-
     int  i;
 
     i = r - 3;
-
     while (i < (r + 4))
     {
         draw_circle_bis(image, x, y, i, color);
         i++;
     }
-
-        // clacul de l'orientation du joueur sur le cercle
     image->r.dir_x = x - cos(*image->apos_game) * r;
     image->r.dir_y = y - sin(*image->apos_game) * r;
-
-    i = 0;
-    while (i < 3)
-    {
+    i = -1;
+    while (++i < 3)
         draw_circle_bis(image, image->r.dir_x, image->r.dir_y, i, 0x0050D317);
-        i++;
-    }
-    while (i < 5)
-    {
+    while (++i < 5)
         draw_circle_bis(image, image->r.dir_x, image->r.dir_y, i, 0x002F7E0D);
-        i++;
-    }
 }
 
 int    anim_legend(t_game *legend)
 {
     char    *itoa_angle;
     char    *temp;
-//    int     wi;
- //   int     he;
-   
+
         mlx_destroy_image(legend->mlx_ptr, legend->img.mlx_img);//
 
         legend->img.mlx_img = mlx_new_image(legend->mlx_ptr, 121, 113); 

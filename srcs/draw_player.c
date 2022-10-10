@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/27 10:27:52 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/10/08 15:34:42 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/10 15:28:31 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ void    draw_player(t_game *game, int posx, int posy, int side, int color)
     i = 0;
     j = 0;
 
-   
     if (game->win_ptr == NULL)  //
         return;  //
     while (++i < side - 1)
@@ -59,7 +58,4 @@ void draw_player_p(t_game *game, int x, int y)
         draw_square(game, x * 10, y * 10, 10, FLOOR_COLOR);
         draw_player(game, x * 10, y * 10, 10, WEST_COLOR);
     }
-
-
-
 }

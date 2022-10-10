@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 10:39:17 by pwolff            #+#    #+#             */
-/*   Updated: 2022/10/10 11:01:14 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/10 14:48:06 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,26 @@ void    ft_init_var_3D_1(t_game *cube, int x)
     ft_check_wall(cube);
 }
 
+static void     ft_init_draw(t_image *images, t_game *cube)
+{
+    if(cube->r.side == 0) 
+        cube->r.perpWallDist = (cube->r.sideDistX - cube->r.deltaDistX);
+    else          
+        cube->r.perpWallDist = (cube->r.sideDistY - cube->r.deltaDistY);
+
+    //Calculate height of line to draw on screen
+    cube->r.lineHeight = (int)(CUBE_Y / cube->r.perpWallDist * images->game.rapport_player);  //  * 10
+
+    //calculate lowest and highest pixel to fill in current stripe
+    cube->r.drawStart = -cube->r.lineHeight / 2 + CUBE_Y / 2;
+    if(cube->r.drawStart < 0) cube->r.drawStart = 0;
+    cube->r.drawEnd = cube->r.lineHeight / 2 + CUBE_Y / 2;
+    if(cube->r.drawEnd >= CUBE_Y) cube->r.drawEnd = CUBE_Y - 1;
+}
+
+
 void    ft_calc_dist(t_image *images, t_game *cube, char *texture_hit)
 {
-    //perform DDA
     while(cube->r.hit == 0)
     {
         if(cube->r.sideDistX < cube->r.sideDistY)
@@ -78,7 +95,6 @@ void    ft_calc_dist(t_image *images, t_game *cube, char *texture_hit)
             cube->r.mapY += cube->r.stepY;
             cube->r.side = 1;
         }
-
         if(images->game.map.tab[(int)(cube->r.mapY / images->game.rapport_player)][(int)(cube->r.mapX / images->game.rapport_player)] >= WALL &&
                 images->game.map.tab[(int)(cube->r.mapY / images->game.rapport_player)][(int)(cube->r.mapX / images->game.rapport_player)] <= '9') 
         {
@@ -86,6 +102,5 @@ void    ft_calc_dist(t_image *images, t_game *cube, char *texture_hit)
             cube->r.hit = 1;  // X and Y inverse in tab
         }
     }
-
-
+    ft_init_draw(images, cube);
 }
