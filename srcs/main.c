@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 13:37:22 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/10/09 17:24:10 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/10 09:22:12 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,10 +80,14 @@ int main (int argc, char **argv)
         mlx_mouse_move(images.game.win_ptr, (CUBE_X / 2), CUBE_Y );
     # endif
 
+   // mlx_loop_hook(images.game.win_ptr, ft_input_2, &images);
+    mlx_loop_hook(images.legend.mlx_ptr, *reprint_pos, &images.game);//
     mlx_hook(images.game.win_ptr, 2, 1L<<0, *ft_input, &images);
     mlx_hook(images.game.win_ptr, 17, 1L << 17, ft_close, &images);
     mlx_hook(images.game.win_ptr, 6, 1, *move_test, &images);
     mlx_mouse_hook(images.game.win_ptr, *movements_mouse, &images);
+  //  mlx_loop_hook(images.game.win_ptr, ft_input_2, &images);
+
    // mlx_hook(images.game.win_ptr, 6, 0, movements_mouse, &images);
     
     mlx_loop(images.game.mlx_ptr);

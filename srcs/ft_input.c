@@ -6,11 +6,18 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 08:37:57 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/10/05 14:30:14 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/10 09:16:26 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
+
+int ft_input_2(t_image *images)
+{
+    printf("+++++++++++   OK ++++++++++++++\n");
+    ft_input(TOUCH_W, images);
+    return (0);
+}
 
 int ft_input(int key, t_image *images)
 {

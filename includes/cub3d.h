@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 13:00:33 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/10/09 17:39:49 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/10 10:53:17 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #ifndef CUB3D_H
 # define CUB3D_H
 
-# define DEFINITION_TEXTURES 300
+# define DEFINITION_TEXTURES 600
 # define NB_TEXTURES 6
 
 /*  TAILLES IMAGES
@@ -174,21 +174,34 @@ typedef struct s_map
 
 typedef struct s_ray
 {
+	double	posX;
+	double	posY;
 	double	dir_x;
 	double	dir_y;
-	double	map_x;
-	double	map_y;
-	double	delta_x;
-	double	delta_y;
-	int		stepx;
-	int		stepy;
-	double	sdist_x;
-	double	sdist_y;
-	int		hit;
-	int		p;
-	int		ratio;
-	int		side;
-	double	p_walldist;
+	double	planeX;
+	double	planeY;
+	double	dirX;
+	double	dirY;
+
+	double	cameraX;
+	double	rayDirX;
+	double	rayDirY;
+
+	double	mapX;
+	double	mapY;
+
+	double sideDistX;
+    double sideDistY;
+
+	double deltaDistX;
+    double deltaDistY;
+
+    double perpWallDist;
+	double stepX;
+    double stepY;
+
+	int hit; //was there a wall hit?
+    int side; //was a NS or a EW wall hit?
 } t_ray;
 
 typedef struct s_game
@@ -234,7 +247,7 @@ void	check_files_map(int argc, char **argv);
 void	init_var_player(t_game *game);
 void    draw_player(t_game *game, int posx, int posy, int side, int color);
 int		ft_input(int key, t_image *images);
-void	reprint_pos(t_game *game);
+int		reprint_pos(t_game *game);
 void	print_background(t_game *game);
 void	draw_player_p(t_game *game, int x, int y);
 
@@ -252,6 +265,13 @@ int		movements_mouse(int button, int x, int y, t_image *images);
 int		move_test(int x, int y, t_image *images);
 int 	ft_calc_texture(double x, int i, int height, t_image *images, int face);
 void	ft_init_text(t_game *cube);
+int		ft_input_2(t_image *images);
+void    ft_init_var_3D_1(t_game *cube, int x);
+void    ft_calc_dist(t_image *images, t_game *cube, char *texture_hit);
+
+
+
+
 
 
 #endif

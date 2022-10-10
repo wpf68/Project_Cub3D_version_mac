@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 12:09:37 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/10/08 15:34:12 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/10 09:47:11 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	encode_rgb(uint8_t red, uint8_t green, uint8_t blue)
 }
 
 
-void    reprint_pos(t_game *game)
+int    reprint_pos(t_game *game)
 {
     int x;
  //   int y;
@@ -28,12 +28,28 @@ void    reprint_pos(t_game *game)
 
 
 	if (game->test_size == 0)
-		return;
+		return (0);
 	
+/*	draw_player(game, 0, 0, 10, 0);
+
+	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->img.mlx_img, game->map.p.pos.x * 10 / game->rapport_player,
+		 game->map.p.pos.y * 10 / game->rapport_player + CUBE_Y);
+	mlx_do_sync(game->mlx_ptr);*/
+		 
 	mlx_destroy_image(game->mlx_ptr, game->img.mlx_img);//
 	game->img.mlx_img = mlx_new_image(game->mlx_ptr, 10, 10); //
     game->img.addr = mlx_get_data_addr(game->img.mlx_img, &game->img.bpp,
 			&game->img.line_len, &game->img.endian); //
+
+
+
+
+
+
+
+
+
+
 
 	//  Couleur du joueur en fonction de son orientation  //
 	int	orientation;
@@ -84,4 +100,5 @@ void    reprint_pos(t_game *game)
 	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->img.mlx_img, game->map.p.pos.x * 10 / game->rapport_player,
 		 game->map.p.pos.y * 10 / game->rapport_player + CUBE_Y); // put image finie
 
+	return (0);
 }

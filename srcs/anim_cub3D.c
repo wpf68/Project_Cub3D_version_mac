@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 13:03:50 by pwolff            #+#    #+#             */
-/*   Updated: 2022/10/09 17:48:47 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/10 11:00:32 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,223 +15,92 @@
 
 /* https://lodev.org/cgtutor/raycasting.html */
 
+
+static void ft_anim_hit_wall(t_image *images, t_game *cube)
+{
+    int ii;
+    int jj;
+
+    mlx_destroy_image(cube->mlx_ptr, cube->img.mlx_img);
+    cube->img.mlx_img = mlx_new_image(cube->mlx_ptr, CUBE_X, CUBE_Y); 
+    cube->img.addr = mlx_get_data_addr(cube->img.mlx_img, &cube->img.bpp,
+        &cube->img.line_len, &cube->img.endian);
+        
+    ii = -1;
+    while (++ii < CUBE_X)
+    {
+        jj = -1;
+        while (++jj < CUBE_Y)
+            img_pix_put(cube, ii, jj, encode_rgb(255, 255, 255));
+    }
+    mlx_put_image_to_window(cube->mlx_ptr, cube->win_ptr, cube->img.mlx_img, 0, 0);
+    mlx_do_sync(cube->mlx_ptr);
+    usleep(500);
+
+    images->game.map.hit_wall = 0;
+}
+
+static void init_floor_sky(t_image *images, t_game *cube)
+{
+    int i;
+    int j;
+    
+    cube->r.posX = images->game.map.p.pos.x;
+    cube->r.posY = images->game.map.p.pos.y;
+    cube->r.dirX = -(cos(images->game.map.p.apos));
+    cube->r.dirY = -(sin(images->game.map.p.apos));
+    cube->r.planeX = sin(images->game.map.p.apos) * 0.66;  // YES
+    cube->r.planeY = cos(images->game.map.p.apos) * -0.66;  // YES
+    i = 0;
+    while (i < CUBE_X)
+    {
+        j = -1;
+        while (++j < CUBE_Y)
+        {
+            if (j < CUBE_Y / 2)
+               img_pix_put(cube, i, j, encode_rgb(0, 0, 0));  // sky
+            else
+               img_pix_put(cube, i, j, encode_rgb(50, 50, 55));
+        }
+        i++;
+    }
+}
+
+
 int		anim_cub3D(t_image *images)
 {
     t_game  *cube;
-   int     ii;
-    int     jj;
     char    texture_hit;
+    int     i;
+    int     x;
 
     cube = &images->cube;
-
-
-
- 
-
-
     
-
     if (images->game.map.hit_wall)
-    {
-
-            mlx_destroy_image(cube->mlx_ptr, cube->img.mlx_img);
-            cube->img.mlx_img = mlx_new_image(cube->mlx_ptr, CUBE_X, CUBE_Y); 
-            cube->img.addr = mlx_get_data_addr(cube->img.mlx_img, &cube->img.bpp,
-		    	&cube->img.line_len, &cube->img.endian);
-
-
-
-
-
-               
-            ii = 0;
-            while (ii < CUBE_X)
-            {
-                jj = 0;
-                while (jj < CUBE_Y)
-                {
-                    img_pix_put(cube, ii, jj, encode_rgb(255, 255, 255));
-                    jj++;
-                }
-                ii++;
-            }
-     /*       ii = 0;
-            while (ii < CUBE_X / 2)
-            {
-                draw_circle_bis(cube, CUBE_X / 2, CUBE_Y / 2, ii, (ii % 3) * 255);
-                ii += 10;
-            }*/
-
-            mlx_put_image_to_window(cube->mlx_ptr, cube->win_ptr, cube->img.mlx_img, 0, 0);
-            mlx_do_sync(cube->mlx_ptr);
-           usleep(500);
-
-           images->game.map.hit_wall = 0;
-
-        }
-
-
+        ft_anim_hit_wall(images, cube);
 
     mlx_destroy_image(cube->mlx_ptr, cube->img.mlx_img);
     cube->img.mlx_img = mlx_new_image(cube->mlx_ptr, CUBE_X, CUBE_Y); 
     cube->img.addr = mlx_get_data_addr(cube->img.mlx_img, &cube->img.bpp,
 			&cube->img.line_len, &cube->img.endian);
 
-    // Position player
-    
-    double posX = images->game.map.p.pos.x;
-    double posY = images->game.map.p.pos.y;
- /*   if (posX < 11)
-            posX = 11;
-    if (posY < 11)
-            posY = 11;*/
- //   printf("posX = %f  posY = %f\n ", posX, posY);
+    init_floor_sky(images, cube);
 
 
-    // vector direction
-  //  images->game.map.p.apos = 0;
-    double dirX = -(cos(images->game.map.p.apos));
-    double dirY = -(sin(images->game.map.p.apos));
-
-    // camera plane
-
-    double  planeX; 
-    double  planeY;
-
-    planeX = sin(images->game.map.p.apos) * 0.66;  // YES
-    planeY = cos(images->game.map.p.apos) * -0.66;  // YES
-
-    // floor and sky
-    int i;
-    int j;
-    int x;
-    i = 0;
-    while (i < CUBE_X)
-    {
-        j = 0;
-        while (j < CUBE_Y)
-        {
-            if (j < CUBE_Y / 2)
-            {
-          //     img_pix_put(cube, i, j, encode_rgb(150, 150, 255));  // sky
-               img_pix_put(cube, i, j, encode_rgb(0, 0, 0));  // sky
-
-
-            }
-            else
-            {
-         //      img_pix_put(cube, i, j, encode_rgb(100, 255, 100));  // floor
-               img_pix_put(cube, i, j, encode_rgb(50, 50, 55)); 
-
-
-            }
-            j++;
-        }
-        i++;
-    }
-
-
-  //  while(!done())
-    {
        // for(int x = 0; x < CUBE_X; x++)
        x = 0;
         while (x < CUBE_X)
         {
-            double cameraX = 2.0 * x / (double)CUBE_X - 1; //x-coordinate in camera space
-
-            double rayDirX = dirX + planeX * cameraX;
-            double rayDirY = dirY + planeY * cameraX;
-            //which box of the map we're in
-            double mapX = (int)(posX);
-            double mapY = (int)(posY);
-
-            //length of ray from current position to next x or y-side
-            double sideDistX;
-            double sideDistY;
-
-            double deltaDistX = (rayDirX == 0) ? 1e30 : fabs(1 / rayDirX);
-            double deltaDistY = (rayDirY == 0) ? 1e30 : fabs(1 / rayDirY);
-
-            double perpWallDist;
-
-                  //what direction to step in x or y-direction (either +1 or -1)
-            double stepX;
-            double stepY;
-
-            int hit = 0; //was there a wall hit?
-            int side; //was a NS or a EW wall hit?
-
-
-            double  rapport;
-            rapport = 1;
-
-            //calculate step and initial sideDist
-            if(rayDirX < 0)
-            {
-                stepX = -(rapport);
-                sideDistX = (posX - mapX) * deltaDistX;
-            }
-            else
-            {
-                stepX = rapport;
-                sideDistX = (mapX + 1.0 - posX) * deltaDistX;
-            }
-            if(rayDirY < 0)
-            {
-                stepY = -(rapport);
-                sideDistY = (posY - mapY) * deltaDistY;
-            }
-            else
-            {
-                stepY = rapport;
-                sideDistY = (mapY + 1.0 - posY) * deltaDistY;
-            }
+            ft_init_var_3D_1(cube, x);
+            ft_calc_dist(images, cube, &texture_hit);
 
 
 
-            //perform DDA
-            while(hit == 0)
-            {
-                //jump to next map square, either in x-direction, or in y-direction
-                if(sideDistX < sideDistY)
-                {
-                    sideDistX += deltaDistX / (1 / rapport);
-                    mapX += stepX;
-                    side = 0;
-                }
-                else
-                {
-                    sideDistY += deltaDistY / (1 / rapport);
-                    mapY += stepY;
-                    side = 1;
-                }
-                //Check if ray has hit a wall
-              //  printf(" ***********  mapX = %f mapY = %f\n", (double)mapX / 10, (double)mapY / 10);
-             //   if (mapX / 10 > images->game.map.columns || mapY / 10 > images->game.map.lines)
-                //    break;
- //               if (mapY / 10 < 0)
- //                   mapY = 0;
- //               if (mapX / 10 < 0)
- //                   mapX = 0;
-           //     printf(" ---------  mapX = %d mapY = %d\n", mapX / 10, mapY / 10);
-
-                if(images->game.map.tab[(int)(mapY / images->game.rapport_player)][(int)(mapX / images->game.rapport_player)] >= WALL &&
-                      images->game.map.tab[(int)(mapY / images->game.rapport_player)][(int)(mapX / images->game.rapport_player)] <= '9') 
-                {
-                    texture_hit = images->game.map.tab[(int)(mapY / images->game.rapport_player)][(int)(mapX / images->game.rapport_player)];
-                    hit = 1;  // X and Y inverse in tab
-                }
-                
-            }
-           // printf(" ---------  mapX = %f mapY = %f\n", mapX, mapY);
-
-
-
-            if(side == 0) perpWallDist = (sideDistX - deltaDistX);
-            else          perpWallDist = (sideDistY - deltaDistY);
+            if(cube->r.side == 0) cube->r.perpWallDist = (cube->r.sideDistX - cube->r.deltaDistX);
+            else          cube->r.perpWallDist = (cube->r.sideDistY - cube->r.deltaDistY);
 
             //Calculate height of line to draw on screen
-            int lineHeight = (int)(CUBE_Y / perpWallDist * images->game.rapport_player);  //  * 10
+            int lineHeight = (int)(CUBE_Y / cube->r.perpWallDist * images->game.rapport_player);  //  * 10
 
           //  int pitch = 100;
 
@@ -246,16 +115,16 @@ int		anim_cub3D(t_image *images)
             int index;
 
             //give x and y sides different brightness
-            if(side == 0 && texture_hit == WALL) 
+            if(cube->r.side == 0 && texture_hit == WALL) 
             {
-                if (posX < mapX)
+                if (cube->r.posX < cube->r.mapX)
                     index = 2;
                 else
                     index = 3;
             }
             else if(texture_hit == WALL)
             {
-                if (posY < mapY)
+                if (cube->r.posY < cube->r.mapY)
                     index = 0;
                 else
                     index = 1;
@@ -274,10 +143,10 @@ int		anim_cub3D(t_image *images)
            //     j = -1;
             //    while (++j < 10)
                 {
-                if (side == 1)
+                if (cube->r.side == 1)
                 {
                  //   printf("mapx = %d   i = %d, height = %d\n", mapX, i - drawStart, drawEnd - drawStart );
-                    color = ft_calc_texture(mapX, i - drawStart, drawEnd - drawStart, images, index);
+                    color = ft_calc_texture(cube->r.mapX, i - drawStart, drawEnd - drawStart, images, index);
                    // color = ft_calc_texture(sideDistX, i - drawStart, drawEnd - drawStart, images);
 
 
@@ -285,7 +154,7 @@ int		anim_cub3D(t_image *images)
                 else   
                 {
                  //   printf("mapY = %d   i = %d, height = %d\n", mapY, i - drawStart, drawEnd - drawStart );
-                   color = ft_calc_texture(mapY, i - drawStart, drawEnd - drawStart, images, index);
+                   color = ft_calc_texture(cube->r.mapY, i - drawStart, drawEnd - drawStart, images, index);
                   //  color = ft_calc_texture(sideDistY, i - drawStart, drawEnd - drawStart, images);
 
 
@@ -305,7 +174,6 @@ int		anim_cub3D(t_image *images)
         }
 
 
-    }
 
    // printf("x = %f y = %f  direct x = %f  direct y = %f\n", posX, posY, dirX, dirY);
    // printf(" ***********  planeX = %f planeY = %f\n", planeX, planeY);
