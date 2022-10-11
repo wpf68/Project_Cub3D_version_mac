@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 08:58:16 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/10/08 14:13:07 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/11 10:05:48 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,6 @@ void    init_player_position(t_game *game, char *line, int y)
     x++;
     if (line[x] == '\0')
     return ;
-    game->map.p.pos.x = x * game->rapport_player; //
-    game->map.p.pos.y = y * game->rapport_player; //
+    game->map.p.pos.x = x * game->rapport_player;
+    game->map.p.pos.y = y * game->rapport_player;
 }

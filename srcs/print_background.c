@@ -6,17 +6,15 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 12:35:07 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/10/10 15:59:26 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/11 09:37:49 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-
-
 void    print_background(t_game *game)
 {
-   // return ;
+    return ;
     int x;
     int y;
 

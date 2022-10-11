@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 14:04:52 by pwolff            #+#    #+#             */
-/*   Updated: 2022/10/10 15:53:19 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/11 10:13:57 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,42 +67,49 @@ void    draw_circle(t_game *image, int x, int y, int r, int color)
         draw_circle_bis(image, image->r.dir_x, image->r.dir_y, i, 0x002F7E0D);
 }
 
+static void ft_anim_legend_2(t_game *legend, char *itoa_angle, char *temp)
+{
+    int angle = (*legend->apos_game) * 180 / M_PI;
+    if (angle < 0)
+        angle = angle * (-1) + 180;
+    angle %= 360;
+
+    itoa_angle = ft_itoa(angle);
+    if (ft_strlen(itoa_angle) < 3)
+    {
+        temp = itoa_angle;
+        itoa_angle = ft_strjoin("0", temp);
+        free(temp);
+    }
+    if (ft_strlen(itoa_angle) < 3)
+    {
+        temp = itoa_angle;
+        itoa_angle = ft_strjoin("0", temp);
+        free(temp);
+    }
+    mlx_string_put(legend->mlx_ptr, legend->win_ptr, CUBE_X - 5 +
+        DEGREE_X2, DEGREE_Y2, SOUTH_COLOR, itoa_angle);
+    free(itoa_angle);
+}
+
 int    anim_legend(t_game *legend)
 {
     char    *itoa_angle;
     char    *temp;
 
-        mlx_destroy_image(legend->mlx_ptr, legend->img.mlx_img);//
+    temp = NULL;
+    itoa_angle = NULL;
+    mlx_destroy_image(legend->mlx_ptr, legend->img.mlx_img);
 
-        legend->img.mlx_img = mlx_new_image(legend->mlx_ptr, 121, 113); 
-        legend->img.mlx_img = mlx_xpm_file_to_image(legend->mlx_ptr, "./images_xpm/Cube3D_2b.xpm", 
-                &legend->img.size.x, &legend->img.size.y);
-        legend->img.addr = mlx_get_data_addr(legend->img.mlx_img, &legend->img.bpp,
-                &legend->img.line_len, &legend->img.endian); //
-        draw_circle(legend, 60, 56, 48, 0x00DF9D00);
-        mlx_put_image_to_window(legend->mlx_ptr, legend->win_ptr, legend->img.mlx_img, CUBE_X + 90, 204); // put image finie
-
-        int angle = (*legend->apos_game) * 180 / M_PI;
-        if (angle < 0)
-            angle = angle * (-1) + 180;
-        angle %= 360;
-
-        itoa_angle = ft_itoa(angle);
-        if (ft_strlen(itoa_angle) < 3)
-        {
-            temp = itoa_angle;
-            itoa_angle = ft_strjoin("0", temp);
-            free(temp);
-        }
-        if (ft_strlen(itoa_angle) < 3)
-        {
-            temp = itoa_angle;
-            itoa_angle = ft_strjoin("0", temp);
-            free(temp);
-        }
-
-        mlx_string_put(legend->mlx_ptr, legend->win_ptr, CUBE_X - 5 + DEGREE_X2, DEGREE_Y2, SOUTH_COLOR, itoa_angle);
-        free(itoa_angle);
-
+    legend->img.mlx_img = mlx_new_image(legend->mlx_ptr, 121, 113); 
+    legend->img.mlx_img = mlx_xpm_file_to_image(legend->mlx_ptr, 
+        "./images_xpm/Cube3D_2b.xpm", &legend->img.size.x, 
+        &legend->img.size.y);
+    legend->img.addr = mlx_get_data_addr(legend->img.mlx_img, 
+        &legend->img.bpp, &legend->img.line_len, &legend->img.endian);
+    draw_circle(legend, 60, 56, 48, 0x00DF9D00);
+    mlx_put_image_to_window(legend->mlx_ptr, legend->win_ptr, 
+        legend->img.mlx_img, CUBE_X + 90, 204);
+    ft_anim_legend_2(legend, itoa_angle, temp);
     return (0);
 }
