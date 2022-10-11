@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 08:57:43 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/10/11 09:54:51 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/11 11:10:31 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,4 +100,6 @@ void    move_player(t_game *game, double nb, double alpha)
     ft_test_move_2(game, nb, apos);
     game->map.p.pos.x = game->map.p.pos.x / 10 * game->rapport_player;
     game->map.p.pos.y = game->map.p.pos.y / 10 * game->rapport_player;
+
+    printf("move x = %f  move y = %f\n", game->map.p.pos.x, game->map.p.pos.y );// -------
 }

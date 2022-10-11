@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 10:39:17 by pwolff            #+#    #+#             */
-/*   Updated: 2022/10/10 14:48:06 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/11 11:04:13 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,8 @@ static void     ft_init_draw(t_image *images, t_game *cube)
         cube->r.perpWallDist = (cube->r.sideDistY - cube->r.deltaDistY);
 
     //Calculate height of line to draw on screen
-    cube->r.lineHeight = (int)(CUBE_Y / cube->r.perpWallDist * images->game.rapport_player);  //  * 10
+    cube->r.lineHeight = (int)(CUBE_Y / cube->r.perpWallDist * 
+        images->game.rapport_player);  //  * 10
 
     //calculate lowest and highest pixel to fill in current stripe
     cube->r.drawStart = -cube->r.lineHeight / 2 + CUBE_Y / 2;
@@ -78,6 +79,23 @@ static void     ft_init_draw(t_image *images, t_game *cube)
     if(cube->r.drawEnd >= CUBE_Y) cube->r.drawEnd = CUBE_Y - 1;
 }
 
+static void    ft_test_hit_2(t_image *images, t_game *cube, char *texture_hit)
+{
+    if(images->game.map.tab[(int)(cube->r.mapY / 
+            images->game.rapport_player)][(int)(cube->r.mapX / 
+            images->game.rapport_player)] >= WALL &&
+            images->game.map.tab[(int)(cube->r.mapY / 
+            images->game.rapport_player)][(int)(cube->r.mapX / 
+            images->game.rapport_player)] <= '9') 
+    {
+        *texture_hit = images->game.map.tab[(int)(cube->r.mapY / 
+        images->game.rapport_player)][(int)(cube->r.mapX / 
+        images->game.rapport_player)];
+        cube->r.hit = 1;  // X and Y inverse in tab
+    }
+
+
+}
 
 void    ft_calc_dist(t_image *images, t_game *cube, char *texture_hit)
 {
@@ -95,12 +113,7 @@ void    ft_calc_dist(t_image *images, t_game *cube, char *texture_hit)
             cube->r.mapY += cube->r.stepY;
             cube->r.side = 1;
         }
-        if(images->game.map.tab[(int)(cube->r.mapY / images->game.rapport_player)][(int)(cube->r.mapX / images->game.rapport_player)] >= WALL &&
-                images->game.map.tab[(int)(cube->r.mapY / images->game.rapport_player)][(int)(cube->r.mapX / images->game.rapport_player)] <= '9') 
-        {
-            *texture_hit = images->game.map.tab[(int)(cube->r.mapY / images->game.rapport_player)][(int)(cube->r.mapX / images->game.rapport_player)];
-            cube->r.hit = 1;  // X and Y inverse in tab
-        }
+        ft_test_hit_2(images, cube, texture_hit);
     }
     ft_init_draw(images, cube);
 }

@@ -6,7 +6,7 @@
 #    By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/04 12:25:59 by pwolff            #+#    #+#              #
-#    Updated: 2022/10/10 14:52:22 by pwolff           ###   ########.fr        #
+#    Updated: 2022/10/11 12:27:26 by pwolff           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -81,5 +81,8 @@ bonus: all
 	./$(NAME) map_star.cub 
 	#valgrind ./$(NAME) map.cub 
 
+wrong:
+	./$(NAME) map_wrong_size.cub	
 
-.PHONY:		all clean fclean re maker test bonus
+
+.PHONY:		all clean fclean re maker test bonus wrong

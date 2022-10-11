@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 14:04:52 by pwolff            #+#    #+#             */
-/*   Updated: 2022/10/11 10:13:57 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/11 10:32:36 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 
 void    init_legend(t_game *game, t_game *legend)
 {
+    int			wi;
+    int			he;
+
     legend->mlx_ptr = game->mlx_ptr;
     legend->win_ptr = game->win_ptr;
     legend->map.lines = game->map.lines;
@@ -23,13 +26,11 @@ void    init_legend(t_game *game, t_game *legend)
     legend->apos_game = &(game->map.p.apos);
     legend->img.mlx_img = mlx_new_image(legend->mlx_ptr, LEGENDE_X, LEGENDE_Y); 
     legend->img.addr = mlx_get_data_addr(legend->img.mlx_img, &legend->img.bpp,
-			&legend->img.line_len, &legend->img.endian); //
-    int			wi;
-    int			he;
+			&legend->img.line_len, &legend->img.endian);
     legend->img.mlx_img = mlx_xpm_file_to_image(legend->mlx_ptr, 
         "./images_xpm/Cube3D_1b.xpm", &wi, &he);
     mlx_put_image_to_window(legend->mlx_ptr, legend->win_ptr, 
-        legend->img.mlx_img, CUBE_X, 0); // put image finie
+        legend->img.mlx_img, CUBE_X, 0);
 }
 
 void    draw_circle_bis(t_game *image, int x, int y, int r, int color)
