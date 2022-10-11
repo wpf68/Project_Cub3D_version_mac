@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 09:54:00 by pwolff            #+#    #+#             */
-/*   Updated: 2022/10/10 15:41:16 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/11 15:09:23 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@ int ft_calc_texture(double x_map, int i, t_image *images, int face)
     int     y_text;
     int     height;
 
-    height = images->cube.r.drawEnd - images->cube.r.drawStart;
+    if (images->cube.r.lineHeight  > CUBE_Y)
+      i = i + (images->cube.r.lineHeight - CUBE_Y) / 2;
+    height = images->cube.r.lineHeight;
     x = x_map / (1.0 * (images->game.rapport_player)) - (int)(x_map / 
       (1.0 * (images->game.rapport_player)));
     x_text = (x * images->cube.img_text[face].size.x); 
