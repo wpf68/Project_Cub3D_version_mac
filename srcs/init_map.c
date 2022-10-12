@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 14:45:25 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/10/12 09:48:19 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/12 14:53:35 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	init_map(t_game *game, char *argv)
 		printf(" i = %d\n", i);
 		i++;
 	}
-		write(1, "******\n", 7);
+//		write(1, "******\n", 7);
 
 	i = 0;
 	while (game->map.tab[i])
@@ -59,7 +59,7 @@ void	init_map(t_game *game, char *argv)
 		i++;
 
 	}
-		write(1, "******\n", 7);
+	//	write(1, "******\n", 7);
 
 	
 	free(temp);

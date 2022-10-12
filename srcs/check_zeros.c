@@ -6,7 +6,7 @@
 /*   By: mfuhrman <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 09:15:44 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/10/11 10:20:07 by mfuhrman         ###   ########.fr       */
+/*   Updated: 2022/10/12 14:41:50 by mfuhrman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int check_space(char c)
 {
-    if (c == ' ')
+    if (c == ' ' || c == '\t' || c == '\0')
         return (0);
     return (1);
 }
@@ -28,7 +28,7 @@ int check_zeros(t_game *game)
     j = 0;
     while (++i < game->map.lines - 1)
     {
-        while (++j < game->map.columns - 1)
+        while (++j < (int)(ft_strlen(game->map.tab[i])- 1))
         {
             if (find_char(game->map.tab[i][j], "0NSEW"))
             {

@@ -1,30 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_background.c                                 :+:      :+:    :+:   */
+/*   index_last_line.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfuhrman <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/01 12:35:07 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/10/12 14:38:48 by mfuhrman         ###   ########.fr       */
+/*   Created: 2022/10/12 12:37:10 by mfuhrman          #+#    #+#             */
+/*   Updated: 2022/10/12 12:49:20 by mfuhrman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-void    print_background(t_game *game)
+int index_last_line(t_game *game)
 {
-    return ;
-    int x;
-    int y;
+    int i;
+    int size;
 
-    x = 0;
-    y = -1;
-    while (x < game->map.lines)
-    {
-        while (y++ < game->map.columns - 1)
-            draw_square(game, x * 10, y * 10, 10, FLOOR_COLOR);
-        y = -1;
-        x++;
-    }
+    i = 0;
+    while (game->map.tab[i])
+        i++;
+    size = i;
+    return (size);
 }

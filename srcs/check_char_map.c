@@ -6,7 +6,7 @@
 /*   By: mfuhrman <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 14:05:24 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/10/11 10:16:25 by mfuhrman         ###   ########.fr       */
+/*   Updated: 2022/10/12 13:50:01 by mfuhrman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,16 @@ int check_map_char(t_game *game)
 
     i = -1;
     j = -1;
-    while (++i < game->map.lines)
+    while (game->map.tab[++i])
     {
-        while (++j < game->map.columns)
+        while (game->map.tab[i][++j])
         {
-            if (find_char(game->map.tab[i][j], " 01NSEW") == 0)
+            if (find_char(game->map.tab[i][j], " \t01NSEW") == 0)
                 return (0);
+            printf("i = %d, j = %d\n", i, j);
         }
         j = -1;
     }
+    printf("-------check_map_char_ok------\n");
     return (1);
 }
