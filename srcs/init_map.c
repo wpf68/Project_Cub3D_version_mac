@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 14:45:25 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/10/11 10:05:46 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/12 09:48:19 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	init_map(t_game *game, char *argv)
 
 	i = 0;
 
+	game->map.columns = 0;
 	read_str = ft_strjoin("maps/", argv);
 	map_fd = open(read_str, O_RDONLY); 
 	free(read_str);
@@ -40,6 +41,26 @@ void	init_map(t_game *game, char *argv)
 	close (map_fd);
 	game->map.tab = ft_split(temp, '\n');
 	game->map.lines = i;
-	game->map.columns = ft_strlen(game->map.tab[0]);
+	i = 0;
+	while (i < game->map.lines)
+	{
+		if (game->map.columns < (int)ft_strlen(game->map.tab[i]))
+				game->map.columns = ft_strlen(game->map.tab[i]);
+		printf(" i = %d\n", i);
+		i++;
+	}
+		write(1, "******\n", 7);
+
+	i = 0;
+	while (game->map.tab[i])
+	{
+		printf(" i = %d   lines = %d\n", i, game->map.lines);
+		printf("%s", game->map.tab[i]);
+		i++;
+
+	}
+		write(1, "******\n", 7);
+
+	
 	free(temp);
 }

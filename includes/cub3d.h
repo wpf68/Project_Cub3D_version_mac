@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 13:00:33 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/10/10 15:41:43 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/12 09:02:41 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -278,6 +278,13 @@ void    ft_init_var_3D_1(t_game *cube, int x);
 void    ft_calc_dist(t_image *images, t_game *cube, char *texture_hit);
 void    ft_choice_texture(t_image *images, t_game *cube, char *texture_hit);
 void    ft_clear_logo_direction(t_image *images, t_game *cube);
+int		find_char(char p, char *caracters);
+int		check_border_map(t_game *game);
+int		check_border_map_bonus(t_game *game);
+int 	check_map_char(t_game *game);
+int		check_char_map_bonus(t_game *game);
+int		check_zeros(t_game *game);
+int 	check_parameters_map(t_game *game);
 
 
 

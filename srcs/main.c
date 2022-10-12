@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 13:37:22 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/10/10 15:56:50 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/12 09:01:26 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int main (int argc, char **argv)
     srand(time(0));
     check_files_map(argc, argv);
     init_map(&images.game, argv[1]);
+    check_parameters_map(&images.game);
     init_var_player(&images.game);
     check_nb_player(&images.game);
     init_game(&images.game);
