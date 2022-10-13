@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 15:04:29 by pwolff            #+#    #+#             */
-/*   Updated: 2022/10/10 15:43:52 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/13 15:51:53 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_init_text(t_game *cube)
     int i;
 
     i = -1;
-    while(++i < NB_TEXTURES)
+    while(++i < 4)
     {
         cube->img_text[i].mlx_img = mlx_xpm_file_to_image(cube->mlx_ptr, 
             cube->name_text[i], 

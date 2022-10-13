@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 13:00:33 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/10/13 12:56:16 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/13 15:34:08 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 
 # define DEFINITION_TEXTURES 600
 # define NB_TEXTURES 7
+# define NB_ANIME 2  // animation arme
 
 /*  TAILLES IMAGES
 
@@ -224,6 +225,9 @@ typedef struct s_game
 	t_img	img_text[NB_TEXTURES];
 	double	*apos_game; // pour boussole
 	int		rapport_player;
+
+	char	*sprite[NB_ANIME]; // animation arme
+	int		nb_sprite;
 } t_game;
 
 typedef struct s_image

@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 14:06:00 by pwolff            #+#    #+#             */
-/*   Updated: 2022/10/10 15:50:17 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/13 14:26:52 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,5 @@ void    init_cube(t_game *game, t_game *cube)
     mlx_string_put(cube->mlx_ptr, cube->win_ptr, 250, 300, 0x00FF00, 
       "***  VIEW 3D  ***");
     mlx_string_put(cube->mlx_ptr, cube->win_ptr, 250, 320, 0x00FF00, 
-      "    Waiting ...");
+      "    Waiting");
 }

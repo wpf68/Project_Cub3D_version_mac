@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 13:03:50 by pwolff            #+#    #+#             */
-/*   Updated: 2022/10/10 15:22:29 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/13 15:37:56 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,19 @@ static void init_floor_sky(t_image *images, t_game *cube)
     }
 }
 
+void ft_bonus_anime(t_image *images, t_game *cube)
+{
+    int			wi;
+    int			he;
+    (void)  images;
+
+    cube->img.mlx_img = mlx_xpm_file_to_image(cube->mlx_ptr, 
+        cube->sprite[cube->nb_sprite], &wi, &he);
+    mlx_put_image_to_window(cube->mlx_ptr, cube->win_ptr, 
+        cube->img.mlx_img, CUBE_X / 2 - wi / 2, CUBE_Y - he);
+
+
+}
 
 int		anim_cub3D(t_image *images)
 {
@@ -89,6 +102,8 @@ int		anim_cub3D(t_image *images)
         ft_calc_dist(images, cube, &texture_hit);
         ft_choice_texture(images, cube, &texture_hit);
     }
+    
     ft_clear_logo_direction(images, cube);
+    ft_bonus_anime(images, cube);  //  anime
     return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 13:03:50 by pwolff            #+#    #+#             */
-/*   Updated: 2022/10/10 15:22:29 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/13 15:55:17 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 /* https://lodev.org/cgtutor/raycasting.html */
 
-
+/*
 static void ft_anim_hit_wall(t_image *images, t_game *cube)
 {
     int ii;
@@ -39,7 +39,7 @@ static void ft_anim_hit_wall(t_image *images, t_game *cube)
 
     images->game.map.hit_wall = 0;
 }
-
+*/
 static void init_floor_sky(t_image *images, t_game *cube)
 {
     int i;
@@ -66,7 +66,6 @@ static void init_floor_sky(t_image *images, t_game *cube)
     }
 }
 
-
 int		anim_cub3D(t_image *images)
 {
     t_game  *cube;
@@ -74,8 +73,8 @@ int		anim_cub3D(t_image *images)
 
     cube = &images->cube;
   
-    if (images->game.map.hit_wall)
-        ft_anim_hit_wall(images, cube);
+  //  if (images->game.map.hit_wall)
+  //      ft_anim_hit_wall(images, cube);
 
     mlx_destroy_image(cube->mlx_ptr, cube->img.mlx_img);
     cube->img.mlx_img = mlx_new_image(cube->mlx_ptr, CUBE_X, CUBE_Y); 
