@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 13:03:50 by pwolff            #+#    #+#             */
-/*   Updated: 2022/10/13 15:37:56 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/13 19:34:55 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ static void init_floor_sky(t_image *images, t_game *cube)
 
 void ft_bonus_anime(t_image *images, t_game *cube)
 {
+   // return;
     int			wi;
     int			he;
     (void)  images;

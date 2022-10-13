@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 14:52:03 by pwolff            #+#    #+#             */
-/*   Updated: 2022/10/13 13:51:19 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/13 19:28:17 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,9 @@ static void ft_choice_pixel_color(t_image *images, t_game *cube)
 
 void    ft_choice_texture(t_image *images, t_game *cube, char *texture_hit)
 {
+    static int  anime;
+
+    anime++;
     if(cube->r.side == 0 && *texture_hit == WALL) 
     {
         if (cube->r.posX < cube->r.mapX)
@@ -51,8 +54,22 @@ void    ft_choice_texture(t_image *images, t_game *cube, char *texture_hit)
         cube->r.index = 5;
     else if (*texture_hit == '3')
         cube->r.index = 4;
-    else
+    else if (*texture_hit == '4')
+    {
+        //  printf("anime = %d\n")
         cube->r.index = 6;
+        if (anime % 8000 > 2000)
+            cube->r.index = 7;
+    }
+    else if (*texture_hit == '5')
+    {
+        //  printf("anime = %d\n")
+        cube->r.index = 8;
+        if (anime % 8000 > 4000)
+            cube->r.index = 9;
+    }
+    
+        
     ft_choice_pixel_color(images, cube);
 }
 

@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 13:37:22 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/10/13 15:36:15 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/13 19:25:43 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,13 @@ int main (int argc, char **argv)
 
     images.cube.name_text[4] = ft_strjoin("","./images_xpm/text_star_24.xpm");
     images.cube.name_text[5] = ft_strjoin("","./images_xpm/text_star_23.xpm");
-    images.cube.name_text[6] = ft_strjoin("","./images_xpm/boom_black_600_600.xpm");
+    
+    images.cube.name_text[6] = ft_strjoin("","./images_xpm/BOOM_3.xpm");
+    images.cube.name_text[7] = ft_strjoin("","./images_xpm/BOOM_4.xpm");
+    images.cube.name_text[8] = ft_strjoin("","./images_xpm/wall_anim_1.xpm");
+    images.cube.name_text[9] = ft_strjoin("","./images_xpm/wall_anim_2.xpm");
+
+
     ft_init_text(&images.cube); 
     printf("**********  textures OK *******************\n");
     mlx_string_put(images.cube.mlx_ptr, images.cube.win_ptr, 250, 340, 

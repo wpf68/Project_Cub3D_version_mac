@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 13:00:33 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/10/13 15:34:08 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/13 19:25:57 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # define CUB3D_H
 
 # define DEFINITION_TEXTURES 600
-# define NB_TEXTURES 7
+# define NB_TEXTURES 10
 # define NB_ANIME 2  // animation arme
 
 /*  TAILLES IMAGES
@@ -219,6 +219,7 @@ typedef struct s_game
 	void	*mlx_ptr;
 	void	*win_ptr;
 	char	*name_text[NB_TEXTURES];
+	t_img	*ptr_texture; // pointeur sur texture à afficher
 	t_map	map;
 	t_ray	r;
 	t_img	img;  // pour mlx_new_image

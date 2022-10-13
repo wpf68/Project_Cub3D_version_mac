@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 08:37:57 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/10/13 15:38:53 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/13 19:40:13 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,24 @@
 int ft_input_2(t_image *images)
 {
     static int time;
+    static int time_2;
 
     time++;
+    time_2++;
 
   //  return(0);
-    if (time % 4000 == 0)
+    if (time % 2000 == 0)
     {
-        images->cube.nb_sprite += 1;
-        images->cube.nb_sprite = images->cube.nb_sprite % NB_ANIME; 
+        
+        
         //ft_input(-1, images);
         anim_cub3D(images);
     }
-        
+    if (time % 10000 == 0)
+    {
+        images->cube.nb_sprite += 1;
+        images->cube.nb_sprite = images->cube.nb_sprite % NB_ANIME; 
+    }
 
 
 
