@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 14:52:03 by pwolff            #+#    #+#             */
-/*   Updated: 2022/10/13 19:28:17 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/14 09:53:18 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void    ft_choice_texture(t_image *images, t_game *cube, char *texture_hit)
     {
         //  printf("anime = %d\n")
         cube->r.index = 8;
-        if (anime % 8000 > 4000)
+        if (anime % 2000 > 1000)
             cube->r.index = 9;
     }
     

@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 10:46:32 by pwolff            #+#    #+#             */
-/*   Updated: 2022/10/11 10:02:19 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/14 10:44:01 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int		movements_mouse(int button, int x, int y, t_image *images)
     if (images->game.win_ptr == NULL)
         return (1);
     anim_legend(&images->legend);
-    anim_cub3D(images);
+    anim_cub3d(images);
     reprint_pos(&images->game);    
 
     return (0);

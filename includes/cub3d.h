@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 13:00:33 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/10/13 19:25:57 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/14 10:44:29 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -272,14 +272,14 @@ int		anim_legend(t_game *legend);
 void    draw_circle(t_game *image, int x, int y, int r, int color);
 void    draw_circle_bis(t_game *image, int x, int y, int r, int color);
 void	init_cube(t_game *game, t_game *cube);
-int		anim_cub3D(t_image *images);
+int		anim_cub3d(t_image *images);
 void	anim_direction(t_game *legend, int key);
 int		movements_mouse(int button, int x, int y, t_image *images);
 int		move_test(int x, int y, t_image *images);
 int 	ft_calc_texture(double x, int i, t_image *images, int face);
 void	ft_init_text(t_game *cube);
 int		ft_input_2(t_image *images);
-void    ft_init_var_3D_1(t_game *cube, int x);
+void    ft_init_var_3d_1(t_game *cube, int x);
 void    ft_calc_dist(t_image *images, t_game *cube, char *texture_hit);
 void    ft_choice_texture(t_image *images, t_game *cube, char *texture_hit);
 void    ft_clear_logo_direction(t_image *images, t_game *cube);

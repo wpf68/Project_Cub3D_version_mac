@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 08:37:57 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/10/13 19:40:13 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/14 10:46:24 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@ int ft_input_2(t_image *images)
     time_2++;
 
   //  return(0);
-    if (time % 2000 == 0)
+    if (time % 1000 == 0)
     {
         
         
         //ft_input(-1, images);
-        anim_cub3D(images);
+        anim_cub3d(images);
     }
     if (time % 10000 == 0)
     {
@@ -54,7 +54,7 @@ int ft_input(int key, t_image *images)
     if (game->win_ptr == NULL)
         return (1);
     anim_legend(&images->legend);
-    anim_cub3D(images);
+    anim_cub3d(images);
     reprint_pos(game);
     return (0);
 }

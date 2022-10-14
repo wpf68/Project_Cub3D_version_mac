@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 10:39:17 by pwolff            #+#    #+#             */
-/*   Updated: 2022/10/11 11:04:13 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/14 10:41:19 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static void ft_check_wall(t_game *cube)
 
 }
 
-void    ft_init_var_3D_1(t_game *cube, int x)
+void    ft_init_var_3d_1(t_game *cube, int x)
 {
     cube->r.cameraX = 2.0 * x / (double)CUBE_X - 1; //x-coordinate in camera space
 

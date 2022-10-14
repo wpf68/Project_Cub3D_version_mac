@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 13:03:50 by pwolff            #+#    #+#             */
-/*   Updated: 2022/10/13 15:55:17 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/14 10:42:19 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ static void init_floor_sky(t_image *images, t_game *cube)
     }
 }
 
-int		anim_cub3D(t_image *images)
+int		anim_cub3d(t_image *images)
 {
     t_game  *cube;
     char    texture_hit;
@@ -84,7 +84,7 @@ int		anim_cub3D(t_image *images)
     cube->r.x = 0;
     while (cube->r.x < CUBE_X)
     {
-        ft_init_var_3D_1(cube, cube->r.x);
+        ft_init_var_3d_1(cube, cube->r.x);
         ft_calc_dist(images, cube, &texture_hit);
         ft_choice_texture(images, cube, &texture_hit);
     }

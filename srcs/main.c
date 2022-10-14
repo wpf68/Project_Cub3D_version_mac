@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 13:37:22 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/10/13 15:51:43 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/14 10:01:11 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int main (int argc, char **argv)
   
    // mlx_mouse_hide();
     # ifdef __APPLE__
-        mlx_mouse_move(images.game.win_ptr, (CUBE_X / 2), CUBE_Y );
+        mlx_mouse_move(images.game.win_ptr, (CUBE_X / 2), CUBE_Y - 100);
     # endif
 
    // mlx_loop_hook(images.game.win_ptr, ft_input_2, &images);

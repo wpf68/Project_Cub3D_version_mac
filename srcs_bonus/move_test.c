@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 09:46:30 by pwolff            #+#    #+#             */
-/*   Updated: 2022/10/11 10:04:42 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/14 10:44:09 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,9 @@ static void ft_move_test_2(int x, t_image *images, int *key)
             images->game.map.p.apos = images->game.map.p.apos - (2 * M_PI);
     if (apos_mouse < 0)
         *key = TOUCH_LEFT;
+    # ifdef __APPLE__
+        mlx_mouse_move(images->game.win_ptr, (CUBE_X / 2), CUBE_Y -100);
+    # endif
 }
 
 int		move_test(int x, int y, t_image *images)
@@ -44,7 +47,7 @@ int		move_test(int x, int y, t_image *images)
     if (images->game.win_ptr == NULL)
         return (1);
     anim_legend(&images->legend);
-    anim_cub3D(images);
+    anim_cub3d(images);
     reprint_pos(&images->game);    
 
     return (0);
