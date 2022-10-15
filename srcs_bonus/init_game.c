@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 13:27:41 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/10/11 11:20:22 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/15 10:55:07 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,18 @@
 
 static void     ft_test_size_max_map(t_game *game)
 {
-    if (game->map.columns * 10 < IMAGE_X - LEGENDE_X && game->map.lines * 
+    int i;
+
+    game->map.columns = 0;
+    i = -1;
+    while (game->map.tab[++i])
+    {
+      printf("--%s -- %d  %d\n", game->map.tab[i], (int)ft_strlen(game->map.tab[i]), game->map.columns); //// 
+      if ((int)ft_strlen(game->map.tab[i]) > game->map.columns)
+        game->map.columns = ft_strlen(game->map.tab[i]);
+
+    }
+    if (game->map.columns * 10 < IMAGE_X && game->map.lines * 
             10 < IMAGE_Y - CUBE_Y)
     {
         game->test_size = 1;

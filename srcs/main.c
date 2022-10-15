@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 13:37:22 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/10/14 10:01:11 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/15 10:10:25 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int main (int argc, char **argv)
 {   
     t_image images;
-
+/*
     srand(time(0));
     check_files_map(argc, argv);
     init_map(&images.game, argv[1]);
@@ -27,13 +27,25 @@ int main (int argc, char **argv)
     init_legend(&images.game, &images.legend);
     init_cube(&images.game, &images.cube);
 
+*/
 
+    srand(time(0));
+    check_files_map(argc, argv);
+    //init_map(&images.game, argv[1]);
+    parse_data_and_map(&images.game, &images.cube, argv[1]);
+    check_parameters_map(&images.game);
+    init_var_player(&images.game);
+    check_nb_player(&images.game);
+    init_game(&images.game);
+    print_map(&images.game);
+    init_legend(&images.game, &images.legend);
+    init_cube(&images.game, &images.cube);
 
-
+/*
     images.cube.name_text[0] = ft_strjoin("","./images_xpm/text_star_16.xpm");
     images.cube.name_text[1] = ft_strjoin("","./images_xpm/text_star_14.xpm");
     images.cube.name_text[2] = ft_strjoin("","./images_xpm/text_star_20.xpm");
-    images.cube.name_text[3] = ft_strjoin("","./images_xpm/text_star_19.xpm");
+    images.cube.name_text[3] = ft_strjoin("","./images_xpm/text_star_19.xpm");*/
 /*
     images.cube.name_text[4] = ft_strjoin("","./images_xpm/text_star_24.xpm");
     images.cube.name_text[5] = ft_strjoin("","./images_xpm/text_star_23.xpm");

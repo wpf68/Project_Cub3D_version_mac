@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 13:00:33 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/10/14 10:44:29 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/15 10:15:40 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -213,12 +213,34 @@ typedef struct s_ray
 
 } t_ray;
 
+typedef struct s_parse
+{
+	int	flag_N;
+	int	flag_S;
+	int	flag_E;
+	int	flag_W;
+	int flag_C;
+	int	flag_F;
+
+	int read_map; //flag pour savoir si dans le fichier on lit la map 
+
+} t_parse;
+
 typedef struct s_game
 {
 	int		test_size; // verifi la taille de la map
 	void	*mlx_ptr;
 	void	*win_ptr;
 	char	*name_text[NB_TEXTURES];
+
+	int r_c; //couleur rouge pour plafond
+	int	g_c; // couleur verte pour plafond
+	int	b_c; // couleur bleue pour plafond
+
+	int r_f; // couleur rouge pour sol
+	int	g_f; // couleur verte pour sol
+	int	b_f; // couleur bleu pour sol
+
 	t_img	*ptr_texture; // pointeur sur texture à afficher
 	t_map	map;
 	t_ray	r;
@@ -227,6 +249,7 @@ typedef struct s_game
 	double	*apos_game; // pour boussole
 	int		rapport_player;
 
+	t_parse	parse;
 	char	*sprite[NB_ANIME]; // animation arme
 	int		nb_sprite;
 } t_game;
@@ -291,6 +314,15 @@ int		check_char_map_bonus(t_game *game);
 int		check_zeros(t_game *game);
 int 	check_parameters_map(t_game *game);
 int 	index_last_line(t_game *game);
+void	init_parse(t_game *game);
+int 	parse_flag(t_game *game);
+int 	empty_line(char *line);
+int 	check_color(int r, int g, int b);
+int 	find_texture(char *path, int index, t_game *cube);
+int 	find_cell(char *path, t_game *cube);
+int 	find_floor(char *path, t_game *cube);
+void 	parse_text_and_color(char *path, t_game *cube, t_game *game);
+void 	parse_data_and_map(t_game *game, t_game *cube, char *argv);
 
 
 

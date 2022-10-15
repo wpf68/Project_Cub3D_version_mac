@@ -1,3 +1,11 @@
+NO ./images_xpm/text_star_16.xpm
+SO ./images_xpm/text_star_14.xpm
+WE ./images_xpm/text_star_20.xpm
+EA ./images_xpm/text_star_19.xpm
+
+F 50,50,150
+C 0,0,0
+
 111141111111111111145555555551111
 100000000000000000000000000000001
 100000000000000000000000000000001

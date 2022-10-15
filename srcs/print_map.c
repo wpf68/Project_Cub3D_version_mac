@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 15:22:49 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/10/13 12:49:20 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/15 10:24:08 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ static int	ft_test_size_map(t_game *game)
 	//return (0); /// 
 	if (game->win_ptr == NULL)
 		return (1);
+//	game->test_size = 1;  /// 
 	if (game->test_size == 0)
 	{
 		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, 

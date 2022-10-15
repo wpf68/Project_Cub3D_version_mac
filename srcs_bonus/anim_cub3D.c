@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 13:03:50 by pwolff            #+#    #+#             */
-/*   Updated: 2022/10/14 10:42:08 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/15 10:46:00 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,9 @@ static void init_floor_sky(t_image *images, t_game *cube)
         while (++j < CUBE_Y)
         {
             if (j < CUBE_Y / 2)
-               img_pix_put(cube, i, j, encode_rgb(0, 0, 0));  // sky
+               img_pix_put(cube, i, j, encode_rgb(cube->r_c, cube->b_c, cube->g_c));  // sky
             else
-               img_pix_put(cube, i, j, encode_rgb(50, 50, 55));
+               img_pix_put(cube, i, j, encode_rgb(cube->r_f, cube->b_f, cube->g_f));
         }
         i++;
     }
