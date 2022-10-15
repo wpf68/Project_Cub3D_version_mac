@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 09:46:30 by pwolff            #+#    #+#             */
-/*   Updated: 2022/10/14 10:42:49 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/15 17:13:12 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,11 @@ static void ft_move_test_2(int x, t_image *images, int *key)
     if (images->game.map.p.apos >= 2 * M_PI)
             images->game.map.p.apos = images->game.map.p.apos - (2 * M_PI);
     if (apos_mouse < 0)
+    {
         *key = TOUCH_LEFT;
+        images->cube.dir_sprite = 0;
+    }
+        
     # ifdef __APPLE__
         mlx_mouse_move(images->game.win_ptr, (CUBE_X / 2), CUBE_Y - 100 );
     # endif
