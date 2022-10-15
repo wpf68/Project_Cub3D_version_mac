@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 13:03:50 by pwolff            #+#    #+#             */
-/*   Updated: 2022/10/15 10:46:00 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/15 13:53:00 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void ft_bonus_anime(t_image *images, t_game *cube)
     (void)  images;
 
     cube->img.mlx_img = mlx_xpm_file_to_image(cube->mlx_ptr, 
-        cube->sprite[cube->nb_sprite], &wi, &he);
+        cube->sprite[cube->dir_sprite][cube->nb_sprite], &wi, &he);
     mlx_put_image_to_window(cube->mlx_ptr, cube->win_ptr, 
         cube->img.mlx_img, CUBE_X / 2 - wi / 2, CUBE_Y - he);
 

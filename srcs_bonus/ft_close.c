@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 13:33:56 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/10/13 15:50:27 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/15 14:08:28 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,10 @@ int ft_close(t_image *image)
         free(image->cube.name_text[i]);
     i = -1;
     while (++i < NB_ANIME)
-        free(image->cube.sprite[i]);
+    {
+        free(image->cube.sprite[0][i]);
+        free(image->cube.sprite[1][i]);
+    }
+        
     exit (0);
 }

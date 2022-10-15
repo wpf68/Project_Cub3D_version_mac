@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_data_and_map.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfuhrman <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 12:39:26 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/10/15 10:04:56 by mfuhrman         ###   ########.fr       */
+/*   Updated: 2022/10/15 14:51:43 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void parse_data_and_map(t_game *game, t_game *cube, char *argv)
 		printf(" i = %d\n", i);
 		i++;
 	}
-		write(1, "******\n", 7);
+	//	write(1, "******\n", 7);
 
 	i = 0;
 	while (game->map.tab[i])
@@ -66,7 +66,7 @@ void parse_data_and_map(t_game *game, t_game *cube, char *argv)
 		i++;
 
 	}
-		write(1, "******\n", 7);
+	//	write(1, "******\n", 7);
 
     printf("texture Nord = %s\n", cube->name_text[0]); 
     printf("%zu\n", ft_strlen(cube->name_text[0])) ;

@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 08:37:57 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/10/14 10:46:24 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/15 14:18:14 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 int ft_input_2(t_image *images)
 {
     static int time;
-    static int time_2;
+    static int time_2; // à voir
 
     time++;
-    time_2++;
+    time_2++;  // à voir
 
   //  return(0);
     if (time % 1000 == 0)

@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 08:57:43 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/10/12 08:56:53 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/15 14:00:16 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,17 @@ static void ft_push_key(t_image *image, t_game *game, int key)
     else if (key == TOUCH_S || key == TOUCH_DOWN)
         move_player(game, 1.0, 0);
     else if (key == TOUCH_A)
+    {
+        image->cube.dir_sprite = 0;
         move_player(game, 1.0, (M_PI / 2));
+
+    }
     else if (key == TOUCH_D)
-        move_player(game, 1.0, -(M_PI / 2));
+    {
+        image->cube.dir_sprite = 1;
+        move_player(game, 1.0, -(M_PI / 2));        
+    }
+
     else if (key == TOUCH_ESC)
         ft_close(image);
 
@@ -35,12 +43,14 @@ void    update(t_image *image, int key)
     game = &image->game;
     if (key == TOUCH_RIGHT)
     {
+        image->cube.dir_sprite = 1;
         game->map.p.apos += game->map.p.rotspeed;
         if (game->map.p.apos >= 2 * M_PI)
             game->map.p.apos = game->map.p.apos - (2 * M_PI);
     }
     else if (key == TOUCH_LEFT)
     {
+        image->cube.dir_sprite = 0;
         game->map.p.apos -= game->map.p.rotspeed;
         if (game->map.p.apos < 0)
             game->map.p.apos = (2 * M_PI) + game->map.p.apos;

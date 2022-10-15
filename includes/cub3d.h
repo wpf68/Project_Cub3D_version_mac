@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 13:00:33 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/10/15 10:15:40 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/15 14:13:02 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # define CUB3D_H
 
 # define DEFINITION_TEXTURES 600
-# define NB_TEXTURES 10
+# define NB_TEXTURES 11
 # define NB_ANIME 2  // animation arme
 
 /*  TAILLES IMAGES
@@ -250,8 +250,9 @@ typedef struct s_game
 	int		rapport_player;
 
 	t_parse	parse;
-	char	*sprite[NB_ANIME]; // animation arme
+	char	*sprite[NB_ANIME][2]; // animation arme
 	int		nb_sprite;
+	int		dir_sprite;
 } t_game;
 
 typedef struct s_image
