@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 13:00:33 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/10/15 14:13:02 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/16 10:12:20 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -268,7 +268,7 @@ typedef struct s_image
 // FUNCTIONS
 
 void	init_game(t_game *game);
-void	init_map(t_game *game, char *argv);
+//void	init_map(t_game *game, char *argv);
 int		print_map(t_game *game); 
 int		main(int argc, char **argv);
 void	error_msg(char *msg);
