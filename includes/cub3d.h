@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 13:00:33 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/10/16 10:12:20 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/16 11:00:28 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -274,7 +274,7 @@ int		main(int argc, char **argv);
 void	error_msg(char *msg);
 int		ft_close(t_image *images);
 int		find_player(char p, char *characters);
-void	draw_square(t_game *game, int posx, int posy, int side, int color);
+void	draw_square(t_game *game, int posx, int posy, int color);
 void	update(t_image *images, int key);
 void	move_player(t_game *game, double nb, double alpha);
 int		count_char(char *str, char c);
@@ -282,7 +282,7 @@ void	check_nb_player(t_game *game);
 void	init_player_position(t_game *game, char *line, int y);
 void	check_files_map(int argc, char **argv);
 void	init_var_player(t_game *game);
-void    draw_player(t_game *game, int posx, int posy, int side, int color);
+void    draw_player(t_game *game, int posx, int posy, int color);
 int		ft_input(int key, t_image *images);
 int		reprint_pos(t_game *game);
 void	print_background(t_game *game);

@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 12:09:37 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/10/16 08:37:32 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/16 10:49:15 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ int	reprint_pos(t_game *game)
 	if (game->test_size == 0)
 		return (0);
 	ft_destroy_and_init(game, &orientation, &int_color);
-	draw_player(game, 0, 0, 10, int_color);
+	draw_player(game, 0, 0, int_color);
 	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->img.mlx_img, \
 		game->map.p.pos.x * 10 / game->rapport_player, game->map.p.pos.y * \
 		10 / game->rapport_player + CUBE_Y);

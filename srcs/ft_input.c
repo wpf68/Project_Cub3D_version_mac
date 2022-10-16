@@ -3,32 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   ft_input.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
+/*   By: mfuhrman <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 08:37:57 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/10/14 10:45:26 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/16 10:28:32 by mfuhrman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-int ft_input_2(t_image *images)
+int	ft_input_2(t_image *images)
 {
-    ft_input(TOUCH_W, images);
-    return (0);
+	ft_input(TOUCH_W, images);
+	return (0);
 }
 
-int ft_input(int key, t_image *images)
+int	ft_input(int key, t_image *images)
 {
-    t_game *game;
+	t_game	*game;
 
-    game = &images->game;   
-    update(images, key); // movements
-    anim_direction(&images->legend, key);
-    if (game->win_ptr == NULL)
-        return (1);
-    anim_legend(&images->legend);
-    anim_cub3d(images);
-    reprint_pos(game);
-    return (0);
+	game = &images->game;
+	update(images, key);
+	anim_direction(&images->legend, key);
+	if (game->win_ptr == NULL)
+		return (1);
+	anim_legend(&images->legend);
+	anim_cub3d(images);
+	reprint_pos(game);
+	return (0);
 }

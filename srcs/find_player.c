@@ -6,22 +6,22 @@
 /*   By: mfuhrman <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 13:01:15 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/07/26 10:34:25 by mfuhrman         ###   ########.fr       */
+/*   Updated: 2022/10/16 09:59:49 by mfuhrman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-int find_player(char p, char *caracters)
+int	find_player(char p, char *caracters)
 {
-    int i;
+	int	i;
 
-    i = 0; 
-    while (caracters[i] != '\0')
-    {
-        if (p == caracters[i])
-        return (1);
-    i++;
-    }
-    return (0);
+	i = 0;
+	while (caracters[i] != '\0')
+	{
+		if (p == caracters[i])
+			return (1);
+	i++;
+	}
+	return (0);
 }

@@ -3,30 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   draw_square.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
+/*   By: mfuhrman <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 07:45:57 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/10/01 11:10:59 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/16 09:48:37 by mfuhrman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-void    draw_square(t_game *game, int posx, int posy, int side, int color)
+void	draw_square(t_game *game, int posx, int posy, int color)
 {
-    int i;
-    int j;
+	int	i;
+	int	j;
 
-    i = -1;
-    j = -1;
-
-    
-    if (game->win_ptr == NULL)  //
-        return;  //
-    while (++i < side)
-    {
-        while (++j < side)
-            img_pix_put(game, posy + i, posx + j, color);
-        j = -1;
-    }
+	i = -1;
+	j = -1;
+	if (game->win_ptr == NULL)
+		return ;
+	while (++i < 10)
+	{
+		while (++j < 10)
+			img_pix_put(game, posy + i, posx + j, color);
+		j = -1;
+	}
 }

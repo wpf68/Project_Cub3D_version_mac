@@ -6,14 +6,14 @@
 /*   By: mfuhrman <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 14:26:45 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/07/26 10:34:51 by mfuhrman         ###   ########.fr       */
+/*   Updated: 2022/10/16 09:50:09 by mfuhrman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-void error_msg(char *msg)
+void	error_msg(char *msg)
 {
-    ft_printf(RED"%s\n", msg);
-    exit (0);
+	ft_printf(RED"%s\n", msg);
+	exit (0);
 }

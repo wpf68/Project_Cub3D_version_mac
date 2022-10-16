@@ -6,22 +6,22 @@
 /*   By: mfuhrman <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 13:21:38 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/10/10 13:22:18 by mfuhrman         ###   ########.fr       */
+/*   Updated: 2022/10/16 09:56:44 by mfuhrman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-int find_char(char p, char *caracters)
+int	find_char(char p, char *caracters)
 {
-    int i;
+	int	i;
 
-    i = 0; 
-    while (caracters[i] != '\0')
-    {
-        if (p == caracters[i])
-        return (1);
-    i++;
-    }
-    return (0);
+	i = 0;
+	while (caracters[i] != '\0')
+	{
+		if (p == caracters[i])
+			return (1);
+	i++;
+	}
+	return (0);
 }

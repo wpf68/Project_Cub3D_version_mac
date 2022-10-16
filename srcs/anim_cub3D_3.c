@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   anim_cub3D_3.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
+/*   By: mfuhrman <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 14:52:03 by pwolff            #+#    #+#             */
-/*   Updated: 2022/10/15 09:59:54 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/16 08:36:12 by mfuhrman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void	ft_choice_pixel_color(t_image *images, t_game *cube)
 
 void	ft_choice_texture(t_image *images, t_game *cube, char *texture_hit)
 {
-	if (cube->r.side == 0 && *texture_hit == WALL) 
+	if (cube->r.side == 0 && *texture_hit == WALL)
 	{
 		if (cube->r.posX < cube->r.mapX)
 			cube->r.index = 2;
@@ -56,19 +56,19 @@ void	ft_choice_texture(t_image *images, t_game *cube, char *texture_hit)
 	ft_choice_pixel_color(images, cube);
 }
 
-void    ft_clear_logo_direction(t_image *images, t_game *cube)
+void	ft_clear_logo_direction(t_image *images, t_game *cube)
 {
-	int     wi;
-	int     he;
-	t_game  *legend;
+	int		wi;
+	int		he;
+	t_game	*legend;
 
-	mlx_put_image_to_window(cube->mlx_ptr, cube->win_ptr, 
+	mlx_put_image_to_window(cube->mlx_ptr, cube->win_ptr, \
 		cube->img.mlx_img, 0, 0);
 	legend = &images->legend;
-	mlx_destroy_image(legend->mlx_ptr, legend->img.mlx_img);//
-	legend->img.mlx_img = mlx_new_image(legend->mlx_ptr, 162, 159); 
-	legend->img.mlx_img = mlx_xpm_file_to_image(legend->mlx_ptr, 
+	mlx_destroy_image(legend->mlx_ptr, legend->img.mlx_img);
+	legend->img.mlx_img = mlx_new_image(legend->mlx_ptr, 162, 159);
+	legend->img.mlx_img = mlx_xpm_file_to_image(legend->mlx_ptr, \
 		"./images_xpm/fleches_bleues_162_159.xpm", &wi, &he);
-	mlx_put_image_to_window(legend->mlx_ptr, legend->win_ptr, legend->img.mlx_img, 
-		CUBE_X + 64, 403);
+	mlx_put_image_to_window(legend->mlx_ptr, legend->win_ptr, \
+	legend->img.mlx_img, CUBE_X + 64, 403);
 }
