@@ -6,13 +6,13 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 12:39:26 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/10/16 09:40:04 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/16 14:27:06 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-static void	parse_data_and_map2(t_game *game, t_game *cube)
+void	parse_data_and_map2(t_game *game, t_game *cube)
 {
 	int	i;
 
@@ -39,50 +39,42 @@ static void	parse_data_and_map2(t_game *game, t_game *cube)
 	printf("texture WEST = %s\n", cube->name_text[3]);
 	printf("%zu\n", ft_strlen(cube->name_text[3]));
 }
-/*
-static void	parse_data_and_map3(char *read_str, char *temp, int *i)
-{
 
-
-
-}
-*/
-void	parse_data_and_map(t_game *game, t_game *cube, char *argv)
+static int	parse_data_and_map3(t_game *game)
 {
 	int		map_fd;
-	int		i;
-	char	*read_str;
+
+	map_fd = open(game->read_str, O_RDONLY);
+	free(game->read_str);
+	if (map_fd == -1)
+		error_msg("Error:\nLa map n' a pas pu s'ouvir !");
+	game->read_str = get_next_line(map_fd);	
+	return (map_fd);
+}
+
+void	parse_data_and_map(t_game *game, t_game *cube)
+{
+	int		map_fd;
 	char	*temp;
 	char	*temp2;
 
-//	parse_data_and_map3(read_str,temp, &i);
-	read_str = ft_strjoin("maps/", argv);
-	init_parse(game);
-	map_fd = open(read_str, O_RDONLY);
-	free(read_str);
-	if (map_fd == -1)
-		error_msg("Error:\nLa map n' a pas pu s'ouvir !");
-	read_str = get_next_line(map_fd);
-	
+	map_fd = parse_data_and_map3(game);
 	temp = ft_strdup("");
-	i = 0;
-	while (read_str)
+	while (game->read_str)
 	{
 		if (game->parse.read_map == 0)
-			parse_text_and_color(read_str, cube, game);
+			parse_text_and_color(game->read_str, cube, game);
 		else if (game->parse.read_map == 1)
 		{
-			if (empty_line(read_str))
+			if (empty_line(game->read_str))
 				error_msg("Error:\nla map contient une ligne vide !");
 			temp2 = temp;
-			temp = ft_strjoin(temp2, read_str);
+			temp = ft_strjoin(temp2, game->read_str);
 			free (temp2);
-			i++;
+			game->map.lines += 1;
 		}
-		read_str = get_next_line(map_fd);
+		game->read_str = get_next_line(map_fd);
 	}
 	close (map_fd);
 	game->map.tab = ft_split(temp, '\n');
-	game->map.lines = i;
-	parse_data_and_map2(game, cube);
 }
