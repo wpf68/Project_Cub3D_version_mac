@@ -6,7 +6,7 @@
 /*   By: mfuhrman <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 13:03:50 by pwolff            #+#    #+#             */
-/*   Updated: 2022/10/16 08:40:54 by mfuhrman         ###   ########.fr       */
+/*   Updated: 2022/10/17 09:17:33 by mfuhrman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@ static void	init_floor_sky(t_image *images, t_game *cube)
 	int	i;
 	int	j;
 
-	cube->r.posX = images->game.map.p.pos.x;
-	cube->r.posY = images->game.map.p.pos.y;
-	cube->r.dirX = -(cos(images->game.map.p.apos));
-	cube->r.dirY = -(sin(images->game.map.p.apos));
-	cube->r.planeX = sin(images->game.map.p.apos) * 0.66;
-	cube->r.planeY = cos(images->game.map.p.apos) * -0.66;
+	cube->r.posx = images->game.map.p.pos.x;
+	cube->r.posy = images->game.map.p.pos.y;
+	cube->r.dirx = -(cos(images->game.map.p.apos));
+	cube->r.diry = -(sin(images->game.map.p.apos));
+	cube->r.planex = sin(images->game.map.p.apos) * 0.66;
+	cube->r.planey = cos(images->game.map.p.apos) * -0.66;
 	i = 0;
 	while (i < CUBE_X)
 	{

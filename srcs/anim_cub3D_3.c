@@ -6,7 +6,7 @@
 /*   By: mfuhrman <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 14:52:03 by pwolff            #+#    #+#             */
-/*   Updated: 2022/10/16 08:36:12 by mfuhrman         ###   ########.fr       */
+/*   Updated: 2022/10/17 09:17:00 by mfuhrman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,14 @@ static void	ft_choice_pixel_color(t_image *images, t_game *cube)
 	int	color;
 	int	i;
 
-	i = cube->r.drawStart - 1;
-	while (++i < cube->r.drawEnd)
+	i = cube->r.drawstart - 1;
+	while (++i < cube->r.drawend)
 	{
 		if (cube->r.side == 1)
-			color = ft_calc_texture(cube->r.mapX, i - cube->r.drawStart, \
+			color = ft_calc_texture(cube->r.mapx, i - cube->r.drawstart, \
 				images, cube->r.index);
 		else
-			color = ft_calc_texture(cube->r.mapY, i - cube->r.drawStart, \
+			color = ft_calc_texture(cube->r.mapy, i - cube->r.drawstart, \
 				images, cube->r.index);
 		img_pix_put(cube, cube->r.x, i, color);
 	}
@@ -35,14 +35,14 @@ void	ft_choice_texture(t_image *images, t_game *cube, char *texture_hit)
 {
 	if (cube->r.side == 0 && *texture_hit == WALL)
 	{
-		if (cube->r.posX < cube->r.mapX)
+		if (cube->r.posx < cube->r.mapx)
 			cube->r.index = 2;
 		else
 			cube->r.index = 3;
 	}
 	else if (*texture_hit == WALL)
 	{
-		if (cube->r.posY < cube->r.mapY)
+		if (cube->r.posy < cube->r.mapy)
 			cube->r.index = 0;
 		else
 			cube->r.index = 1;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
+/*   By: mfuhrman <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 13:15:29 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/10/16 08:53:59 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/17 09:22:57 by mfuhrman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	parse_flag(t_game *game)
 {
-	if (game->parse.flag_N == 0 || game->parse.flag_S == 0 \
-		|| game->parse.flag_E == 0 || game->parse.flag_E == 0 \
-		|| game->parse.flag_C == 0 || game->parse.flag_F == 0)
+	if (game->parse.flag_n == 0 || game->parse.flag_s == 0 \
+		|| game->parse.flag_w == 0 || game->parse.flag_e == 0 \
+		|| game->parse.flag_c == 0 || game->parse.flag_f == 0)
 		return (0);
 	return (1);
 }

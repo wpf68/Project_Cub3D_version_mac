@@ -6,13 +6,13 @@
 /*   By: mfuhrman <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 12:39:26 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/10/16 15:23:27 by mfuhrman         ###   ########.fr       */
+/*   Updated: 2022/10/17 09:49:06 by mfuhrman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-void	parse_data_and_map2(t_game *game, t_game *cube)
+void	parse_data_and_map2(t_game *game)
 {
 	int	i;
 
@@ -21,23 +21,7 @@ void	parse_data_and_map2(t_game *game, t_game *cube)
 	{
 		if (game->map.columns < (int)ft_strlen(game->map.tab[i]))
 				game->map.columns = ft_strlen(game->map.tab[i]);
-		printf(" i = %d\n", i);
 	}
-	i = 0;
-	while (game->map.tab[i])
-	{
-		printf(" i = %d   lines = %d\n", i, game->map.lines);
-		printf("%s\n", game->map.tab[i]);
-		i++;
-	}
-	printf("texture Nord = %s\n", cube->name_text[0]);
-	printf("%zu\n", ft_strlen(cube->name_text[0]));
-	printf("texture SUD = %s\n", cube->name_text[1]);
-	printf("%zu\n", ft_strlen(cube->name_text[1]));
-	printf("texture OUEST = %s\n", cube->name_text[2]);
-	printf("%zu\n", ft_strlen(cube->name_text[2]));
-	printf("texture WEST = %s\n", cube->name_text[3]);
-	printf("%zu\n", ft_strlen(cube->name_text[3]));
 }
 
 static int	parse_data_and_map3(t_game *game)
@@ -48,7 +32,7 @@ static int	parse_data_and_map3(t_game *game)
 	free(game->read_str);
 	if (map_fd == -1)
 		error_msg("Error:\nLa map n' a pas pu s'ouvir !");
-	game->read_str = get_next_line(map_fd);	
+	game->read_str = get_next_line(map_fd);
 	return (map_fd);
 }
 

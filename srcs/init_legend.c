@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_legend.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
+/*   By: mfuhrman <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 14:04:52 by pwolff            #+#    #+#             */
-/*   Updated: 2022/10/16 13:41:06 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/17 08:43:23 by mfuhrman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ void	draw_circle_bis(t_game *image, int r, int color)
 	{
 		cos_x = cos(i) * (r);
 		sin_y = sin(i) * (r);
-		img_pix_put(image, image->r.dir_x + cos_x, image->r.dir_y + sin_y, color);
+		img_pix_put(image, image->r.dir_x + cos_x, \
+		image->r.dir_y + sin_y, color);
 		i += 0.2;
 	}
 }
@@ -103,7 +104,7 @@ int	anim_legend(t_game *legend)
 	temp = NULL;
 	itoa_angle = NULL;
 	mlx_destroy_image(legend->mlx_ptr, legend->img.mlx_img);
-	legend->img.mlx_img = mlx_new_image(legend->mlx_ptr, 121, 113); 
+	legend->img.mlx_img = mlx_new_image(legend->mlx_ptr, 121, 113);
 	legend->img.mlx_img = mlx_xpm_file_to_image(legend->mlx_ptr, \
 		"./images_xpm/Cube3D_2b.xpm", &legend->img.size.x, \
 		&legend->img.size.y);

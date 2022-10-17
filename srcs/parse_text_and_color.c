@@ -6,7 +6,7 @@
 /*   By: mfuhrman <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 13:32:23 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/10/16 14:18:49 by mfuhrman         ###   ########.fr       */
+/*   Updated: 2022/10/17 09:20:41 by mfuhrman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,17 +88,17 @@ int	find_floor(char *path, t_game *cube)
 void	parse_text_and_color(char *path, t_game *cube, t_game *game)
 {
 	if (path[0] == 'N' && path[1] == 'O')
-		game->parse.flag_N += find_texture(path, 0, cube);
+		game->parse.flag_n += find_texture(path, 0, cube);
 	else if (path[0] == 'S' && path[1] == 'O')
-		game->parse.flag_S += find_texture(path, 1, cube);
+		game->parse.flag_s += find_texture(path, 1, cube);
 	else if (path[0] == 'E' && path[1] == 'A')
-		game->parse.flag_E += find_texture(path, 3, cube);
+		game->parse.flag_e += find_texture(path, 3, cube);
 	else if (path[0] == 'W' && path[1] == 'E')
-		game->parse.flag_W += find_texture(path, 2, cube);
+		game->parse.flag_w += find_texture(path, 2, cube);
 	else if (path[0] == 'C')
-		game->parse.flag_C += find_cell(path, cube);
+		game->parse.flag_c += find_cell(path, cube);
 	else if (path[0] == 'F')
-		game->parse.flag_F += find_floor(path, cube);
+		game->parse.flag_f += find_floor(path, cube);
 	else if (parse_flag(game) && (!empty_line(path)))
 		game->parse.read_map = 1;
 	else if ((!empty_line(path)) && game->parse.read_map == 0)

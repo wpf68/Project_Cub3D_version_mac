@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
+/*   By: mfuhrman <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 13:37:22 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/10/16 14:41:53 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/17 09:46:42 by mfuhrman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	main(int argc, char **argv)
 	srand(time(0));
 	check_files_map(&images.game, argc, argv);
 	parse_data_and_map(&images.game, &images.cube);
-	parse_data_and_map2(&images.game, &images.cube);
+	parse_data_and_map2(&images.game);
 	check_parameters_map(&images.game);
 	init_var_player(&images.game);
 	check_nb_player(&images.game);
@@ -42,5 +42,7 @@ int	main(int argc, char **argv)
 	# ifdef __APPLE__
         mlx_mouse_move(images.game.win_ptr, (CUBE_X / 2), CUBE_Y -100);
     # endif
-	mlx_mouse_move(images.game.mlx_ptr, images.game.win_ptr, (CUBE_X / 2), (CUBE_Y -100));
+	mlx_mouse_move(images.game.mlx_ptr, images.game.win_ptr, (CUBE_X / 2), 
+	addindex
+	 (CUBE_Y -100));
 */
