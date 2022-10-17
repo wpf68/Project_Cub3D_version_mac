@@ -1,32 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_char_map.c                                   :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfuhrman <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/10 14:05:24 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/10/16 14:18:04 by mfuhrman         ###   ########.fr       */
+/*   Created: 2022/02/22 02:35:46 by mfuhrman          #+#    #+#             */
+/*   Updated: 2022/02/23 14:14:53 by mfuhrman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "libft.h"
 
-int	check_map_char(t_game *game)
+void	ft_bzero(void *s, size_t n)
 {
-	int	i;
-	int	j;
+	char	*str;
 
-	i = -1;
-	j = -1;
-	while (game->map.tab[++i])
+	if (s == NULL)
+		s = NULL;
+	str = s ;
+	while (n)
 	{
-		while (game->map.tab[i][++j])
-		{
-			if (find_char(game->map.tab[i][j], " \t01NSEW") == 0)
-				return (0);
-		}
-		j = -1;
+		*str = 0;
+		str++;
+		n--;
 	}
-	return (1);
 }

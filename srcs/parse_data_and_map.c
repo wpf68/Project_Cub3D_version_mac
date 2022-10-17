@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_data_and_map.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
+/*   By: mfuhrman <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 12:39:26 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/10/16 14:27:06 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/16 15:23:27 by mfuhrman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	parse_data_and_map(t_game *game, t_game *cube)
 	{
 		if (game->parse.read_map == 0)
 			parse_text_and_color(game->read_str, cube, game);
-		else if (game->parse.read_map == 1)
+		if (game->parse.read_map == 1)
 		{
 			if (empty_line(game->read_str))
 				error_msg("Error:\nla map contient une ligne vide !");

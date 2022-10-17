@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_text_and_color.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
+/*   By: mfuhrman <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 13:32:23 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/10/16 08:59:10 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/16 14:18:49 by mfuhrman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,9 @@ int	find_texture(char *path, int index, t_game *cube)
 	i = -1;
 	temp = ft_split(path, ' ');
 	temp[1][ft_strlen(temp[1]) - 1] = '\0';
-	printf(" temp = %s\n", temp[1]);
 	if (!temp[1] || temp[2])
 		error_msg("Erreur : impossible de charger la texture !");
 	cube->name_text[index] = ft_strdup(temp[1]);
-	printf(" textcube = %s\n", cube->name_text[index]);
 	while (temp[++i])
 		free (temp[i]);
 	free (temp);
@@ -39,7 +37,6 @@ int	find_cell(char *path, t_game *cube)
 
 	i = -1;
 	temp = ft_split(path, ' ');
-	printf(" temp c = %s\n", temp[1]);
 	if (!temp[1] || temp[2])
 		error_msg("Error:\nimpossible de charger la couleur du plafond !");
 	temp2 = ft_split (temp[1], ',');
@@ -68,7 +65,6 @@ int	find_floor(char *path, t_game *cube)
 
 	i = -1;
 	temp = ft_split(path, ' ');
-	printf(" temp f = %s\n", temp[1]);
 	if (!temp[1] || temp[2])
 		error_msg("Error:\nimpossible de charger la couleur du sol !");
 	temp2 = ft_split (temp[1], ',');
@@ -103,7 +99,7 @@ void	parse_text_and_color(char *path, t_game *cube, t_game *game)
 		game->parse.flag_C += find_cell(path, cube);
 	else if (path[0] == 'F')
 		game->parse.flag_F += find_floor(path, cube);
-	else if (parse_flag(game))
+	else if (parse_flag(game) && (!empty_line(path)))
 		game->parse.read_map = 1;
 	else if ((!empty_line(path)) && game->parse.read_map == 0)
 		error_msg("Error:\nimpossible d'ouvir la map!");

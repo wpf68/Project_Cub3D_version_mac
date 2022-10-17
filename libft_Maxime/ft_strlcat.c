@@ -1,32 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_char_map.c                                   :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfuhrman <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/10 14:05:24 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/10/16 14:18:04 by mfuhrman         ###   ########.fr       */
+/*   Created: 2022/02/22 04:03:51 by mfuhrman          #+#    #+#             */
+/*   Updated: 2022/02/24 15:02:51 by mfuhrman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "libft.h"
 
-int	check_map_char(t_game *game)
+size_t	ft_strlcat(char *dest, const char *src, size_t size)
 {
-	int	i;
-	int	j;
+	size_t	i;
+	size_t	j;
 
-	i = -1;
-	j = -1;
-	while (game->map.tab[++i])
+	i = 0;
+	j = 0;
+	while (dest[i])
+		i++;
+	if (size < i)
 	{
-		while (game->map.tab[i][++j])
-		{
-			if (find_char(game->map.tab[i][j], " \t01NSEW") == 0)
-				return (0);
-		}
-		j = -1;
+		while (src[j])
+			j++;
+		return (size + j);
 	}
-	return (1);
+	while (size > 0 && i < size - 1 && src[j] != '\0')
+		dest[i++] = src[j++];
+	dest[i] = '\0';
+	while (src[j] != '\0')
+	{
+		i++;
+		j++;
+	}
+	return (i);
 }

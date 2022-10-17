@@ -1,32 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_char_map.c                                   :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfuhrman <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/10 14:05:24 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/10/16 14:18:04 by mfuhrman         ###   ########.fr       */
+/*   Created: 2022/02/22 11:31:46 by mfuhrman          #+#    #+#             */
+/*   Updated: 2022/03/01 09:46:48 by mfuhrman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "libft.h"
 
-int	check_map_char(t_game *game)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	int	i;
-	int	j;
+	size_t			i;
+	unsigned char	*b1;
+	unsigned char	*b2;
 
-	i = -1;
-	j = -1;
-	while (game->map.tab[++i])
+	b1 = (unsigned char *)s1;
+	b2 = (unsigned char *)s2;
+	i = 0;
+	if (n == 0)
+		return (0);
+	while ((b1[i] != '\0' || b2[i] != '\0') && i < n)
 	{
-		while (game->map.tab[i][++j])
-		{
-			if (find_char(game->map.tab[i][j], " \t01NSEW") == 0)
-				return (0);
-		}
-		j = -1;
+		if (b1[i] > b2[i])
+			return (1);
+		else if (b1[i] < b2[i])
+			return (-1);
+		else if (b1[i] == b2[i] && b2[i] != '\0')
+			i++;
 	}
-	return (1);
+	return (0);
 }

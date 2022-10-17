@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_char_map.c                                   :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfuhrman <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/10 14:05:24 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/10/16 14:18:04 by mfuhrman         ###   ########.fr       */
+/*   Created: 2022/02/22 09:31:58 by mfuhrman          #+#    #+#             */
+/*   Updated: 2022/02/24 11:03:37 by mfuhrman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "libft.h"
 
-int	check_map_char(t_game *game)
+char	*ft_strchr(const char *s, int c)
 {
 	int	i;
-	int	j;
 
-	i = -1;
-	j = -1;
-	while (game->map.tab[++i])
+	i = 0;
+	if (s == NULL)
+		return (NULL);
+	while (s[i] != '\0')
 	{
-		while (game->map.tab[i][++j])
-		{
-			if (find_char(game->map.tab[i][j], " \t01NSEW") == 0)
-				return (0);
-		}
-		j = -1;
+		if (s[i] == (char)c)
+			return ((char *) &s[i]);
+		i++;
 	}
-	return (1);
+	if (s[i] == (char)c)
+		return ((char *) &s[i]);
+	return (NULL);
 }

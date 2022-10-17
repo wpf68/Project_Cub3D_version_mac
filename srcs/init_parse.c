@@ -1,32 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_char_map.c                                   :+:      :+:    :+:   */
+/*   init_parse.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfuhrman <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/10 14:05:24 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/10/16 14:18:04 by mfuhrman         ###   ########.fr       */
+/*   Created: 2022/10/13 12:49:19 by mfuhrman          #+#    #+#             */
+/*   Updated: 2022/10/16 10:02:22 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-int	check_map_char(t_game *game)
+void	init_parse(t_game *game)
 {
-	int	i;
-	int	j;
-
-	i = -1;
-	j = -1;
-	while (game->map.tab[++i])
-	{
-		while (game->map.tab[i][++j])
-		{
-			if (find_char(game->map.tab[i][j], " \t01NSEW") == 0)
-				return (0);
-		}
-		j = -1;
-	}
-	return (1);
+	game->parse.flag_N = 0;
+	game->parse.flag_S = 0;
+	game->parse.flag_E = 0;
+	game->parse.flag_W = 0;
+	game->parse.flag_C = 0;
+	game->parse.flag_F = 0;
+	game->parse.read_map = 0;
 }

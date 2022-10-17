@@ -1,32 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_char_map.c                                   :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfuhrman <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/10 14:05:24 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/10/16 14:18:04 by mfuhrman         ###   ########.fr       */
+/*   Created: 2022/02/25 13:29:47 by mfuhrman          #+#    #+#             */
+/*   Updated: 2022/03/02 10:56:33 by mfuhrman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "libft.h"
 
-int	check_map_char(t_game *game)
+char	*ft_strmapi(char const *s, char (*f) (unsigned int, char))
 {
-	int	i;
-	int	j;
+	unsigned int	i;
+	unsigned int	len;
+	char			*tab;
 
-	i = -1;
-	j = -1;
-	while (game->map.tab[++i])
+	len = 0;
+	i = 0;
+	if (!s)
+		return (NULL);
+	while (s[len])
+		len++;
+	tab = malloc(sizeof(*tab) * (len + 1));
+	if (!(tab))
+		return (NULL);
+	while (s[i])
 	{
-		while (game->map.tab[i][++j])
-		{
-			if (find_char(game->map.tab[i][j], " \t01NSEW") == 0)
-				return (0);
-		}
-		j = -1;
+		tab[i] = f(i, s[i]);
+		i++;
 	}
-	return (1);
+	tab[i] = '\0';
+	return (tab);
 }

@@ -1,32 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_char_map.c                                   :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfuhrman <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/10 14:05:24 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/10/16 14:18:04 by mfuhrman         ###   ########.fr       */
+/*   Created: 2022/02/27 09:06:17 by mfuhrman          #+#    #+#             */
+/*   Updated: 2022/02/27 09:19:54 by mfuhrman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "libft.h"
 
-int	check_map_char(t_game *game)
+void	ft_striteri(char *s, void (*f) (unsigned int, char*))
 {
-	int	i;
-	int	j;
+	unsigned int	i;
 
-	i = -1;
-	j = -1;
-	while (game->map.tab[++i])
+	i = 0 ;
+	if (!s || !f)
 	{
-		while (game->map.tab[i][++j])
-		{
-			if (find_char(game->map.tab[i][j], " \t01NSEW") == 0)
-				return (0);
-		}
-		j = -1;
+		return ;
 	}
-	return (1);
+	while (s[i] != '\0')
+	{
+		f(i, &s[i]);
+		i++;
+	}	
 }

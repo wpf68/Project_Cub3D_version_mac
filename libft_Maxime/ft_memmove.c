@@ -1,32 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_char_map.c                                   :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfuhrman <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/10 14:05:24 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/10/16 14:18:04 by mfuhrman         ###   ########.fr       */
+/*   Created: 2022/02/23 09:39:24 by mfuhrman          #+#    #+#             */
+/*   Updated: 2022/03/02 10:52:45 by mfuhrman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "libft.h"
 
-int	check_map_char(t_game *game)
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	int	i;
-	int	j;
+	char	*d;
+	char	*s;
+	size_t	i;
 
-	i = -1;
-	j = -1;
-	while (game->map.tab[++i])
+	d = (char *)dest;
+	s = (char *)src;
+	i = 0;
+	if (!d || !s)
+		return (NULL);
+	if (d > s)
 	{
-		while (game->map.tab[i][++j])
+		while (n > 0)
 		{
-			if (find_char(game->map.tab[i][j], " \t01NSEW") == 0)
-				return (0);
+			d[n - 1] = s[n - 1];
+			n--;
 		}
-		j = -1;
 	}
-	return (1);
+	while (i < n)
+	{
+		d[i] = s[i];
+		i++;
+	}
+	return (dest);
 }
