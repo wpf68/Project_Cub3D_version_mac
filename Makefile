@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mfuhrman <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/04 12:25:59 by pwolff            #+#    #+#              #
-#    Updated: 2022/10/17 10:23:08 by mfuhrman         ###   ########.fr        #
+#    Updated: 2022/10/18 13:32:00 by pwolff           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,7 +58,7 @@ OBJS_DIR_BONUS	= objs_bonus/
 OBJECTS_PREFIXED = $(addprefix $(OBJS_DIR), $(OBJ))
 OBJECTS_PREFIXED_BONUS = $(addprefix $(OBJS_DIR_BONUS), $(OBJ_BONUS))
 
-ifeq ($(DESKTOP_SESSION), ubuntu)
+ifeq ($(DESKTOP_SESSION), ubuntu-wayland)
 MINILIBX = mlx_linux
 MLXFLAGS = -I /usr/X11/include -g -Lmlx_linux -lmlx_Linux -L /usr/lib -Imlx_linux -lmlx -lXext -lX11 -lm
 else

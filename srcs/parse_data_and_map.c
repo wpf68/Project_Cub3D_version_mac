@@ -6,7 +6,7 @@
 /*   By: mfuhrman <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 12:39:26 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/10/17 09:49:06 by mfuhrman         ###   ########.fr       */
+/*   Updated: 2022/10/18 09:11:23 by mfuhrman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,12 @@ static int	parse_data_and_map3(t_game *game)
 	return (map_fd);
 }
 
+static void	empty_map(t_game *game)
+{
+	if (game->map.tab[0] == NULL)
+		error_msg("Error:\nLa map n'a pas pu s'ouvrir !");
+}
+
 void	parse_data_and_map(t_game *game, t_game *cube)
 {
 	int		map_fd;
@@ -61,4 +67,5 @@ void	parse_data_and_map(t_game *game, t_game *cube)
 	}
 	close (map_fd);
 	game->map.tab = ft_split(temp, '\n');
+	empty_map(game);
 }

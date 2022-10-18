@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfuhrman <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 13:37:22 by mfuhrman          #+#    #+#             */
-/*   Updated: 2022/10/17 09:46:42 by mfuhrman         ###   ########.fr       */
+/*   Updated: 2022/10/18 13:29:41 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,9 @@ int	main(int argc, char **argv)
 	ft_init_text(&images.cube);
 	mlx_string_put(images.cube.mlx_ptr, images.cube.win_ptr, 250, \
 		340, 0x00FF00, "       GO");
-	mlx_mouse_move(images.game.win_ptr, (CUBE_X / 2), (CUBE_Y -100));
+	# ifdef __APPLE__
+        mlx_mouse_move(images.game.win_ptr, (CUBE_X / 2), CUBE_Y -100);
+    # endif
 	mlx_hook(images.game.win_ptr, 2, 1L << 0, *ft_input, &images);
 	mlx_hook(images.game.win_ptr, 17, 1L << 17, ft_close, &images);
 	mlx_hook(images.game.win_ptr, 6, 1, *move_test, &images);
