@@ -13,3 +13,4 @@ make test   //  partie obligatoire
 make bonus  //  Bonus
 
 push OK le 18-10-2022
++ 40 jours avec 4 bonus
