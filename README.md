@@ -10,6 +10,7 @@ ifeq ($(DESKTOP_SESSION), ubuntu-wayland) pour Linux
 run :
 
 make test   //  partie obligatoire
+
 make bonus  //  Bonus
 
 push OK le 18-10-2022
