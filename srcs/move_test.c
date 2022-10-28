@@ -6,7 +6,7 @@
 /*   By: pwolff <pwolff@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 09:46:30 by pwolff            #+#    #+#             */
-/*   Updated: 2022/10/18 13:30:20 by pwolff           ###   ########.fr       */
+/*   Updated: 2022/10/28 11:45:07 by pwolff           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static void	ft_move_test_2(int x, t_image *images, int *key)
 		images->cube.dir_sprite = 1;
 	}
 	# ifdef __APPLE__
-        mlx_mouse_move(images.game.win_ptr, (CUBE_X / 2), CUBE_Y -100);
+        mlx_mouse_move(images->game.win_ptr, (CUBE_X / 2), CUBE_Y -100);
     # endif
 }
 
